@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
+
+    <title>
+        إعدادات الموقع — SON OF THE VOID
+    </title>
+
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="../assets/favicon/favicon.svg"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --black: #050505;
+            --black-2: #080808;
+            --card: #0d0d0d;
+
+            --red: #650000;
+            --red-light: #8b0000;
+
+            --text: #eeeeee;
+            --text-soft: #969090;
+            --text-dark: #5d5757;
+
+            --border:
+                rgba(255,255,255,0.07);
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+            scrollbar-width: none;
+
+        }
+
+
+        html::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% -15%,
+                    rgba(165,29,29,0.10),
+                    transparent 42%
+                ),
+                var(--black);
+
+            color:
+                var(--text);
+
+            font-family:
+                "Cairo",
+                sans-serif;
+
+            overflow-x: hidden;
+
+            scrollbar-width: none;
+
+        }
+
+
+        body::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+
+        a,
+        button {
+
+            font: inherit;
+
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+
+        button {
+
+            border: 0;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           TOP BAR
+        ====================================================== */
+
+        .topbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                18px 34px;
+
+            background:
+                rgba(5,5,5,0.88);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.045);
+
+            backdrop-filter:
+                blur(14px);
+
+            -webkit-backdrop-filter:
+                blur(14px);
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .brand-mark {
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(105,0,0,0.4);
+
+            background:
+                rgba(85,0,0,0.07);
+
+            color:
+                #790000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                12px;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .brand-name {
+
+            color:
+                #d4cdcd;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        .home-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                10px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            color:
+                #aaa0a0;
+
+            font-size:
+                12px;
+
+            transition:
+                color 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+
+        }
+
+
+        .home-button:hover {
+
+            color:
+                #ffffff;
+
+            border-color:
+                rgba(105,0,0,0.42);
+
+            background:
+                rgba(85,0,0,0.05);
+
+        }
+
+
+        /* =====================================================
+           PAGE
+        ====================================================== */
+
+        .page {
+
+            width:
+                min(
+                    920px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                85px 0 100px;
+
+        }
+
+
+        .page-header {
+
+            margin-bottom:
+                45px;
+
+        }
+
+
+        .eyebrow {
+
+            margin-bottom:
+                12px;
+
+            color:
+                var(--red-light);
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                4px;
+
+        }
+
+
+        .page-title {
+
+            color:
+                #f1eaea;
+
+            font-size:
+                clamp(
+                    36px,
+                    6vw,
+                    62px
+                );
+
+            font-weight:
+                700;
+
+            line-height:
+                1.15;
+
+        }
+
+
+        .page-description {
+
+            max-width:
+                620px;
+
+            margin-top:
+                16px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                14px;
+
+            line-height:
+                2;
+
+        }
+
+
+        /* =====================================================
+           SETTINGS CARDS
+        ====================================================== */
+
+        .settings-list {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                16px;
+
+        }
+
+
+        .setting-card {
+
+            padding:
+                24px 26px;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(255,255,255,0.015),
+                    rgba(255,255,255,0)
+                ),
+                var(--card);
+
+        }
+
+
+        .setting-heading {
+
+            margin-bottom:
+                6px;
+
+            color:
+                #ddd5d5;
+
+            font-size:
+                15px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .setting-description {
+
+            margin-bottom:
+                18px;
+
+            color:
+                #6e6666;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.9;
+
+        }
+
+
+        .setting-options {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap:
+                7px;
+
+        }
+
+
+        .setting-option {
+
+            min-height:
+                40px;
+
+            padding:
+                8px 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.055);
+
+            background:
+                rgba(255,255,255,0.012);
+
+            color:
+                #716969;
+
+            font-size:
+                11px;
+
+            transition:
+                color 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .setting-option:hover {
+
+            color:
+                #d2cdcd;
+
+            border-color:
+                rgba(105,0,0,0.34);
+
+            background:
+                rgba(85,0,0,0.04);
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        .setting-option.active {
+
+            color:
+                #eeeeee;
+
+            border-color:
+                rgba(115,0,0,0.48);
+
+            background:
+                rgba(90,0,0,0.08);
+
+        }
+
+
+        /* =====================================================
+           INFO
+        ====================================================== */
+
+        .info-box {
+
+            margin-top:
+                18px;
+
+            padding:
+                17px 20px;
+
+            border-right:
+                1px solid
+                rgba(105,0,0,0.38);
+
+            background:
+                rgba(80,0,0,0.03);
+
+            color:
+                #736b6b;
+
+            font-size:
+                11px;
+
+            line-height:
+                2;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .footer {
+
+            margin-top:
+                70px;
+
+            padding-top:
+                25px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.045);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            color:
+                #5d5555;
+
+            font-size:
+                11px;
+
+        }
+
+
+        .footer-logo {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+            .topbar {
+
+                padding:
+                    14px 16px;
+
+            }
+
+
+            .brand-name {
+
+                display:
+                    none;
+
+            }
+
+
+            .home-button {
+
+                padding:
+                    9px 12px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .page {
+
+                width:
+                    min(
+                        100% - 24px,
+                        920px
+                    );
+
+                padding-top:
+                    58px;
+
+            }
+
+
+            .page-header {
+
+                margin-bottom:
+                    34px;
+
+            }
+
+
+            .setting-card {
+
+                padding:
+                    21px 18px;
+
+            }
+
+
+            .setting-options {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .setting-option {
+
+                min-height:
+                    42px;
+
+            }
+
+
+            .footer {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    8px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <a
+            href="../index.html"
+            class="brand"
+        >
+
+            <span class="brand-mark">
+                SOV
+            </span>
+
+            <span class="brand-name">
+                SON OF THE VOID
+            </span>
+
+        </a>
+
+
+        <a
+            href="../index.html"
+            class="home-button"
+        >
+
+            <span>
+                ←
+            </span>
+
+            <span>
+                الرئيسية
+            </span>
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PAGE
+    ====================================================== -->
+
+    <main class="page">
+
+
+        <header class="page-header">
+
+            <p class="eyebrow">
+                SYSTEM
+            </p>
+
+            <h1 class="page-title">
+                إعدادات الموقع
+            </h1>
+
+            <p class="page-description">
+                إعدادات عامة خاصة بواجهة الموقع. إعدادات القراءة
+                مثل حجم الخط ونوعه وعرض النص تبقى داخل نظام القراءة.
+            </p>
+
+        </header>
+
+
+
+        <!-- =================================================
+             SETTINGS
+        ================================================== -->
+
+        <section class="settings-list">
+
+
+            <!-- THEME -->
+
+            <div class="setting-card">
+
+                <h2 class="setting-heading">
+                    مظهر الموقع
+                </h2>
+
+                <p class="setting-description">
+                    اختر المظهر العام لواجهة الموقع.
+                </p>
+
+
+                <div class="setting-options">
+
+                    <button
+                        class="setting-option active"
+                        type="button"
+                        data-theme="dark"
+                    >
+                        مظلم
+                    </button>
+
+
+                    <button
+                        class="setting-option"
+                        type="button"
+                        data-theme="light"
+                    >
+                        فاتح
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MOTION -->
+
+            <div class="setting-card">
+
+                <h2 class="setting-heading">
+                    الحركة والمؤثرات
+                </h2>
+
+                <p class="setting-description">
+                    التحكم في الحركة البصرية البسيطة الموجودة في الموقع.
+                </p>
+
+
+                <div class="setting-options">
+
+                    <button
+                        class="setting-option active"
+                        type="button"
+                        data-motion="on"
+                    >
+                        مفعلة
+                    </button>
+
+
+                    <button
+                        class="setting-option"
+                        type="button"
+                        data-motion="off"
+                    >
+                        معطلة
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INFO -->
+
+            <div class="setting-card">
+
+                <h2 class="setting-heading">
+                    معلومات
+                </h2>
+
+                <p class="setting-description">
+                    معلومات مختصرة عن نسخة الموقع الحالية.
+                </p>
+
+
+                <div class="info-box">
+
+                    SON OF THE VOID
+
+                    <br>
+
+                    الإصدار:
+                    1.0
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="footer">
+
+            <span>
+                SON OF THE VOID
+            </span>
+
+            <span class="footer-logo">
+                SOV
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                /* =================================================
+                   THEME
+                ================================================= */
+
+                const themeOptions =
+                    document.querySelectorAll(
+                        "[data-theme]"
+                    );
+
+
+                const savedTheme =
+                    localStorage.getItem(
+                        "sov_site_theme"
+                    ) ||
+                    "dark";
+
+
+                function applyTheme(theme) {
+
+                    /*
+                       النسخة المظلمة هي المظهر الأساسي حاليًا.
+                       ألوان النسخة الفاتحة سنبنيها بشكل كامل
+                       عندما نعتمد تصميمها النهائي.
+                    */
+
+                    if (theme === "light") {
+
+                        document.body.classList.add(
+                            "light-mode"
+                        );
+
+                    } else {
+
+                        document.body.classList.remove(
+                            "light-mode"
+                        );
+
+                    }
+
+
+                    themeOptions.forEach(option => {
+
+                        option.classList.toggle(
+                            "active",
+                            option.dataset.theme === theme
+                        );
+
+                    });
+
+
+                    localStorage.setItem(
+                        "sov_site_theme",
+                        theme
+                    );
+
+                }
+
+
+                themeOptions.forEach(option => {
+
+                    option.addEventListener(
+                        "click",
+                        () => {
+
+                            applyTheme(
+                                option.dataset.theme
+                            );
+
+                        }
+                    );
+
+                });
+
+
+                applyTheme(savedTheme);
+
+
+
+                /* =================================================
+                   MOTION
+                ================================================== */
+
+                const motionOptions =
+                    document.querySelectorAll(
+                        "[data-motion]"
+                    );
+
+
+                const savedMotion =
+                    localStorage.getItem(
+                        "sov_site_motion"
+                    ) ||
+                    "on";
+
+
+                function applyMotion(motion) {
+
+                    if (motion === "off") {
+
+                        document.body.classList.add(
+                            "no-motion"
+                        );
+
+                    } else {
+
+                        document.body.classList.remove(
+                            "no-motion"
+                        );
+
+                    }
+
+
+                    motionOptions.forEach(option => {
+
+                        option.classList.toggle(
+                            "active",
+                            option.dataset.motion === motion
+                        );
+
+                    });
+
+
+                    localStorage.setItem(
+                        "sov_site_motion",
+                        motion
+                    );
+
+                }
+
+
+                motionOptions.forEach(option => {
+
+                    option.addEventListener(
+                        "click",
+                        () => {
+
+                            applyMotion(
+                                option.dataset.motion
+                            );
+
+                        }
+                    );
+
+                });
+
+
+                applyMotion(savedMotion);
+
+            }
+
+        );
+
+    </script>
+
+</body>
+
+</html>
