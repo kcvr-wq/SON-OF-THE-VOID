@@ -1,0 +1,1078 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap');
+
+
+:root {
+
+    --reader-bg: #080808;
+    --reader-surface: #0d0d0d;
+    --reader-text: #c9c9c9;
+    --reader-muted: #686868;
+    --reader-red: #720000;
+
+    --reader-font:
+        "Cairo",
+        sans-serif;
+
+    --reader-size: 19px;
+
+    --reader-width: 780px;
+
+    --reader-line: 2.15;
+
+    --reader-paragraph: 28px;
+
+    --reader-border:
+        rgba(255, 255, 255, 0.07);
+
+}
+
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background: var(--reader-bg);
+
+    color: var(--reader-text);
+
+    font-family: var(--reader-font);
+
+    overflow-x: hidden;
+
+}
+
+
+body.theme-oled {
+
+    --reader-bg: #000000;
+
+    --reader-surface: #050505;
+
+}
+
+
+body.theme-light {
+
+    --reader-bg: #eeeeee;
+
+    --reader-surface: #ffffff;
+
+    --reader-text: #242424;
+
+    --reader-muted: #666666;
+
+    --reader-border:
+        rgba(0, 0, 0, 0.1);
+
+}
+
+
+body.theme-sepia {
+
+    --reader-bg: #17120d;
+
+    --reader-surface: #201912;
+
+    --reader-text: #d6c5aa;
+
+    --reader-muted: #8d7e6b;
+
+    --reader-border:
+        rgba(255, 230, 190, 0.08);
+
+}
+
+
+button,
+a {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    border: 0;
+
+    cursor: pointer;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.reading-progress {
+
+    position: fixed;
+
+    top: 0;
+
+    right: 0;
+
+    width: 0;
+
+    height: 2px;
+
+    z-index: 9999;
+
+    background:
+        linear-gradient(
+            90deg,
+            #450000,
+            #850000
+        );
+
+    transition:
+        width 0.1s linear;
+
+}
+
+
+body.hide-progress .reading-progress {
+
+    display: none;
+
+}
+
+
+/* =====================================================
+   READER
+===================================================== */
+
+.reader {
+
+    width: min(100%, 1100px);
+
+    margin: 0 auto;
+
+    padding:
+        35px 30px 80px;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.reader-header {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    align-items: center;
+
+    min-height: 75px;
+
+    border-bottom:
+        1px solid
+        var(--reader-border);
+
+}
+
+
+.reader-title {
+
+    text-align: center;
+
+}
+
+
+.reader-title span {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--reader-red);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.reader-title h1 {
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+}
+
+
+.reader-back,
+.reader-settings-button {
+
+    justify-self: start;
+
+    padding:
+        9px 15px;
+
+    color: var(--reader-muted);
+
+    background: transparent;
+
+    border:
+        1px solid
+        var(--reader-border);
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+.reader-settings-button {
+
+    justify-self: end;
+
+}
+
+
+.reader-back:hover,
+.reader-settings-button:hover {
+
+    color: var(--reader-text);
+
+    background:
+        rgba(110, 0, 0, 0.08);
+
+    border-color:
+        rgba(120, 0, 0, 0.45);
+
+}
+
+
+/* =====================================================
+   CHAPTER
+===================================================== */
+
+.chapter {
+
+    width: min(100%, var(--reader-width));
+
+    margin: 0 auto;
+
+    padding-top: 95px;
+
+}
+
+
+.chapter-heading {
+
+    padding-bottom: 65px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid
+        var(--reader-border);
+
+}
+
+
+.chapter-heading span {
+
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: var(--reader-red);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+}
+
+
+.chapter-heading h2 {
+
+    margin-bottom: 12px;
+
+    color: var(--reader-text);
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(32px, 6vw, 55px);
+
+    font-weight: 500;
+
+}
+
+
+.chapter-heading p {
+
+    color: var(--reader-muted);
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.chapter-text {
+
+    padding-top: 65px;
+
+    font-size: var(--reader-size);
+
+    line-height: var(--reader-line);
+
+}
+
+
+.chapter-text p {
+
+    margin-bottom: var(--reader-paragraph);
+
+    color: var(--reader-text);
+
+}
+
+
+.chapter-dialogue {
+
+    padding:
+        22px 25px;
+
+    color: #d2d2d2 !important;
+
+    background:
+        rgba(110, 0, 0, 0.05);
+
+    border-right:
+        2px solid
+        rgba(110, 0, 0, 0.65);
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.chapter-navigation {
+
+    width: min(100%, var(--reader-width));
+
+    margin: 80px auto 0;
+
+    padding-top: 28px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    gap: 10px;
+
+    border-top:
+        1px solid
+        var(--reader-border);
+
+}
+
+
+.chapter-nav {
+
+    min-height: 75px;
+
+    padding:
+        12px 15px;
+
+    color: var(--reader-muted);
+
+    background:
+        var(--reader-surface);
+
+    border:
+        1px solid
+        var(--reader-border);
+
+    text-align: center;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+.chapter-nav span {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 10px;
+
+}
+
+
+.chapter-nav strong {
+
+    color: var(--reader-text);
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+
+.chapter-nav:hover:not(.disabled) {
+
+    color: var(--reader-text);
+
+    background:
+        rgba(110, 0, 0, 0.07);
+
+    border-color:
+        rgba(110, 0, 0, 0.5);
+
+}
+
+
+.chapter-nav.disabled {
+
+    opacity: 0.3;
+
+    cursor: not-allowed;
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.settings-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 300;
+
+    background:
+        rgba(0, 0, 0, 0.7);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+}
+
+
+.settings-overlay.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.reader-settings {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: 301;
+
+    width: min(420px, 92vw);
+
+    height: 100vh;
+
+    padding: 30px;
+
+    overflow-y: auto;
+
+    background:
+        #0a0a0a;
+
+    border-right:
+        1px solid
+        var(--reader-border);
+
+    transform:
+        translateX(-105%);
+
+    transition:
+        transform 0.35s ease;
+
+}
+
+
+.reader-settings.open {
+
+    transform:
+        translateX(0);
+
+}
+
+
+.settings-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    margin-bottom: 40px;
+
+}
+
+
+.settings-header span {
+
+    color: var(--reader-red);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.settings-header h2 {
+
+    margin-top: 7px;
+
+    color: #ddd;
+
+    font-size: 24px;
+
+}
+
+
+.settings-header button {
+
+    width: 35px;
+
+    height: 35px;
+
+    color: #777;
+
+    background: transparent;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 23px;
+
+}
+
+
+.setting-group {
+
+    margin-bottom: 30px;
+
+}
+
+
+.setting-group > label {
+
+    display: block;
+
+    margin-bottom: 11px;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+.setting-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+}
+
+
+.setting-buttons button {
+
+    padding:
+        9px 12px;
+
+    color: #858585;
+
+    background:
+        #111;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+}
+
+
+.setting-buttons button.selected {
+
+    color: #ddd;
+
+    background:
+        rgba(100, 0, 0, 0.18);
+
+    border-color:
+        rgba(120, 0, 0, 0.5);
+
+}
+
+
+.setting-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        18px 0;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+}
+
+
+.setting-row strong {
+
+    display: block;
+
+    color: #c2c2c2;
+
+    font-size: 13px;
+
+}
+
+
+.setting-row small {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #666;
+
+    font-size: 10px;
+
+}
+
+
+.mini-toggle {
+
+    position: relative;
+
+    width: 45px;
+
+    height: 23px;
+
+    flex: 0 0 auto;
+
+    border-radius: 30px;
+
+    background: #222;
+
+}
+
+
+.mini-toggle span {
+
+    position: absolute;
+
+    top: 4px;
+
+    right: 4px;
+
+    width: 15px;
+
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #555;
+
+    transition:
+        right 0.25s ease,
+        background 0.25s ease;
+
+}
+
+
+.mini-toggle.active {
+
+    background: #4a0000;
+
+}
+
+
+.mini-toggle.active span {
+
+    right: 26px;
+
+    background: #950000;
+
+}
+
+
+.save-status {
+
+    color: #710000;
+
+    font-size: 10px;
+
+}
+
+
+/* =====================================================
+   CHAPTER LIST
+===================================================== */
+
+.chapter-list-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 400;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0, 0, 0, 0.78);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+}
+
+
+.chapter-list-overlay.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.chapter-list-panel {
+
+    position: relative;
+
+    width: min(600px, 100%);
+
+    padding: 35px;
+
+    background: #0a0a0a;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+}
+
+
+.chapter-list-panel > span {
+
+    color: var(--reader-red);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.chapter-list-panel h2 {
+
+    margin:
+        8px 0 25px;
+
+    font-size: 30px;
+
+}
+
+
+.close-list {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 18px;
+
+    width: 34px;
+
+    height: 34px;
+
+    color: #777;
+
+    background: transparent;
+
+    font-size: 22px;
+
+}
+
+
+.chapter-list-item {
+
+    display: block;
+
+    padding:
+        18px;
+
+    margin-top: 8px;
+
+    background:
+        #0e0e0e;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+}
+
+
+.chapter-list-item small {
+
+    display: block;
+
+    color: #666;
+
+    margin-bottom: 5px;
+
+}
+
+
+.chapter-list-item strong {
+
+    color: #bbb;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+}
+
+
+.chapter-list-item.active {
+
+    border-color:
+        rgba(110, 0, 0, 0.55);
+
+}
+
+
+.chapter-list-item.disabled {
+
+    opacity: 0.3;
+
+}
+
+
+/* =====================================================
+   FONT MODES
+===================================================== */
+
+body.font-naskh {
+
+    --reader-font:
+        "Noto Naskh Arabic",
+        serif;
+
+}
+
+
+body.font-serif {
+
+    --reader-font:
+        "Source Serif 4",
+        serif;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .reader {
+
+        padding:
+            15px 18px 55px;
+
+    }
+
+
+    .reader-header {
+
+        grid-template-columns:
+            auto
+            1fr
+            auto;
+
+        gap: 10px;
+
+    }
+
+
+    .reader-title span {
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .reader-title h1 {
+
+        font-size: 13px;
+
+    }
+
+
+    .reader-back,
+    .reader-settings-button {
+
+        padding:
+            7px 9px;
+
+        font-size: 10px;
+
+    }
+
+
+    .chapter {
+
+        padding-top: 65px;
+
+    }
+
+
+    .chapter-heading {
+
+        padding-bottom: 45px;
+
+    }
+
+
+    .chapter-heading h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .chapter-text {
+
+        padding-top: 45px;
+
+        font-size: var(--reader-size);
+
+        line-height: var(--reader-line);
+
+    }
+
+
+    .chapter-navigation {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .reader-settings {
+
+        padding: 24px 20px;
+
+    }
+
+}
