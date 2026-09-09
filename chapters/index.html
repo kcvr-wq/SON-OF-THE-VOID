@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
     <title>الفصول — SON OF THE VOID</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Cinzel:wght@500;600;700&display=swap"
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
 
     <link
         rel="icon"
@@ -20,539 +49,1471 @@
         href="../assets/favicon/favicon.svg"
     >
 
+
     <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
         :root {
-            --bg: #070707;
+
+            --black: #050505;
+            --black-2: #080808;
             --card: #0d0d0d;
-            --border: #271313;
-            --border-hover: #571919;
-            --red: #a51d1d;
-            --red-light: #c12929;
-            --text: #f1eeee;
-            --muted: #918888;
-            --dim: #625959;
+
+            --red: #650000;
+            --red-light: #8b0000;
+
+            --text: #eeeeee;
+            --text-soft: #918888;
+            --text-dark: #5f5757;
+
+            --border:
+                rgba(255,255,255,0.07);
+
         }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
 
         * {
+
             margin: 0;
             padding: 0;
+
             box-sizing: border-box;
+
         }
+
 
         html {
+
             scroll-behavior: smooth;
+
             scrollbar-width: none;
+
         }
+
 
         html::-webkit-scrollbar {
+
             display: none;
+
         }
 
+
         body {
+
             min-height: 100vh;
 
             background:
                 radial-gradient(
                     circle at 50% -15%,
-                    rgba(165, 29, 29, 0.10),
+                    rgba(165,29,29,0.10),
                     transparent 42%
                 ),
-                var(--bg);
+                var(--black);
 
-            color: var(--text);
-            font-family: "Cairo", sans-serif;
+            color:
+                var(--text);
 
-            scrollbar-width: none;
+            font-family:
+                "Cairo",
+                sans-serif;
+
+            overflow-x:
+                hidden;
+
+            scrollbar-width:
+                none;
+
         }
+
 
         body::-webkit-scrollbar {
-            display: none;
+
+            display:
+                none;
+
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+
+        button,
+        input,
+        select {
+
+            font:
+                inherit;
+
         }
+
 
         button {
-            font: inherit;
+
+            border:
+                0;
+
+            cursor:
+                pointer;
+
         }
 
-        /* =========================
+
+        a {
+
+            color:
+                inherit;
+
+            text-decoration:
+                none;
+
+        }
+
+
+        /* =====================================================
            TOP BAR
-        ========================= */
+        ====================================================== */
 
         .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 20;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            position:
+                sticky;
 
-            padding: 18px 34px;
+            top:
+                0;
 
-            background: rgba(7, 7, 7, 0.86);
-            border-bottom: 1px solid rgba(165, 29, 29, 0.16);
+            z-index:
+                100;
 
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-        }
+            display:
+                flex;
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+            align-items:
+                center;
 
-        .brand-mark {
-            width: 38px;
-            height: 38px;
+            justify-content:
+                space-between;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid #4d1515;
+            padding:
+                18px 34px;
 
             background:
-                linear-gradient(
-                    145deg,
-                    #180909,
-                    #090909
-                );
+                rgba(5,5,5,0.88);
 
-            color: var(--red-light);
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.045);
 
-            font-family: "Cinzel", serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            backdrop-filter:
+                blur(14px);
 
-            box-shadow:
-                0 0 20px rgba(165, 29, 29, 0.08);
+            -webkit-backdrop-filter:
+                blur(14px);
+
         }
+
+
+        .brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+        }
+
+
+        .brand-mark {
+
+            width:
+                38px;
+
+            height:
+                38px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                1px solid
+                rgba(105,0,0,0.4);
+
+            background:
+                rgba(85,0,0,0.07);
+
+            color:
+                #790000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                12px;
+
+            letter-spacing:
+                1px;
+
+        }
+
 
         .brand-name {
-            font-family: "Cinzel", serif;
-            font-size: 13px;
-            letter-spacing: 2px;
-            color: #d7d0d0;
+
+            color:
+                #d4cdcd;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                2px;
+
         }
 
+
         .home-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
 
-            padding: 10px 15px;
+            display:
+                inline-flex;
 
-            border: 1px solid var(--border);
+            align-items:
+                center;
 
-            color: #aaa1a1;
+            gap:
+                8px;
 
-            font-size: 13px;
+            padding:
+                10px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            color:
+                #aaa0a0;
+
+            font-size:
+                12px;
 
             transition:
                 color 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease;
+                border-color 0.25s ease,
+                background 0.25s ease;
+
         }
+
 
         .home-button:hover {
-            color: #ffffff;
-            background: rgba(165, 29, 29, 0.06);
-            border-color: var(--border-hover);
+
+            color:
+                #ffffff;
+
+            border-color:
+                rgba(105,0,0,0.42);
+
+            background:
+                rgba(85,0,0,0.05);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            PAGE
-        ========================= */
+        ====================================================== */
 
         .page {
-            width: min(1080px, calc(100% - 40px));
-            margin: 0 auto;
 
-            padding: 88px 0 100px;
+            width:
+                min(
+                    1080px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                82px 0 100px;
+
         }
+
 
         .page-header {
-            margin-bottom: 46px;
+
+            margin-bottom:
+                42px;
+
         }
+
 
         .eyebrow {
-            margin-bottom: 12px;
 
-            color: var(--red-light);
+            margin-bottom:
+                12px;
 
-            font-family: "Cinzel", serif;
-            font-size: 12px;
-            letter-spacing: 4px;
+            color:
+                var(--red-light);
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                4px;
+
         }
+
 
         .page-title {
-            font-size: clamp(38px, 6vw, 68px);
-            font-weight: 700;
-            line-height: 1.1;
+
+            color:
+                #f1eaea;
+
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    66px
+                );
+
+            font-weight:
+                700;
+
+            line-height:
+                1.1;
+
         }
+
 
         .page-description {
-            margin-top: 17px;
-            max-width: 600px;
 
-            color: var(--muted);
+            max-width:
+                620px;
 
-            font-size: 15px;
-            line-height: 2;
+            margin-top:
+                17px;
+
+            color:
+                var(--text-soft);
+
+            font-size:
+                14px;
+
+            line-height:
+                2;
+
         }
 
-        /* =========================
-           VOLUME CARD
-        ========================= */
+
+        /* =====================================================
+           QUICK ACTIONS
+        ====================================================== */
+
+        .quick-panel {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto
+                auto;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .search-box {
+
+            position:
+                relative;
+
+        }
+
+
+        .search-input {
+
+            width:
+                100%;
+
+            height:
+                48px;
+
+            padding:
+                0 17px;
+
+            outline:
+                none;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            background:
+                rgba(255,255,255,0.012);
+
+            color:
+                #ded8d8;
+
+            font-size:
+                12px;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease;
+
+        }
+
+
+        .search-input::placeholder {
+
+            color:
+                #5e5656;
+
+        }
+
+
+        .search-input:focus {
+
+            border-color:
+                rgba(115,0,0,0.55);
+
+            background:
+                rgba(95,0,0,0.025);
+
+        }
+
+
+        .sort-select {
+
+            min-width:
+                150px;
+
+            height:
+                48px;
+
+            padding:
+                0 13px;
+
+            outline:
+                none;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            background:
+                #0c0c0c;
+
+            color:
+                #9e9595;
+
+            font-size:
+                11px;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .reset-button {
+
+            height:
+                48px;
+
+            padding:
+                0 16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            background:
+                rgba(255,255,255,0.012);
+
+            color:
+                #777;
+
+            font-size:
+                11px;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .reset-button:hover {
+
+            color:
+                #d0c8c8;
+
+            border-color:
+                rgba(105,0,0,0.42);
+
+            background:
+                rgba(85,0,0,0.05);
+
+        }
+
+
+        /* =====================================================
+           VOLUME
+        ====================================================== */
 
         .volume-list {
-            display: flex;
-            flex-direction: column;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                18px;
+
         }
 
-        .volume-item {
-            overflow: hidden;
 
-            border: 1px solid var(--border);
+        .volume-item {
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                var(--border);
 
             background:
                 linear-gradient(
-                    120deg,
-                    rgba(255,255,255,0.015),
-                    rgba(255,255,255,0)
+                    135deg,
+                    rgba(255,255,255,0.018),
+                    rgba(255,255,255,0.005)
                 ),
                 var(--card);
 
             transition:
                 border-color 0.3s ease;
+
         }
+
 
         .volume-item:hover {
-            border-color: rgba(165, 29, 29, 0.35);
+
+            border-color:
+                rgba(165,29,29,0.35);
+
         }
+
 
         .volume-item.open {
-            border-color: rgba(165, 29, 29, 0.45);
+
+            border-color:
+                rgba(165,29,29,0.46);
+
         }
+
 
         .volume-header {
-            width: 100%;
 
-            display: grid;
-            grid-template-columns: 80px 1fr 48px;
-            align-items: center;
+            width:
+                100%;
 
-            gap: 18px;
+            display:
+                grid;
 
-            padding: 28px;
+            grid-template-columns:
+                58px
+                1fr
+                42px;
 
-            border: none;
-            background: transparent;
+            align-items:
+                center;
 
-            color: inherit;
-            text-align: right;
+            gap:
+                18px;
 
-            cursor: pointer;
+            padding:
+                25px 24px;
+
+            background:
+                transparent;
+
+            color:
+                inherit;
+
+            text-align:
+                right;
+
         }
+
 
         .volume-number {
-            color: var(--red);
 
-            font-family: "Cinzel", serif;
-            font-size: 17px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border:
+                1px solid
+                rgba(110,0,0,0.38);
+
+            background:
+                rgba(75,0,0,0.08);
+
+            color:
+                #770000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                2px;
+
         }
+
 
         .volume-info {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                5px;
+
         }
+
 
         .volume-name {
-            color: #eee7e7;
 
-            font-family: "Cinzel", serif;
-            font-size: clamp(18px, 3vw, 27px);
-            letter-spacing: 2px;
+            color:
+                #d7d0d0;
 
-            direction: ltr;
-            text-align: right;
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                clamp(
+                    16px,
+                    2vw,
+                    22px
+                );
+
+            letter-spacing:
+                1.5px;
+
+            direction:
+                ltr;
+
+            text-align:
+                right;
+
         }
+
 
         .volume-meta {
-            color: #736a6a;
-            font-size: 13px;
+
+            color:
+                #625959;
+
+            font-size:
+                10px;
+
         }
 
+
+        .volume-status {
+
+            margin-top:
+                2px;
+
+            color:
+                #755d5d;
+
+            font-size:
+                9px;
+
+        }
+
+
         .volume-arrow {
-            width: 38px;
-            height: 38px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width:
+                34px;
 
-            border: 1px solid #311717;
+            height:
+                34px;
 
-            color: #9a8787;
+            display:
+                flex;
 
-            font-family: Arial, sans-serif;
-            font-size: 20px;
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            color:
+                #720000;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size:
+                20px;
 
             transition:
                 transform 0.3s ease,
-                color 0.3s ease,
-                border-color 0.3s ease,
-                background 0.3s ease;
+                color 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+
         }
+
 
         .volume-item.open .volume-arrow {
-            transform: rotate(45deg);
 
-            color: white;
-            border-color: #651b1b;
-            background: rgba(165, 29, 29, 0.10);
+            transform:
+                rotate(45deg);
+
+            color:
+                #a00000;
+
+            border-color:
+                rgba(130,0,0,0.45);
+
+            background:
+                rgba(100,0,0,0.08);
+
         }
 
-        /* =========================
-           CHAPTER LIST
-        ========================= */
+
+        /* =====================================================
+           CHAPTER AREA
+        ====================================================== */
 
         .volume-chapters {
-            display: grid;
-            grid-template-rows: 0fr;
+
+            display:
+                grid;
+
+            grid-template-rows:
+                0fr;
 
             transition:
                 grid-template-rows 0.4s ease;
+
         }
+
 
         .volume-item.open .volume-chapters {
-            grid-template-rows: 1fr;
+
+            grid-template-rows:
+                1fr;
+
         }
+
 
         .volume-chapters-inner {
-            min-height: 0;
-            overflow: hidden;
 
-            border-top: 1px solid transparent;
+            min-height:
+                0;
 
-            transition:
-                border-color 0.3s ease,
-                padding 0.4s ease;
+            overflow:
+                hidden;
+
+            border-top:
+                1px solid
+                transparent;
+
         }
+
 
         .volume-item.open .volume-chapters-inner {
-            padding: 12px;
-            border-top-color: #211111;
+
+            border-top-color:
+                #211111;
+
+            padding:
+                10px 12px 14px;
+
         }
 
+
+        /* =====================================================
+           CHAPTER
+        ====================================================== */
+
         .chapter {
-            min-height: 88px;
 
-            display: grid;
-            grid-template-columns: 70px 1fr 44px;
-            align-items: center;
+            position:
+                relative;
 
-            gap: 18px;
+            display:
+                grid;
 
-            padding: 18px 20px;
+            grid-template-columns:
+                52px
+                minmax(0, 1fr)
+                auto;
 
-            border: 1px solid transparent;
+            align-items:
+                center;
+
+            gap:
+                16px;
+
+            min-height:
+                96px;
+
+            padding:
+                13px 12px;
+
+            border:
+                1px solid
+                transparent;
 
             transition:
                 background 0.25s ease,
                 border-color 0.25s ease,
                 transform 0.25s ease;
+
         }
+
+
+        .chapter.hidden {
+
+            display:
+                none;
+
+        }
+
 
         .chapter:hover {
-            background: rgba(165, 29, 29, 0.05);
-            border-color: #341515;
-            transform: translateX(-3px);
+
+            background:
+                rgba(255,255,255,0.018);
+
+            border-color:
+                #351515;
+
         }
+
 
         .chapter-number {
-            color: #716565;
 
-            font-family: "Cinzel", serif;
-            font-size: 14px;
-            letter-spacing: 1px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                36px;
+
+            height:
+                36px;
+
+            border:
+                1px solid
+                rgba(100,0,0,0.28);
+
+            color:
+                #700000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                9px;
+
         }
+
 
         .chapter-info {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
+
+            min-width:
+                0;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                4px;
+
         }
+
 
         .chapter-label {
-            color: var(--red-light);
-            font-size: 11px;
-            letter-spacing: 1px;
+
+            color:
+                #5d5353;
+
+            font-size:
+                9px;
+
         }
+
 
         .chapter-title {
-            color: #ddd6d6;
-            font-size: 15px;
-            font-weight: 500;
+
+            overflow:
+                hidden;
+
+            color:
+                #c1baba;
+
+            font-size:
+                13px;
+
+            font-weight:
+                500;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
+
         }
 
-        .chapter-arrow {
-            color: #756464;
 
-            font-family: Arial, sans-serif;
-            font-size: 19px;
+        .chapter-meta {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                10px;
+
+            margin-top:
+                2px;
+
+        }
+
+
+        .chapter-status {
+
+            color:
+                #807171;
+
+            font-size:
+                9px;
+
+        }
+
+
+        .chapter-progress-text {
+
+            color:
+                #650000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                8px;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .chapter-right {
+
+            min-width:
+                155px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+        }
+
+
+        .progress-track {
+
+            width:
+                105px;
+
+            height:
+                3px;
+
+            overflow:
+                hidden;
+
+            background:
+                rgba(255,255,255,0.06);
+
+        }
+
+
+        .progress-bar {
+
+            width:
+                0%;
+
+            height:
+                100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #4a0000,
+                    #8b0000
+                );
 
             transition:
-                color 0.25s ease,
-                transform 0.25s ease;
+                width 0.35s ease;
+
         }
 
-        .chapter:hover .chapter-arrow {
-            color: var(--red-light);
-            transform: translateX(-4px);
+
+        .chapter-open {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                34px;
+
+            height:
+                34px;
+
+            border:
+                1px solid
+                rgba(100,0,0,0.30);
+
+            color:
+                #700000;
+
+            background:
+                rgba(80,0,0,0.035);
+
+            transition:
+                0.25s ease;
+
         }
+
+
+        .chapter-open:hover {
+
+            color:
+                #a00000;
+
+            border-color:
+                rgba(135,0,0,0.45);
+
+            background:
+                rgba(100,0,0,0.08);
+
+        }
+
 
         .chapter.disabled {
-            opacity: 0.32;
-            cursor: default;
+
+            opacity:
+                0.35;
+
         }
 
-        .chapter.disabled:hover {
-            background: transparent;
-            border-color: transparent;
-            transform: none;
+
+        .chapter.disabled .chapter-open {
+
+            display:
+                none;
+
         }
 
-        /* =========================
+
+        /* =====================================================
+           EMPTY STATE
+        ====================================================== */
+
+        .empty-state {
+
+            display:
+                none;
+
+            padding:
+                35px 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.05);
+
+            color:
+                #655d5d;
+
+            text-align:
+                center;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .empty-state.show {
+
+            display:
+                block;
+
+        }
+
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ====================================================== */
 
         .footer {
-            margin-top: 80px;
 
-            padding-top: 26px;
+            margin-top:
+                80px;
 
-            border-top: 1px solid #171111;
+            padding-top:
+                25px;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-top:
+                1px solid
+                rgba(255,255,255,0.045);
 
-            color: var(--dim);
+            display:
+                flex;
 
-            font-size: 12px;
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            color:
+                #5d5555;
+
+            font-size:
+                11px;
+
         }
+
 
         .footer-logo {
-            font-family: "Cinzel", serif;
-            letter-spacing: 2px;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            letter-spacing:
+                2px;
+
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
 
-        @media (max-width: 700px) {
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 760px) {
 
             .topbar {
-                padding: 15px 18px;
+
+                padding:
+                    14px 16px;
+
             }
+
 
             .brand-name {
-                display: none;
+
+                display:
+                    none;
+
             }
+
 
             .home-button {
-                padding: 9px 13px;
-                font-size: 12px;
+
+                padding:
+                    9px 12px;
+
+                font-size:
+                    11px;
+
             }
+
 
             .page {
-                width: min(100% - 24px, 1080px);
-                padding-top: 58px;
+
+                width:
+                    min(
+                        100% - 24px,
+                        1080px
+                    );
+
+                padding-top:
+                    58px;
+
             }
 
-            .page-header {
-                margin-bottom: 34px;
+
+            .quick-panel {
+
+                grid-template-columns:
+                    1fr;
+
             }
 
-            .page-description {
-                font-size: 14px;
+
+            .sort-select,
+            .reset-button {
+
+                width:
+                    100%;
+
             }
+
 
             .volume-header {
-                grid-template-columns: 48px 1fr 40px;
-                gap: 12px;
-                padding: 21px 18px;
+
+                grid-template-columns:
+                    46px
+                    1fr
+                    36px;
+
+                gap:
+                    12px;
+
+                padding:
+                    20px 16px;
+
             }
+
 
             .volume-number {
-                font-size: 14px;
+
+                width:
+                    36px;
+
+                height:
+                    36px;
+
             }
+
 
             .volume-name {
-                font-size: 16px;
+
+                font-size:
+                    16px;
+
             }
 
-            .volume-meta {
-                font-size: 11px;
-            }
-
-            .volume-arrow {
-                width: 34px;
-                height: 34px;
-            }
 
             .chapter {
-                grid-template-columns: 42px 1fr 32px;
-                gap: 10px;
 
-                min-height: 78px;
+                grid-template-columns:
+                    40px
+                    minmax(0,1fr);
 
-                padding: 15px 12px;
+                gap:
+                    12px;
+
+                min-height:
+                    88px;
+
+                padding:
+                    13px 9px;
+
             }
+
+
+            .chapter-right {
+
+                grid-column:
+                    2;
+
+                min-width:
+                    0;
+
+                justify-content:
+                    space-between;
+
+                gap:
+                    10px;
+
+            }
+
+
+            .progress-track {
+
+                flex:
+                    1;
+
+                width:
+                    auto;
+
+            }
+
 
             .chapter-title {
-                font-size: 13px;
+
+                white-space:
+                    normal;
+
+                line-height:
+                    1.7;
+
             }
 
+
             .footer {
-                margin-top: 60px;
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 8px;
+
+                margin-top:
+                    60px;
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    8px;
+
             }
+
         }
+
+
     </style>
+
 </head>
+
 
 <body>
 
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
     <header class="topbar">
 
-        <a href="../index.html" class="brand">
-            <span class="brand-mark">SOV</span>
-            <span class="brand-name">SON OF THE VOID</span>
+        <a
+            href="../index.html"
+            class="brand"
+        >
+
+            <span class="brand-mark">
+                SOV
+            </span>
+
+            <span class="brand-name">
+                SON OF THE VOID
+            </span>
+
         </a>
 
-        <a href="../index.html" class="home-button">
-            <span>←</span>
-            <span>الرئيسية</span>
+
+        <a
+            href="../index.html"
+            class="home-button"
+        >
+
+            <span>
+                ←
+            </span>
+
+            <span>
+                الرئيسية
+            </span>
+
         </a>
 
     </header>
 
 
+
+    <!-- =====================================================
+         PAGE
+    ====================================================== -->
+
     <main class="page">
+
 
         <header class="page-header">
 
@@ -560,20 +1521,87 @@
                 THE CHRONICLES
             </p>
 
+
             <h1 class="page-title">
                 الفصول
             </h1>
 
+
             <p class="page-description">
-                اختر المجلد الذي تريد قراءته.
+                اختر المجلد الذي تريد قراءته، وتابع تقدمك في الفصول من مكان واحد.
             </p>
 
         </header>
 
 
+
+        <!-- =================================================
+             SEARCH / SORT
+        ================================================== -->
+
+        <section class="quick-panel">
+
+
+            <div class="search-box">
+
+                <input
+                    id="chapterSearch"
+                    class="search-input"
+                    type="search"
+                    placeholder="ابحث عن فصل..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <select
+                id="chapterSort"
+                class="sort-select"
+            >
+
+                <option value="number-asc">
+                    ترتيب الفصول: تصاعدي
+                </option>
+
+                <option value="number-desc">
+                    ترتيب الفصول: تنازلي
+                </option>
+
+                <option value="progress-desc">
+                    حسب التقدم
+                </option>
+
+                <option value="progress-asc">
+                    الأقل تقدمًا أولًا
+                </option>
+
+            </select>
+
+
+            <button
+                id="resetFilters"
+                class="reset-button"
+                type="button"
+            >
+                إعادة ضبط
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             VOLUME
+        ================================================== -->
+
         <section class="volume-list">
 
-            <div class="volume-item">
+            <div
+                class="volume-item"
+                data-volume="1"
+            >
+
 
                 <button
                     class="volume-header"
@@ -585,6 +1613,7 @@
                         01
                     </span>
 
+
                     <span class="volume-info">
 
                         <span class="volume-name">
@@ -595,7 +1624,15 @@
                             المجلد الأول
                         </span>
 
+                        <span
+                            class="volume-status"
+                            id="volumeStatus"
+                        >
+                            01 فصل متاح
+                        </span>
+
                     </span>
+
 
                     <span class="volume-arrow">
                         +
@@ -604,20 +1641,30 @@
                 </button>
 
 
+
                 <div class="volume-chapters">
 
-                    <div class="volume-chapters-inner">
+                    <div
+                        class="volume-chapters-inner"
+                        id="chapterList"
+                    >
 
-                        <!-- الفصل الأول -->
 
-                        <a
-                            href="../PATH%20OF%20THE%20VOID/chapter-01.html"
+                        <!-- =================================
+                             CHAPTER 01
+                        ================================== -->
+
+                        <article
                             class="chapter"
+                            data-number="1"
+                            data-title="حين بدأت السماء بالصمت"
+                            data-chapter="01"
                         >
 
                             <span class="chapter-number">
                                 01
                             </span>
+
 
                             <span class="chapter-info">
 
@@ -625,26 +1672,75 @@
                                     الفصل الأول
                                 </span>
 
+
                                 <span class="chapter-title">
                                     حين بدأت السماء بالصمت
                                 </span>
 
+
+                                <span class="chapter-meta">
+
+                                    <span
+                                        class="chapter-status"
+                                        data-status
+                                    >
+                                        لم تبدأ القراءة
+                                    </span>
+
+
+                                    <span
+                                        class="chapter-progress-text"
+                                        data-progress-text
+                                    >
+                                        0%
+                                    </span>
+
+                                </span>
+
                             </span>
 
-                            <span class="chapter-arrow">
-                                ←
+
+                            <span class="chapter-right">
+
+                                <span class="progress-track">
+
+                                    <span
+                                        class="progress-bar"
+                                        data-progress-bar
+                                    ></span>
+
+                                </span>
+
+
+                                <a
+                                    class="chapter-open"
+                                    href="../PATH%20OF%20THE%20VOID/chapter-01.html"
+                                    aria-label="فتح الفصل الأول"
+                                >
+                                    ←
+                                </a>
+
                             </span>
 
-                        </a>
+                        </article>
 
 
-                        <!-- الفصل الثاني -->
 
-                        <div class="chapter disabled">
+                        <!-- =================================
+                             CHAPTER 02
+                        ================================== -->
+
+                        <article
+                            class="chapter disabled"
+                            data-number="2"
+                            data-title="قريبًا"
+                            data-chapter="02"
+                        >
 
                             <span class="chapter-number">
                                 02
                             </span>
+
 
                             <span class="chapter-info">
 
@@ -652,26 +1748,57 @@
                                     الفصل الثاني
                                 </span>
 
+
                                 <span class="chapter-title">
                                     قريبًا
                                 </span>
 
+
+                                <span class="chapter-meta">
+
+                                    <span class="chapter-status">
+                                        غير متاح
+                                    </span>
+
+                                </span>
+
                             </span>
 
-                            <span class="chapter-arrow">
-                                —
+
+                            <span class="chapter-right">
+
+                                <span class="progress-track">
+
+                                    <span class="progress-bar"></span>
+
+                                </span>
+
+
+                                <span class="chapter-open">
+                                    —
+                                </span>
+
                             </span>
 
-                        </div>
+                        </article>
 
 
-                        <!-- الفصل الثالث -->
 
-                        <div class="chapter disabled">
+                        <!-- =================================
+                             CHAPTER 03
+                        ================================== -->
+
+                        <article
+                            class="chapter disabled"
+                            data-number="3"
+                            data-title="قريبًا"
+                            data-chapter="03"
+                        >
 
                             <span class="chapter-number">
                                 03
                             </span>
+
 
                             <span class="chapter-info">
 
@@ -679,17 +1806,40 @@
                                     الفصل الثالث
                                 </span>
 
+
                                 <span class="chapter-title">
                                     قريبًا
                                 </span>
 
+
+                                <span class="chapter-meta">
+
+                                    <span class="chapter-status">
+                                        غير متاح
+                                    </span>
+
+                                </span>
+
                             </span>
 
-                            <span class="chapter-arrow">
-                                —
+
+                            <span class="chapter-right">
+
+                                <span class="progress-track">
+
+                                    <span class="progress-bar"></span>
+
+                                </span>
+
+
+                                <span class="chapter-open">
+                                    —
+                                </span>
+
                             </span>
 
-                        </div>
+                        </article>
+
 
                     </div>
 
@@ -700,11 +1850,26 @@
         </section>
 
 
+
+        <div
+            id="emptyState"
+            class="empty-state"
+        >
+            لا توجد نتائج مطابقة للبحث.
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
         <footer class="footer">
 
             <span>
                 SON OF THE VOID
             </span>
+
 
             <span class="footer-logo">
                 SOV
@@ -712,65 +1877,572 @@
 
         </footer>
 
+
     </main>
 
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
     <script>
 
-        const volumeHeaders =
-            document.querySelectorAll(".volume-header");
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
 
 
-        volumeHeaders.forEach(header => {
+                /* =================================================
+                   ELEMENTS
+                ================================================= */
 
-            header.addEventListener("click", () => {
-
-                const volume =
-                    header.closest(".volume-item");
-
-                if (!volume) {
-                    return;
-                }
-
-                const isOpen =
-                    volume.classList.contains("open");
+                const chapterSearch =
+                    document.getElementById(
+                        "chapterSearch"
+                    );
 
 
-                document
-                    .querySelectorAll(".volume-item")
-                    .forEach(item => {
+                const chapterSort =
+                    document.getElementById(
+                        "chapterSort"
+                    );
 
-                        item.classList.remove("open");
 
-                        const itemHeader =
-                            item.querySelector(".volume-header");
+                const resetFilters =
+                    document.getElementById(
+                        "resetFilters"
+                    );
 
-                        if (itemHeader) {
-                            itemHeader.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
+
+                const chapterList =
+                    document.getElementById(
+                        "chapterList"
+                    );
+
+
+                const emptyState =
+                    document.getElementById(
+                        "emptyState"
+                    );
+
+
+                const volumeStatus =
+                    document.getElementById(
+                        "volumeStatus"
+                    );
+
+
+                const volumeHeaders =
+                    document.querySelectorAll(
+                        ".volume-header"
+                    );
+
+
+
+                /* =================================================
+                   VOLUME OPEN / CLOSE
+                ================================================== */
+
+                volumeHeaders.forEach(header => {
+
+                    header.addEventListener(
+                        "click",
+                        () => {
+
+                            const volume =
+                                header.closest(
+                                    ".volume-item"
+                                );
+
+
+                            if (!volume) {
+                                return;
+                            }
+
+
+                            const isOpen =
+                                volume.classList.contains(
+                                    "open"
+                                );
+
+
+                            document
+                                .querySelectorAll(
+                                    ".volume-item"
+                                )
+                                .forEach(item => {
+
+                                    item.classList.remove(
+                                        "open"
+                                    );
+
+
+                                    const itemHeader =
+                                        item.querySelector(
+                                            ".volume-header"
+                                        );
+
+
+                                    if (itemHeader) {
+
+                                        itemHeader.setAttribute(
+                                            "aria-expanded",
+                                            "false"
+                                        );
+
+                                    }
+
+                                });
+
+
+                            if (!isOpen) {
+
+                                volume.classList.add(
+                                    "open"
+                                );
+
+
+                                header.setAttribute(
+                                    "aria-expanded",
+                                    "true"
+                                );
+
+                            }
+
                         }
+                    );
 
-                    });
+                });
 
 
-                if (!isOpen) {
 
-                    volume.classList.add("open");
+                /* =================================================
+                   CHAPTER DATA
+                ================================================== */
 
-                    header.setAttribute(
-                        "aria-expanded",
-                        "true"
+                const chapter01PositionKey =
+                    "sov_chapter_01_position";
+
+
+                function getChapter01Progress() {
+
+                    const savedPosition =
+                        parseFloat(
+                            localStorage.getItem(
+                                chapter01PositionKey
+                            )
+                        );
+
+
+                    if (
+                        !Number.isFinite(
+                            savedPosition
+                        ) ||
+                        savedPosition <= 0
+                    ) {
+
+                        return 0;
+
+                    }
+
+
+                    /*
+                     * تقدير نسبة التقدم من موضع القراءة.
+                     * يستخدم نفس ارتفاع صفحة الفصل تقريبًا.
+                     */
+
+                    const estimatedMaxScroll =
+                        5200;
+
+
+                    const progress =
+                        (
+                            savedPosition /
+                            estimatedMaxScroll
+                        ) * 100;
+
+
+                    return Math.min(
+                        100,
+                        Math.max(
+                            0,
+                            progress
+                        )
                     );
 
                 }
 
-            });
 
-        });
+
+                /* =================================================
+                   UPDATE CHAPTER STATUS
+                ================================================== */
+
+                function updateChapterProgress() {
+
+                    const chapter =
+                        document.querySelector(
+                            '[data-chapter="01"]'
+                        );
+
+
+                    if (!chapter) {
+                        return;
+                    }
+
+
+                    const progress =
+                        getChapter01Progress();
+
+
+                    const progressBar =
+                        chapter.querySelector(
+                            "[data-progress-bar]"
+                        );
+
+
+                    const progressText =
+                        chapter.querySelector(
+                            "[data-progress-text]"
+                        );
+
+
+                    const status =
+                        chapter.querySelector(
+                            "[data-status]"
+                        );
+
+
+                    if (progressBar) {
+
+                        progressBar.style.width =
+                            progress + "%";
+
+                    }
+
+
+                    if (progressText) {
+
+                        progressText.textContent =
+                            Math.round(progress) + "%";
+
+                    }
+
+
+                    if (status) {
+
+                        if (progress >= 100) {
+
+                            status.textContent =
+                                "مكتمل";
+
+                        } else if (progress > 0) {
+
+                            status.textContent =
+                                "قيد القراءة";
+
+                        } else {
+
+                            status.textContent =
+                                "لم تبدأ القراءة";
+
+                        }
+
+                    }
+
+
+                    if (volumeStatus) {
+
+                        if (progress >= 100) {
+
+                            volumeStatus.textContent =
+                                "01 فصل متاح · مكتمل";
+
+                        } else if (progress > 0) {
+
+                            volumeStatus.textContent =
+                                "01 فصل متاح · قيد القراءة";
+
+                        } else {
+
+                            volumeStatus.textContent =
+                                "01 فصل متاح";
+
+                        }
+
+                    }
+
+                }
+
+
+
+                /* =================================================
+                   GET CHAPTER PROGRESS
+                ================================================== */
+
+                function getChapterProgress(chapter) {
+
+                    const chapterNumber =
+                        chapter.dataset.chapter;
+
+
+                    if (
+                        chapterNumber === "01"
+                    ) {
+
+                        return getChapter01Progress();
+
+                    }
+
+
+                    return 0;
+
+                }
+
+
+
+                /* =================================================
+                   FILTER + SORT
+                ================================================== */
+
+                function renderChapters() {
+
+                    const search =
+                        chapterSearch.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    const chapters =
+                        Array.from(
+                            chapterList.querySelectorAll(
+                                ".chapter"
+                            )
+                        );
+
+
+                    const sortMode =
+                        chapterSort.value;
+
+
+                    chapters.sort(
+                        (a, b) => {
+
+                            const numberA =
+                                Number(
+                                    a.dataset.number
+                                );
+
+
+                            const numberB =
+                                Number(
+                                    b.dataset.number
+                                );
+
+
+                            const progressA =
+                                getChapterProgress(
+                                    a
+                                );
+
+
+                            const progressB =
+                                getChapterProgress(
+                                    b
+                                );
+
+
+                            if (
+                                sortMode ===
+                                "number-desc"
+                            ) {
+
+                                return (
+                                    numberB -
+                                    numberA
+                                );
+
+                            }
+
+
+                            if (
+                                sortMode ===
+                                "progress-desc"
+                            ) {
+
+                                return (
+                                    progressB -
+                                    progressA
+                                );
+
+                            }
+
+
+                            if (
+                                sortMode ===
+                                "progress-asc"
+                            ) {
+
+                                return (
+                                    progressA -
+                                    progressB
+                                );
+
+                            }
+
+
+                            return (
+                                numberA -
+                                numberB
+                            );
+
+                        }
+                    );
+
+
+                    let visibleCount =
+                        0;
+
+
+                    chapters.forEach(
+                        chapter => {
+
+                            const title =
+                                (
+                                    chapter.dataset.title ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const number =
+                                (
+                                    chapter.dataset.number ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const label =
+                                (
+                                    chapter.querySelector(
+                                        ".chapter-label"
+                                    )?.textContent ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const matches =
+                                !search ||
+                                title.includes(search) ||
+                                number.includes(search) ||
+                                label.includes(search);
+
+
+                            chapter.classList.toggle(
+                                "hidden",
+                                !matches
+                            );
+
+
+                            if (matches) {
+
+                                visibleCount++;
+
+                            }
+
+
+                            chapterList.appendChild(
+                                chapter
+                            );
+
+                        }
+                    );
+
+
+                    emptyState.classList.toggle(
+                        "show",
+                        visibleCount === 0
+                    );
+
+                }
+
+
+
+                /* =================================================
+                   SEARCH
+                ================================================== */
+
+                chapterSearch.addEventListener(
+                    "input",
+                    renderChapters
+                );
+
+
+
+                /* =================================================
+                   SORT
+                ================================================== */
+
+                chapterSort.addEventListener(
+                    "change",
+                    renderChapters
+                );
+
+
+
+                /* =================================================
+                   RESET
+                ================================================== */
+
+                resetFilters.addEventListener(
+                    "click",
+                    () => {
+
+                        chapterSearch.value =
+                            "";
+
+                        chapterSort.value =
+                            "number-asc";
+
+
+                        renderChapters();
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   INITIALIZE
+                ================================================== */
+
+                updateChapterProgress();
+
+                renderChapters();
+
+
+                /*
+                 * تحديث الصفحة تلقائيًا عند العودة إليها
+                 * من التبويب أو بعد تغيير التخزين.
+                 */
+
+                window.addEventListener(
+                    "pageshow",
+                    () => {
+
+                        updateChapterProgress();
+
+                        renderChapters();
+
+                    }
+                );
+
+            }
+
+        );
 
     </script>
 
 </body>
+
 </html>
