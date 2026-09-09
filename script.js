@@ -77,9 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        NAVIGATION
-       الصفحات المستقلة:
-       الفصول → chapters/index.html
-       إعدادات الموقع → settings/index.html
+       
+       الرئيسية وعالم الرواية موجودان داخل index.html.
+       
+       الفصول وإعدادات الموقع صفحات مستقلة:
+       
+       chapters/index.html
+       settings/index.html
     ===================================================== */
 
     const navLinks =
@@ -95,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             /*
-             * إذا كان الرابط للفصول
+             * الفصول
              */
 
             if (
@@ -113,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             /*
-             * إذا كان الرابط لإعدادات الموقع
+             * إعدادات الموقع
              */
 
             if (
@@ -131,27 +135,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             /*
-             * الأقسام الموجودة داخل الرئيسية
+             * لا يوجد قسم داخلي
              */
 
             if (!targetId) {
+
                 return;
+
             }
 
 
             const sections =
-                document.querySelectorAll(".page-section");
+                document.querySelectorAll(
+                    ".page-section"
+                );
 
+
+            /*
+             * تحديث العنصر النشط
+             */
 
             navLinks.forEach(item => {
 
-                item.classList.remove("active");
+                item.classList.remove(
+                    "active"
+                );
 
             });
 
 
-            link.classList.add("active");
+            link.classList.add(
+                "active"
+            );
 
+
+            /*
+             * إخفاء جميع الأقسام
+             */
 
             sections.forEach(section => {
 
@@ -162,8 +182,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
 
+            /*
+             * إظهار القسم المطلوب
+             */
+
             const targetSection =
-                document.getElementById(targetId);
+                document.getElementById(
+                    targetId
+                );
 
 
             if (targetSection) {
@@ -174,6 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
+
+            /*
+             * العودة إلى أعلى الصفحة
+             */
 
             window.scrollTo({
 
@@ -190,77 +220,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       VOLUME OPEN / CLOSE
-    ===================================================== */
-
-    const volumeHeaders =
-        document.querySelectorAll(".volume-header");
-
-
-    volumeHeaders.forEach(header => {
-
-        header.addEventListener("click", () => {
-
-            const volume =
-                header.closest(".volume-item");
-
-
-            if (!volume) return;
-
-
-            const isOpen =
-                volume.classList.contains("open");
-
-
-            document
-                .querySelectorAll(".volume-item")
-                .forEach(item => {
-
-                    item.classList.remove("open");
-
-
-                    const itemHeader =
-                        item.querySelector(
-                            ".volume-header"
-                        );
-
-
-                    if (itemHeader) {
-
-                        itemHeader.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
-
-                });
-
-
-            if (!isOpen) {
-
-                volume.classList.add("open");
-
-
-                header.setAttribute(
-                    "aria-expanded",
-                    "true"
-                );
-
-            }
-
-        });
-
-    });
-
-
-
-    /* =====================================================
        START READING
     ===================================================== */
 
     const startReading =
-        document.getElementById("startReading");
+        document.getElementById(
+            "startReading"
+        );
 
 
     if (startReading) {
@@ -284,7 +250,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
 
     const continueReading =
-        document.getElementById("continueReading");
+        document.getElementById(
+            "continueReading"
+        );
 
 
     if (continueReading) {
@@ -304,157 +272,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SITE THEME
-       إعدادات عامة للموقع
+       NOTE
+       
+       إعدادات الموقع نفسها أصبحت في:
+       
+       settings/index.html
+       
+       وإعدادات القراءة أصبحت داخل صفحات الفصول.
     ===================================================== */
 
-    const darkToggle =
-        document.getElementById("darkToggle");
-
-
-    const savedTheme =
-        localStorage.getItem(
-            "sov_site_theme"
-        ) || "dark";
-
-
-    function applySiteTheme(theme) {
-
-        if (!darkToggle) {
-            return;
-        }
-
-
-        if (theme === "dark") {
-
-            darkToggle.classList.add(
-                "active"
-            );
-
-            document.body.style.filter =
-                "none";
-
-        } else {
-
-            darkToggle.classList.remove(
-                "active"
-            );
-
-            document.body.style.filter =
-                "brightness(0.75)";
-
-        }
-
-
-        localStorage.setItem(
-            "sov_site_theme",
-            theme
-        );
-
-    }
-
-
-    if (darkToggle) {
-
-        darkToggle.addEventListener(
-            "click",
-            () => {
-
-                const isDark =
-                    darkToggle.classList.contains(
-                        "active"
-                    );
-
-
-                applySiteTheme(
-                    isDark
-                        ? "light"
-                        : "dark"
-                );
-
-            }
-        );
-
-
-        applySiteTheme(
-            savedTheme
-        );
-
-    }
-
-
-
-    /* =====================================================
-       MOTION
-       إعداد الحركة العامة للموقع
-    ===================================================== */
-
-    const motionToggle =
-        document.getElementById("motionToggle");
-
-
-    const savedMotion =
-        localStorage.getItem(
-            "sov_site_motion"
-        ) || "on";
-
-
-    function applyMotion(motion) {
-
-        const enabled =
-            motion === "on";
-
-
-        if (motionToggle) {
-
-            motionToggle.classList.toggle(
-                "active",
-                enabled
-            );
-
-        }
-
-
-        document.body.classList.toggle(
-            "no-motion",
-            !enabled
-        );
-
-
-        localStorage.setItem(
-            "sov_site_motion",
-            motion
-        );
-
-    }
-
-
-    if (motionToggle) {
-
-        motionToggle.addEventListener(
-            "click",
-            () => {
-
-                const enabled =
-                    motionToggle.classList.contains(
-                        "active"
-                    );
-
-
-                applyMotion(
-                    enabled
-                        ? "off"
-                        : "on"
-                );
-
-            }
-        );
-
-
-        applyMotion(
-            savedMotion
-        );
-
-    }
 
 });
