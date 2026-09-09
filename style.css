@@ -2460,3 +2460,390 @@ body.no-motion * {
     }
 
 }
+/* =====================================================
+   VOLUMES
+===================================================== */
+
+.volume-list {
+
+    max-width: 900px;
+
+}
+
+
+.volume-item {
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        #080808;
+
+}
+
+
+.volume-header {
+
+    width: 100%;
+
+    min-height: 105px;
+
+    padding:
+        18px 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        65px
+        1fr
+        45px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    color: #aaa;
+
+    background: transparent;
+
+    text-align: right;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+
+}
+
+
+.volume-header:hover {
+
+    background:
+        #0c0c0c;
+
+}
+
+
+.volume-number {
+
+    color: #650000;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.volume-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.volume-name {
+
+    color: #d3d3d3;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.volume-meta {
+
+    color: #555;
+
+    font-size: 11px;
+
+}
+
+
+.volume-arrow {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #650000;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 21px;
+
+    transition:
+        transform 0.35s ease,
+        color 0.35s ease;
+
+}
+
+
+/* =====================================================
+   OPEN STATE
+===================================================== */
+
+.volume-item.open .volume-header {
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+}
+
+
+.volume-item.open .volume-arrow {
+
+    color: #850000;
+
+    transform:
+        rotate(45deg);
+
+}
+
+
+/* =====================================================
+   CHAPTERS
+===================================================== */
+
+.volume-chapters {
+
+    display: grid;
+
+    grid-template-rows: 0fr;
+
+    overflow: hidden;
+
+    transition:
+        grid-template-rows 0.4s ease;
+
+}
+
+
+.volume-item.open .volume-chapters {
+
+    grid-template-rows: 1fr;
+
+}
+
+
+.volume-chapters > * {
+
+    min-height: 0;
+
+}
+
+
+.volume-chapter {
+
+    margin:
+        0 16px;
+
+    padding:
+        16px 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        55px
+        1fr
+        35px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.045);
+
+    transition:
+        background 0.3s ease,
+        padding-right 0.3s ease;
+
+}
+
+
+.volume-chapter:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.volume-chapter:hover {
+
+    background:
+        rgba(255, 255, 255, 0.02);
+
+    padding-right: 17px;
+
+}
+
+
+.chapter-number {
+
+    color: #650000;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+}
+
+
+.chapter-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+
+.chapter-label {
+
+    color: #555;
+
+    font-size: 10px;
+
+}
+
+
+.chapter-title {
+
+    color: #c2c2c2;
+
+    font-size: 14px;
+
+}
+
+
+.chapter-arrow {
+
+    color: #650000;
+
+    font-size: 18px;
+
+    text-align: center;
+
+}
+
+
+.volume-chapter.disabled {
+
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+}
+
+
+.volume-chapter.disabled:hover {
+
+    background: transparent;
+
+    padding-right: 12px;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .volume-header {
+
+        min-height: 92px;
+
+        grid-template-columns:
+            45px
+            1fr
+            35px;
+
+        padding:
+            16px;
+
+    }
+
+
+    .volume-name {
+
+        font-size: 15px;
+
+    }
+
+
+    .volume-meta {
+
+        font-size: 10px;
+
+    }
+
+
+    .volume-chapter {
+
+        grid-template-columns:
+            42px
+            1fr
+            30px;
+
+        margin:
+            0 10px;
+
+        padding:
+            15px 8px;
+
+    }
+
+
+    .chapter-title {
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .volume-name {
+
+        font-size: 13px;
+
+        letter-spacing: 0.5px;
+
+    }
+
+
+    .volume-header {
+
+        gap: 10px;
+
+    }
+
+
+    .chapter-title {
+
+        font-size: 12px;
+
+    }
+
+}
