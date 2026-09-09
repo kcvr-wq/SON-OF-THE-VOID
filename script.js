@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (introSeen === "true") {
 
         /*
-         * الزائر شاهد الانترو من قبل
-         * نخفيه فورًا بدون أي Animation
+         * الانترو تم عرضه سابقًا.
+         * لا نعرضه ولا حتى ننتظر الـ3.2 ثانية.
          */
 
         if (intro) {
@@ -38,8 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
 
         /*
-         * أول زيارة
-         * الانترو يظهر بشكل طبيعي
+         * أول زيارة فقط.
          */
 
         setTimeout(() => {
