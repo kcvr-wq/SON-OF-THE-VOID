@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       INTRO
+       INTRO — SHOW ONLY ON FIRST VISIT
     ===================================================== */
 
     const intro =
@@ -12,7 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("site");
 
 
-    setTimeout(() => {
+    const introSeen =
+        localStorage.getItem("sov_intro_seen");
+
+
+    if (introSeen === "true") {
+
+        /*
+         * المستخدم شاهد الانترو سابقًا
+         * لذلك نخفيه مباشرة
+         */
 
         if (intro) {
 
@@ -26,7 +35,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-    }, 3200);
+    } else {
+
+        /*
+         * أول زيارة للموقع
+         * نعرض الانترو ثم نحفظ أنه ظهر
+         */
+
+        setTimeout(() => {
+
+            if (intro) {
+
+                intro.classList.add("hide");
+
+            }
+
+            if (site) {
+
+                site.classList.add("show");
+
+            }
+
+            localStorage.setItem(
+                "sov_intro_seen",
+                "true"
+            );
+
+        }, 3200);
+
+    }
 
 
 
