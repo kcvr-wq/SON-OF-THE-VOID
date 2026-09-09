@@ -806,23 +806,22 @@ a {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.45fr)
-        minmax(180px, 0.75fr);
-
-    gap: 1px;
+        1.1fr
+        0.9fr;
 
     width: 100%;
 
     max-width: 700px;
 
-    margin-top: 38px;
+    margin-top: 34px;
 
-    background:
-        rgba(120, 0, 0, 0.18);
-
-    border:
+    border-top:
         1px solid
-        rgba(255, 255, 255, 0.07);
+        rgba(255, 255, 255, 0.08);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
 
 }
 
@@ -837,89 +836,25 @@ a {
 
     min-width: 0;
 
-    min-height: 125px;
+    min-height: 108px;
 
-    padding: 22px 24px;
+    padding:
+        18px 24px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #0d0d0d,
-            #080808
-        );
+    display: flex;
 
-    overflow: hidden;
+    flex-direction: column;
 
-    transition:
-        background 0.35s ease,
-        transform 0.35s ease,
-        border-color 0.35s ease;
+    justify-content: center;
 
 }
 
 
-.information-block::before {
+.information-block:first-child {
 
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-
-    right: 0;
-
-    width: 3px;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            #780000,
-            transparent
-        );
-
-    opacity: 0.8;
-
-}
-
-
-.information-block::after {
-
-    content: "";
-
-    position: absolute;
-
-    right: -40px;
-
-    bottom: -70px;
-
-    width: 150px;
-
-    height: 150px;
-
-    background:
-        rgba(110, 0, 0, 0.12);
-
-    filter: blur(55px);
-
-    pointer-events: none;
-
-}
-
-
-.information-block:hover {
-
-    background:
-        linear-gradient(
-            145deg,
-            #111111,
-            #090909
-        );
-
-    transform:
-        translateY(-2px);
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.07);
 
 }
 
@@ -936,22 +871,20 @@ a {
 
     justify-content: space-between;
 
-    gap: 10px;
+    gap: 15px;
 
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 
 }
 
 
 .information-number {
 
-    flex-shrink: 0;
-
-    color: #650000;
+    color: #5f0000;
 
     font-family: "Cinzel", serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 2px;
 
@@ -960,13 +893,13 @@ a {
 
 .information-label {
 
-    color: #4f4f4f;
+    color: #4d4d4d;
 
     font-family: "Cinzel", serif;
 
-    font-size: 9px;
+    font-size: 8px;
 
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 
     white-space: nowrap;
 
@@ -979,10 +912,6 @@ a {
 
 .information-content {
 
-    position: relative;
-
-    z-index: 2;
-
     min-width: 0;
 
 }
@@ -990,15 +919,13 @@ a {
 
 .information-content h3 {
 
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 
-    color: #d6d6d6;
+    color: #c5c5c5;
 
-    font-size: 18px;
+    font-size: 15px;
 
-    font-weight: 600;
-
-    white-space: nowrap;
+    font-weight: 500;
 
 }
 
@@ -1011,56 +938,37 @@ a {
 
     display: flex;
 
+    align-items: center;
+
     flex-wrap: wrap;
 
-    gap: 7px;
+    gap: 5px 12px;
 
 }
 
 
 .genre-list span {
 
-    display: inline-flex;
+    position: relative;
 
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 27px;
-
-    padding:
-        4px 10px;
-
-    color: #909090;
+    color: #858585;
 
     font-size: 11px;
 
-    white-space: nowrap;
-
-    background:
-        rgba(255, 255, 255, 0.025);
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.06);
-
-    transition:
-        color 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
+    line-height: 1.5;
 
 }
 
 
-.genre-list span:hover {
+.genre-list span:not(:last-child)::after {
 
-    color: #d0d0d0;
+    content: "·";
 
-    background:
-        rgba(100, 0, 0, 0.12);
+    position: absolute;
 
-    border-color:
-        rgba(120, 0, 0, 0.45);
+    left: -8px;
+
+    color: #620000;
 
 }
 
@@ -1073,62 +981,138 @@ a {
 
     display: block;
 
-    color: #a00000;
+    color: #9a0000;
 
     font-family: "Cinzel", serif;
 
-    font-size: 20px;
+    font-size: 17px;
 
     font-weight: 500;
 
-    letter-spacing: 1px;
+    line-height: 1.3;
 
-    line-height: 1.2;
+    letter-spacing: 0.5px;
 
     white-space: nowrap;
 
     text-shadow:
-        0 0 18px
-        rgba(120, 0, 0, 0.25);
+        0 0 12px
+        rgba(100, 0, 0, 0.15);
 
 }
 
 
 /* =====================================================
-   BUTTONS
+   SUBTLE RED ACCENT
+===================================================== */
+
+.information-block::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 24px;
+
+    bottom: 0;
+
+    width: 24px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #650000,
+            transparent
+        );
+
+    opacity: 0.75;
+
+}
+
+
+/* =====================================================
+   HERO BUTTONS
 ===================================================== */
 
 .hero-buttons {
 
     display: flex;
 
+    align-items: center;
+
+    justify-content: flex-start;
+
     gap: 12px;
 
-    margin-top: 30px;
+    margin-top: 28px;
+
+    padding-top: 2px;
 
 }
 
+
+/* =========================
+   COMMON
+========================= */
 
 .primary-button,
 .secondary-button {
 
+    min-width: 150px;
+
+    height: 48px;
+
     padding:
-        13px 26px;
+        0 24px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    white-space: nowrap;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    line-height: 1;
 
     transition:
         transform 0.3s ease,
         background 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
 
 }
 
 
+/* =========================
+   START READING
+========================= */
+
 .primary-button {
 
-    color: white;
+    color: #eeeeee;
 
     background:
-        #620000;
+        linear-gradient(
+            135deg,
+            #6f0000,
+            #560000
+        );
+
+    border:
+        1px solid
+        rgba(125, 0, 0, 0.65);
+
+    box-shadow:
+        0 8px 20px
+        rgba(70, 0, 0, 0.15);
 
 }
 
@@ -1136,36 +1120,59 @@ a {
 .primary-button:hover {
 
     background:
-        #790000;
+        linear-gradient(
+            135deg,
+            #7d0000,
+            #610000
+        );
+
+    border-color:
+        rgba(150, 0, 0, 0.75);
 
     transform:
         translateY(-2px);
 
+    box-shadow:
+        0 10px 24px
+        rgba(75, 0, 0, 0.22);
+
 }
 
 
+/* =========================
+   CONTINUE READING
+========================= */
+
 .secondary-button {
 
-    color: #aaa;
+    color: #969696;
 
     background:
-        transparent;
+        rgba(255, 255, 255, 0.015);
 
     border:
-        1px solid #252525;
+        1px solid
+        rgba(255, 255, 255, 0.09);
 
 }
 
 
 .secondary-button:hover {
 
-    color: white;
+    color: #dddddd;
+
+    background:
+        rgba(100, 0, 0, 0.06);
 
     border-color:
-        #620000;
+        rgba(110, 0, 0, 0.5);
 
     transform:
         translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(50, 0, 0, 0.10);
 
 }
 
@@ -1880,26 +1887,35 @@ body.no-motion * {
 
     .information-block {
 
-        min-height: 115px;
+        min-height: 105px;
+
+        padding:
+            18px 20px;
 
     }
 
 
-    .information-block:hover {
+    .information-block:first-child {
 
-        transform: none;
+        border-left: 0;
+
+        border-bottom:
+            1px solid
+            rgba(255, 255, 255, 0.07);
 
     }
 
 
     .information-content h3 {
 
-        white-space: normal;
+        font-size: 14px;
 
     }
 
 
     .information-label {
+
+        font-size: 8px;
 
         letter-spacing: 2px;
 
@@ -1908,16 +1924,42 @@ body.no-motion * {
 
     .chapter-count {
 
-        font-size: 19px;
+        font-size: 18px;
+
+    }
+
+
+    .information-block::after {
+
+        right: 20px;
 
     }
 
 
     .hero-buttons {
 
-        flex-direction: column;
+        width: 100%;
 
-        align-items: stretch;
+        display: grid;
+
+        grid-template-columns:
+            1fr;
+
+        gap: 10px;
+
+        margin-top: 28px;
+
+    }
+
+
+    .primary-button,
+    .secondary-button {
+
+        width: 100%;
+
+        min-width: 0;
+
+        height: 50px;
 
     }
 
@@ -2009,7 +2051,7 @@ body.no-motion * {
 
     .genre-list {
 
-        gap: 5px;
+        gap: 5px 10px;
 
     }
 
@@ -2037,16 +2079,16 @@ body.no-motion * {
 
     .information-top {
 
-        margin-bottom: 14px;
+        margin-bottom: 12px;
 
     }
 
 
     .information-label {
 
-        font-size: 8px;
+        font-size: 7px;
 
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
 
     }
 
