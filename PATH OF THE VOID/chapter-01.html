@@ -15,32 +15,2720 @@
         content="#050505"
     >
 
-    <title>الفصل الأول — SON OF THE VOID</title>
+    <title>
+        الفصل الأول — حين بدأت السماء بالصمت
+    </title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+
+            --black: #050505;
+            --black-2: #080808;
+            --black-3: #0d0d0d;
+
+            --red: #650000;
+            --red-light: #8a0000;
+
+            --text: #c4c4c4;
+            --text-soft: #929292;
+            --text-dark: #555;
+
+            --border:
+                rgba(255,255,255,0.07);
+
+            --reader-width: 780px;
+
+            --reader-size: 20px;
+
+            --reader-line-height: 2.15;
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+            scrollbar-width: none;
+
+        }
+
+
+        html::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top center,
+                    rgba(85,0,0,0.055),
+                    transparent 38%
+                ),
+                var(--black);
+
+            color:
+                var(--text);
+
+            font-family:
+                "Noto Naskh Arabic",
+                "Cairo",
+                serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        body::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+
+        button,
+        a {
+
+            font: inherit;
+
+        }
+
+
+        button {
+
+            border: 0;
+
+            cursor: pointer;
+
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+
+        /* =====================================================
+           READING PROGRESS
+        ===================================================== */
+
+        .reading-progress {
+
+            position: fixed;
+
+            top: 0;
+            right: 0;
+
+            width: 100%;
+            height: 2px;
+
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,0.025);
+
+        }
+
+
+        .reading-progress-bar {
+
+            width: 0%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #450000,
+                    #850000
+                );
+
+            box-shadow:
+                0 0 10px
+                rgba(120,0,0,0.35);
+
+            transition:
+                width 0.08s linear;
+
+        }
+
+
+        /* =====================================================
+           TOP BAR
+        ===================================================== */
+
+        .reader-topbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                16px 28px;
+
+            background:
+                rgba(5,5,5,0.88);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.045);
+
+            backdrop-filter:
+                blur(14px);
+
+        }
+
+
+        .reader-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color:
+                #686868;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        .reader-brand-mark {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 29px;
+            height: 29px;
+
+            border:
+                1px solid
+                rgba(105,0,0,0.4);
+
+            color:
+                #790000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                9px;
+
+            background:
+                rgba(85,0,0,0.07);
+
+        }
+
+
+        .reader-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .reader-action {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 38px;
+            height: 36px;
+
+            padding:
+                0 12px;
+
+            background:
+                rgba(255,255,255,0.015);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.065);
+
+            color:
+                #737373;
+
+            font-family:
+                "Cairo",
+                sans-serif;
+
+            font-size:
+                11px;
+
+            transition:
+                color 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .reader-action:hover {
+
+            color:
+                #d0d0d0;
+
+            background:
+                rgba(95,0,0,0.08);
+
+            border-color:
+                rgba(115,0,0,0.4);
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        /* =====================================================
+           READER
+        ===================================================== */
+
+        .reader-page {
+
+            width: 100%;
+
+            padding:
+                90px 24px 140px;
+
+        }
+
+
+        .reader-container {
+
+            width:
+                min(
+                    100%,
+                    var(--reader-width)
+                );
+
+            margin:
+                0 auto;
+
+        }
+
+
+        /* =====================================================
+           CHAPTER HEADER
+        ===================================================== */
+
+        .chapter-header {
+
+            position: relative;
+
+            padding:
+                30px 0 55px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .chapter-header::after {
+
+            content: "";
+
+            display: block;
+
+            width: 95px;
+
+            height: 1px;
+
+            margin:
+                32px auto 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #6d0000,
+                    transparent
+                );
+
+        }
+
+
+        .chapter-overline {
+
+            margin-bottom: 14px;
+
+            color:
+                #650000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                5px;
+
+        }
+
+
+        .chapter-number {
+
+            color:
+                #4f4f4f;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                3px;
+
+        }
+
+
+        .chapter-header h1 {
+
+            margin-top:
+                13px;
+
+            color:
+                #dddddd;
+
+            font-family:
+                "Noto Naskh Arabic",
+                serif;
+
+            font-size:
+                clamp(34px,5vw,56px);
+
+            font-weight:
+                600;
+
+            line-height:
+                1.35;
+
+        }
+
+
+        .chapter-subtitle {
+
+            margin-top:
+                10px;
+
+            color:
+                #666;
+
+            font-size:
+                14px;
+
+        }
+
+
+        /* =====================================================
+           DECORATIVE LINE
+        ===================================================== */
+
+        .chapter-symbol {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top:
+                24px;
+
+            color:
+                #570000;
+
+        }
+
+
+        .chapter-symbol::before,
+        .chapter-symbol::after {
+
+            content: "";
+
+            width: 34px;
+
+            height: 1px;
+
+            background:
+                rgba(105,0,0,0.45);
+
+        }
+
+
+        .chapter-symbol span {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                9px;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        /* =====================================================
+           TEXT
+        ===================================================== */
+
+        .chapter-content {
+
+            width: 100%;
+
+        }
+
+
+        .chapter-content p {
+
+            margin-bottom:
+                28px;
+
+            color:
+                var(--text);
+
+            font-family:
+                "Noto Naskh Arabic",
+                serif;
+
+            font-size:
+                var(--reader-size);
+
+            font-weight:
+                400;
+
+            line-height:
+                var(--reader-line-height);
+
+            text-align:
+                right;
+
+        }
+
+
+        .chapter-content p:first-child::first-letter {
+
+            color:
+                #8b0000;
+
+        }
+
+
+        .scene-break {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin:
+                52px 0;
+
+            color:
+                #570000;
+
+        }
+
+
+        .scene-break span {
+
+            width: 4px;
+            height: 4px;
+
+            border-radius: 50%;
+
+            background:
+                #680000;
+
+        }
+
+
+        .scene-break::before,
+        .scene-break::after {
+
+            content: "";
+
+            width: 35px;
+
+            height: 1px;
+
+            background:
+                rgba(100,0,0,0.35);
+
+        }
+
+
+        .highlight {
+
+            margin:
+                44px 0;
+
+            padding:
+                22px 26px;
+
+            border-right:
+                1px solid
+                rgba(100,0,0,0.45);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(80,0,0,0.025),
+                    transparent
+                );
+
+            color:
+                #b7b7b7;
+
+            font-size:
+                calc(var(--reader-size) + 1px);
+
+            line-height:
+                2;
+
+        }
+
+
+        /* =====================================================
+           END
+        ===================================================== */
+
+        .chapter-end {
+
+            padding-top:
+                35px;
+
+            margin-top:
+                55px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.05);
+
+            text-align:
+                center;
+
+        }
+
+
+        .chapter-end-line {
+
+            width: 70px;
+
+            height: 1px;
+
+            margin:
+                0 auto 18px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #700000,
+                    transparent
+                );
+
+        }
+
+
+        .chapter-end p {
+
+            color:
+                #4f4f4f;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                9px;
+
+            letter-spacing:
+                3px;
+
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .chapter-navigation {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                auto
+                1fr;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top:
+                80px;
+
+            padding-top:
+                24px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.045);
+
+        }
+
+
+        .chapter-nav-button {
+
+            min-height:
+                62px;
+
+            padding:
+                10px 16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.065);
+
+            background:
+                rgba(255,255,255,0.012);
+
+            color:
+                #8b8b8b;
+
+            transition:
+                border-color 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+
+        .chapter-nav-button:hover {
+
+            border-color:
+                rgba(105,0,0,0.42);
+
+            background:
+                rgba(85,0,0,0.045);
+
+            color:
+                #d0d0d0;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .chapter-nav-button.previous {
+
+            text-align:
+                right;
+
+        }
+
+
+        .chapter-nav-button.next {
+
+            text-align:
+                left;
+
+        }
+
+
+        .chapter-nav-label {
+
+            display: block;
+
+            margin-bottom:
+                3px;
+
+            color:
+                #4d4d4d;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                8px;
+
+            letter-spacing:
+                2px;
+
+        }
+
+
+        .chapter-nav-title {
+
+            font-family:
+                "Noto Naskh Arabic",
+                serif;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .chapter-nav-center {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .chapter-list-button {
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                rgba(105,0,0,0.32);
+
+            background:
+                rgba(80,0,0,0.055);
+
+            color:
+                #700000;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                9px;
+
+            letter-spacing:
+                1px;
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+
+        .chapter-list-button:hover {
+
+            background:
+                rgba(100,0,0,0.11);
+
+            border-color:
+                rgba(135,0,0,0.48);
+
+            color:
+                #a00000;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           SETTINGS PANEL
+        ===================================================== */
+
+        .reader-settings-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 500;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: flex-start;
+
+            padding:
+                78px 24px 24px;
+
+            background:
+                rgba(0,0,0,0.45);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+
+        }
+
+
+        .reader-settings-overlay.open {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+        }
+
+
+        .reader-settings {
+
+            width:
+                min(
+                    330px,
+                    100%
+                );
+
+            padding:
+                24px;
+
+            background:
+                #0a0a0a;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
+
+            box-shadow:
+                0 20px 70px
+                rgba(0,0,0,0.65);
+
+            transform:
+                translateY(-10px);
+
+            transition:
+                transform 0.3s ease;
+
+        }
+
+
+        .reader-settings-overlay.open .reader-settings {
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        .settings-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding-bottom:
+                16px;
+
+            margin-bottom:
+                18px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.055);
+
+        }
+
+
+        .settings-title h3 {
+
+            color:
+                #d0d0d0;
+
+            font-size:
+                15px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .close-settings {
+
+            color:
+                #555;
+
+            background:
+                transparent;
+
+            font-size:
+                20px;
+
+            transition:
+                color 0.25s ease;
+
+        }
+
+
+        .close-settings:hover {
+
+            color:
+                #a00000;
+
+        }
+
+
+        .setting-group {
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .setting-group:last-child {
+
+            margin-bottom:
+                0;
+
+        }
+
+
+        .setting-group label {
+
+            display: block;
+
+            margin-bottom:
+                9px;
+
+            color:
+                #636363;
+
+            font-size:
+                10px;
+
+        }
+
+
+        .setting-options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap:
+                6px;
+
+        }
+
+
+        .setting-option {
+
+            min-height:
+                36px;
+
+            padding:
+                7px 4px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.055);
+
+            background:
+                rgba(255,255,255,0.01);
+
+            color:
+                #656565;
+
+            font-size:
+                10px;
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .setting-option:hover {
+
+            border-color:
+                rgba(105,0,0,0.3);
+
+            color:
+                #9b9b9b;
+
+        }
+
+
+        .setting-option.active {
+
+            color:
+                #d0d0d0;
+
+            border-color:
+                rgba(115,0,0,0.5);
+
+            background:
+                rgba(90,0,0,0.08);
+
+        }
+
+
+        /* =====================================================
+           OYLED MODE
+        ===================================================== */
+
+        body.oled-mode {
+
+            background:
+                #000;
+
+        }
+
+
+        body.oled-mode .reader-topbar {
+
+            background:
+                rgba(0,0,0,0.9);
+
+        }
+
+
+        /* =====================================================
+           SEPIA MODE
+        ===================================================== */
+
+        body.sepia-mode {
+
+            background:
+                #17120c;
+
+            color:
+                #d0bda2;
+
+        }
+
+
+        body.sepia-mode .reader-topbar {
+
+            background:
+                rgba(23,18,12,0.92);
+
+            border-color:
+                rgba(190,160,110,0.08);
+
+        }
+
+
+        body.sepia-mode .chapter-header h1 {
+
+            color:
+                #e0ccb0;
+
+        }
+
+
+        body.sepia-mode .chapter-content p {
+
+            color:
+                #c9b392;
+
+        }
+
+
+        /* =====================================================
+           FULLSCREEN
+        ====================================================== */
+
+        body.reader-fullscreen .reader-topbar {
+
+            opacity: 0;
+
+            transform:
+                translateY(-100%);
+
+            pointer-events: none;
+
+        }
+
+
+        body.reader-fullscreen .reader-page {
+
+            padding-top:
+                60px;
+
+        }
+
+
+        .reader-topbar {
+
+            transition:
+                opacity 0.35s ease,
+                transform 0.35s ease;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .reader-topbar {
+
+                padding:
+                    12px 14px;
+
+            }
+
+
+            .reader-brand {
+
+                font-size:
+                    8px;
+
+            }
+
+
+            .reader-brand span {
+
+                display:
+                    none;
+
+            }
+
+
+            .reader-action {
+
+                min-width:
+                    34px;
+
+                height:
+                    34px;
+
+                padding:
+                    0 8px;
+
+                font-size:
+                    10px;
+
+            }
+
+
+            .reader-page {
+
+                padding:
+                    55px 18px 100px;
+
+            }
+
+
+            .chapter-header {
+
+                padding:
+                    20px 0 42px;
+
+            }
+
+
+            .chapter-header h1 {
+
+                font-size:
+                    32px;
+
+            }
+
+
+            .chapter-content p {
+
+                font-size:
+                    18px;
+
+                line-height:
+                    2.05;
+
+                margin-bottom:
+                    24px;
+
+            }
+
+
+            .highlight {
+
+                padding:
+                    18px 18px;
+
+                font-size:
+                    19px;
+
+            }
+
+
+            .chapter-navigation {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .chapter-nav-center {
+
+                order:
+                    -1;
+
+            }
+
+
+            .chapter-nav-button {
+
+                width:
+                    100%;
+
+            }
+
+
+            .chapter-list-button {
+
+                width:
+                    52px;
+
+                height:
+                    52px;
+
+            }
+
+
+            .reader-settings-overlay {
+
+                justify-content:
+                    center;
+
+                padding:
+                    70px 14px 14px;
+
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .chapter-header h1 {
+
+                font-size:
+                    28px;
+
+            }
+
+
+            .chapter-content p {
+
+                font-size:
+                    17px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        body.no-motion * {
+
+            animation:
+                none !important;
+
+            transition:
+                none !important;
+
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
-    <h1>
-        الفصل الأول
-    </h1>
 
-    <h2>
-        حين بدأت السماء بالصمت
-    </h2>
+    <!-- =====================================================
+         READING PROGRESS
+    ====================================================== -->
+
+    <div class="reading-progress">
+
+        <div
+            class="reading-progress-bar"
+            id="readingProgressBar"
+        ></div>
+
+    </div>
 
 
-    <p>
-        هذا نص تجريبي للفصل الأول.
-        سنبني تصميم القراءة الحقيقي لاحقًا.
-    </p>
+
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+
+    <header class="reader-topbar">
 
 
-    <p>
-        يمكننا الآن التأكد أن الملف يفتح بشكل صحيح
-        وأن المسار يعمل قبل أن نبدأ بتجميله.
-    </p>
+        <a
+            href="../index.html"
+            class="reader-brand"
+        >
+
+            <span class="reader-brand-mark">
+                S
+            </span>
+
+            <span>
+                SON OF THE VOID
+            </span>
+
+        </a>
+
+
+        <div class="reader-actions">
+
+
+            <button
+                class="reader-action"
+                id="settingsButton"
+                type="button"
+            >
+                الإعدادات
+            </button>
+
+
+            <button
+                class="reader-action"
+                id="fullscreenButton"
+                type="button"
+            >
+                ملء الشاشة
+            </button>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         READER
+    ====================================================== -->
+
+    <main class="reader-page">
+
+
+        <article class="reader-container">
+
+
+            <!-- =================================================
+                 CHAPTER HEADER
+            ================================================== -->
+
+            <header class="chapter-header">
+
+                <p class="chapter-overline">
+                    PATH OF THE VOID
+                </p>
+
+
+                <p class="chapter-number">
+                    CHAPTER 01
+                </p>
+
+
+                <h1>
+                    حين بدأت السماء بالصمت
+                </h1>
+
+
+                <p class="chapter-subtitle">
+                    الفصل الأول
+                </p>
+
+
+                <div class="chapter-symbol">
+
+                    <span>
+                        SOV
+                    </span>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================================
+                 CHAPTER CONTENT
+            ================================================== -->
+
+            <section
+                class="chapter-content"
+                id="chapterContent"
+            >
+
+
+                <p>
+                    لم يكن الصباح مختلفًا عن أي صباح آخر، أو هكذا بدا الأمر في البداية.
+                    كانت السماء مغطاة بطبقة رقيقة من السحب، والريح تتحرك ببطء فوق أسطح
+                    القصر السماوي، بينما كان ضوء الشمس يحاول اختراق الغيوم دون نجاح يذكر.
+                </p>
+
+
+                <p>
+                    في أحد أركان القصر، حيث الممرات الطويلة التي نادرًا ما يسلكها أحد،
+                    كان طفل صغير يجلس وحده فوق الدرج الحجري. لم يكن يحمل سيفًا،
+                    ولم يكن يرتدي زي أحد الطوائف، ولم يكن يعرف شيئًا عن أسماء القوى
+                    التي كانت تحكم العالم من حوله.
+                </p>
+
+
+                <p>
+                    كان كل ما يعرفه أن المكان الذي يجلس فيه بارد، وأن صوت الريح
+                    في الصباح يشبه الهمس. وكان يحب ذلك الصوت، لأنه كان هادئًا،
+                    ولا يطلب منه أن يفهم شيئًا.
+                </p>
+
+
+                <p>
+                    رفع الطفل رأسه نحو السماء.
+                </p>
+
+
+                <p>
+                    بقي ينظر طويلًا.
+                </p>
+
+
+                <div class="scene-break">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <p>
+                    ثم حدث شيء لم يستطع تفسيره.
+                </p>
+
+
+                <p>
+                    اختفت أصوات الطيور.
+                </p>
+
+
+                <p>
+                    لم تتوقف للحظة، ولم تخف تدريجيًا، بل اختفت دفعة واحدة وكأن أحدًا
+                    أغلق بابًا يفصل بين عالمين. حتى أوراق الأشجار توقفت عن الحركة،
+                    وبدا أن الهواء نفسه نسي كيف يمر بين الأغصان.
+                </p>
+
+
+                <p>
+                    عبس الطفل.
+                </p>
+
+
+                <p>
+                    نظر إلى اليمين، ثم إلى اليسار، وكأنه ينتظر أن يظهر شخص ما
+                    ويشرح له ما يحدث. لكن الممر بقي فارغًا.
+                </p>
+
+
+                <p>
+                    بعد لحظات، سمع وقع خطوات قادمة من بعيد.
+                </p>
+
+
+                <p>
+                    كانت الخطوات بطيئة.
+                </p>
+
+
+                <p>
+                    منتظمة.
+                </p>
+
+
+                <p>
+                    خطوة واحدة كل عدة ثوانٍ.
+                </p>
+
+
+                <div class="highlight">
+                    لم يكن الصوت مخيفًا بحد ذاته، لكن الطفل شعر بشيء لم يشعر به من قبل.
+                    كأن المكان كله يعرف صاحب تلك الخطوات، بينما هو الوحيد الذي لم يعرفه.
+                </div>
+
+
+                <p>
+                    عندما ظهر الرجل في نهاية الممر، لم يتكلم فورًا.
+                    كان طويل القامة، يرتدي رداءً داكنًا خاليًا من الزخارف،
+                    وعلى كتفه علامة صغيرة لم يستطع الطفل قراءتها.
+                </p>
+
+
+                <p>
+                    توقف الرجل على مسافة قصيرة منه.
+                </p>
+
+
+                <p>
+                    نظر إليه.
+                </p>
+
+
+                <p>
+                    ثم نظر إلى السماء.
+                </p>
+
+
+                <p>
+                    بقي الاثنان صامتين.
+                </p>
+
+
+                <p>
+                    مرت لحظات لم يعرف الطفل عددها، قبل أن يقول الرجل بصوت منخفض:
+                </p>
+
+
+                <p>
+                    "هل سمعت شيئًا؟"
+                </p>
+
+
+                <p>
+                    هز الطفل رأسه ببطء.
+                </p>
+
+
+                <p>
+                    "لا."
+                </p>
+
+
+                <p>
+                    لم يبدُ الرجل مقتنعًا بالإجابة.
+                    رفع عينيه نحو السماء مرة أخرى، وبدا على وجهه شيء يشبه القلق،
+                    لكنه اختفى بسرعة قبل أن يتمكن الطفل من فهمه.
+                </p>
+
+
+                <div class="scene-break">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <p>
+                    في تلك اللحظة، بدأت الغيوم تتحرك.
+                </p>
+
+
+                <p>
+                    لم تكن تتحرك مع الريح.
+                </p>
+
+
+                <p>
+                    كانت تتحرك ضدها.
+                </p>
+
+
+                <p>
+                    انفتحت السماء في المنتصف، وظهر خلف طبقات الغيوم شيء لم يعرف الطفل
+                    له اسمًا. لم يكن ضوءًا، ولم يكن ظلامًا، لكنه كان أعمق من الاثنين.
+                </p>
+
+
+                <p>
+                    شعرت الجدران من حوله بالاهتزاز.
+                </p>
+
+
+                <p>
+                    ارتجف الدرج الحجري تحت قدميه.
+                </p>
+
+
+                <p>
+                    الرجل أمامه شد قبضته.
+                </p>
+
+
+                <p>
+                    ولأول مرة منذ ظهر، تغيّر وجهه بالكامل.
+                </p>
+
+
+                <p>
+                    قال الرجل:
+                </p>
+
+
+                <p>
+                    "لا تنظر."
+                </p>
+
+
+                <p>
+                    لكن الطفل كان قد نظر بالفعل.
+                </p>
+
+
+                <p>
+                    لم يفهم ما رآه.
+                </p>
+
+
+                <p>
+                    كل ما فهمه أن السماء التي اعتاد رؤيتها كل يوم لم تعد كما كانت.
+                </p>
+
+
+                <p>
+                    وفي مكان لا يستطيع أحد الوصول إليه، خلف طبقة العالم التي يعرفها
+                    البشر، استيقظ شيء لم يكن من المفترض أن يستيقظ.
+                </p>
+
+
+                <div class="highlight">
+                    لم يكن أحد في القصر يعرف أن تلك اللحظة الصغيرة ستصبح لاحقًا
+                    بداية لسلسلة من الأحداث التي ستغيّر أسماء الطوائف، وتسقط مدنًا،
+                    وتفتح أبوابًا كان العالم قد نسي وجودها.
+                </div>
+
+
+                <p>
+                    أما الطفل، فقد ظل واقفًا مكانه.
+                </p>
+
+
+                <p>
+                    يحدق في السماء.
+                </p>
+
+
+                <p>
+                    دون أن يعرف أن السماء كانت تحدق فيه أيضًا.
+                </p>
+
+
+                <div class="scene-break">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <p>
+                    بعد دقائق، عادت الطيور إلى الغناء.
+                    تحركت الأشجار من جديد، وعادت الريح إلى مسارها الطبيعي،
+                    وكأن شيئًا لم يحدث.
+                </p>
+
+
+                <p>
+                    لكن الرجل لم يتحرك.
+                </p>
+
+
+                <p>
+                    بقي واقفًا، وعيناه مثبتتان على المكان الذي اختفى فيه ذلك الشيء.
+                </p>
+
+
+                <p>
+                    ثم قال دون أن ينظر إلى الطفل:
+                </p>
+
+
+                <p>
+                    "انسَ ما رأيته."
+                </p>
+
+
+                <p>
+                    الطفل لم يجب.
+                </p>
+
+
+                <p>
+                    لم يكن يعرف لماذا طلب منه ذلك.
+                </p>
+
+
+                <p>
+                    لكنه عرف شيئًا واحدًا.
+                </p>
+
+
+                <p>
+                    أن هذا اليوم لن ينتهي مثل الأيام السابقة.
+                </p>
+
+
+                <p>
+                    وأن صمت السماء لم يكن مجرد صمت.
+                </p>
+
+
+                <p>
+                    كان بداية.
+                </p>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 END
+            ================================================== -->
+
+            <div class="chapter-end">
+
+                <div class="chapter-end-line"></div>
+
+                <p>
+                    END OF CHAPTER 01
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NAVIGATION
+            ================================================== -->
+
+            <nav class="chapter-navigation">
+
+
+                <a
+                    href="#"
+                    class="chapter-nav-button previous"
+                >
+
+                    <span class="chapter-nav-label">
+                        السابق
+                    </span>
+
+                    <span class="chapter-nav-title">
+                        لا يوجد فصل سابق
+                    </span>
+
+                </a>
+
+
+
+                <div class="chapter-nav-center">
+
+                    <a
+                        href="../index.html"
+                        class="chapter-list-button"
+                    >
+                        SOV
+                    </a>
+
+                </div>
+
+
+
+                <a
+                    href="#"
+                    class="chapter-nav-button next"
+                >
+
+                    <span class="chapter-nav-label">
+                        التالي
+                    </span>
+
+                    <span class="chapter-nav-title">
+                        قريبًا
+                    </span>
+
+                </a>
+
+
+            </nav>
+
+
+        </article>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SETTINGS PANEL
+    ====================================================== -->
+
+    <div
+        class="reader-settings-overlay"
+        id="settingsOverlay"
+    >
+
+        <div class="reader-settings">
+
+
+            <div class="settings-title">
+
+                <h3>
+                    إعدادات القراءة
+                </h3>
+
+
+                <button
+                    class="close-settings"
+                    id="closeSettings"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+
+            <!-- FONT SIZE -->
+
+            <div class="setting-group">
+
+                <label>
+                    حجم النص
+                </label>
+
+
+                <div class="setting-options">
+
+                    <button
+                        class="setting-option"
+                        data-size="18"
+                    >
+                        صغير
+                    </button>
+
+
+                    <button
+                        class="setting-option active"
+                        data-size="20"
+                    >
+                        متوسط
+                    </button>
+
+
+                    <button
+                        class="setting-option"
+                        data-size="22"
+                    >
+                        كبير
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LINE HEIGHT -->
+
+            <div class="setting-group">
+
+                <label>
+                    تباعد الأسطر
+                </label>
+
+
+                <div class="setting-options">
+
+                    <button
+                        class="setting-option"
+                        data-line="1.85"
+                    >
+                        ضيق
+                    </button>
+
+
+                    <button
+                        class="setting-option active"
+                        data-line="2.15"
+                    >
+                        متوسط
+                    </button>
+
+
+                    <button
+                        class="setting-option"
+                        data-line="2.45"
+                    >
+                        واسع
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MODE -->
+
+            <div class="setting-group">
+
+                <label>
+                    المظهر
+                </label>
+
+
+                <div class="setting-options">
+
+                    <button
+                        class="setting-option active"
+                        data-mode="dark"
+                    >
+                        مظلم
+                    </button>
+
+
+                    <button
+                        class="setting-option"
+                        data-mode="oled"
+                    >
+                        OLED
+                    </button>
+
+
+                    <button
+                        class="setting-option"
+                        data-mode="sepia"
+                    >
+                        Sepia
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                /* =================================================
+                   ELEMENTS
+                ================================================= */
+
+                const progressBar =
+                    document.getElementById(
+                        "readingProgressBar"
+                    );
+
+
+                const settingsButton =
+                    document.getElementById(
+                        "settingsButton"
+                    );
+
+
+                const fullscreenButton =
+                    document.getElementById(
+                        "fullscreenButton"
+                    );
+
+
+                const settingsOverlay =
+                    document.getElementById(
+                        "settingsOverlay"
+                    );
+
+
+                const closeSettings =
+                    document.getElementById(
+                        "closeSettings"
+                    );
+
+
+                const chapterContent =
+                    document.getElementById(
+                        "chapterContent"
+                    );
+
+
+                /* =================================================
+                   READING PROGRESS
+                ================================================== */
+
+                function updateReadingProgress() {
+
+                    if (!chapterContent) return;
+
+
+                    const scrollTop =
+                        window.scrollY;
+
+
+                    const pageHeight =
+                        document.documentElement
+                            .scrollHeight -
+                        window.innerHeight;
+
+
+                    if (pageHeight <= 0) {
+
+                        if (progressBar) {
+
+                            progressBar.style.width =
+                                "0%";
+
+                        }
+
+                        return;
+
+                    }
+
+
+                    const progress =
+                        Math.min(
+                            100,
+                            Math.max(
+                                0,
+                                (scrollTop / pageHeight) * 100
+                            )
+                        );
+
+
+                    if (progressBar) {
+
+                        progressBar.style.width =
+                            progress + "%";
+
+                    }
+
+
+                    localStorage.setItem(
+                        "sov_chapter_01_progress",
+                        String(progress)
+                    );
+
+                }
+
+
+                window.addEventListener(
+                    "scroll",
+                    updateReadingProgress,
+                    { passive: true }
+                );
+
+
+                updateReadingProgress();
+
+
+
+                /* =================================================
+                   SETTINGS OPEN
+                ================================================== */
+
+                if (settingsButton) {
+
+                    settingsButton.addEventListener(
+                        "click",
+                        () => {
+
+                            settingsOverlay.classList.add(
+                                "open"
+                            );
+
+                        }
+                    );
+
+                }
+
+
+
+                /* =================================================
+                   SETTINGS CLOSE
+                ================================================== */
+
+                if (closeSettings) {
+
+                    closeSettings.addEventListener(
+                        "click",
+                        () => {
+
+                            settingsOverlay.classList.remove(
+                                "open"
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                if (settingsOverlay) {
+
+                    settingsOverlay.addEventListener(
+                        "click",
+                        event => {
+
+                            if (
+                                event.target ===
+                                settingsOverlay
+                            ) {
+
+                                settingsOverlay.classList.remove(
+                                    "open"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+
+                /* =================================================
+                   FONT SIZE
+                ================================================== */
+
+                const sizeOptions =
+                    document.querySelectorAll(
+                        "[data-size]"
+                    );
+
+
+                sizeOptions.forEach(option => {
+
+                    option.addEventListener(
+                        "click",
+                        () => {
+
+                            const size =
+                                option.dataset.size;
+
+
+                            document.documentElement
+                                .style
+                                .setProperty(
+                                    "--reader-size",
+                                    size + "px"
+                                );
+
+
+                            sizeOptions.forEach(item => {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            });
+
+
+                            option.classList.add(
+                                "active"
+                            );
+
+
+                            localStorage.setItem(
+                                "sov_reader_size",
+                                size
+                            );
+
+                        }
+                    );
+
+                });
+
+
+
+                /* =================================================
+                   LINE HEIGHT
+                ================================================== */
+
+                const lineOptions =
+                    document.querySelectorAll(
+                        "[data-line]"
+                    );
+
+
+                lineOptions.forEach(option => {
+
+                    option.addEventListener(
+                        "click",
+                        () => {
+
+                            const line =
+                                option.dataset.line;
+
+
+                            document.documentElement
+                                .style
+                                .setProperty(
+                                    "--reader-line-height",
+                                    line
+                                );
+
+
+                            lineOptions.forEach(item => {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            });
+
+
+                            option.classList.add(
+                                "active"
+                            );
+
+
+                            localStorage.setItem(
+                                "sov_reader_line",
+                                line
+                            );
+
+                        }
+                    );
+
+                });
+
+
+
+                /* =================================================
+                   READING MODE
+                ================================================== */
+
+                const modeOptions =
+                    document.querySelectorAll(
+                        "[data-mode]"
+                    );
+
+
+                modeOptions.forEach(option => {
+
+                    option.addEventListener(
+                        "click",
+                        () => {
+
+                            const mode =
+                                option.dataset.mode;
+
+
+                            document.body.classList.remove(
+                                "oled-mode",
+                                "sepia-mode"
+                            );
+
+
+                            if (mode === "oled") {
+
+                                document.body.classList.add(
+                                    "oled-mode"
+                                );
+
+                            }
+
+
+                            if (mode === "sepia") {
+
+                                document.body.classList.add(
+                                    "sepia-mode"
+                                );
+
+                            }
+
+
+                            modeOptions.forEach(item => {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                            });
+
+
+                            option.classList.add(
+                                "active"
+                            );
+
+
+                            localStorage.setItem(
+                                "sov_reader_mode",
+                                mode
+                            );
+
+                        }
+                    );
+
+                });
+
+
+
+                /* =================================================
+                   LOAD SAVED SETTINGS
+                ================================================== */
+
+                const savedSize =
+                    localStorage.getItem(
+                        "sov_reader_size"
+                    );
+
+
+                const savedLine =
+                    localStorage.getItem(
+                        "sov_reader_line"
+                    );
+
+
+                const savedMode =
+                    localStorage.getItem(
+                        "sov_reader_mode"
+                    );
+
+
+                if (savedSize) {
+
+                    document.documentElement
+                        .style
+                        .setProperty(
+                            "--reader-size",
+                            savedSize + "px"
+                        );
+
+
+                    sizeOptions.forEach(option => {
+
+                        option.classList.toggle(
+                            "active",
+                            option.dataset.size ===
+                            savedSize
+                        );
+
+                    });
+
+                }
+
+
+                if (savedLine) {
+
+                    document.documentElement
+                        .style
+                        .setProperty(
+                            "--reader-line-height",
+                            savedLine
+                        );
+
+
+                    lineOptions.forEach(option => {
+
+                        option.classList.toggle(
+                            "active",
+                            option.dataset.line ===
+                            savedLine
+                        );
+
+                    });
+
+                }
+
+
+                if (savedMode) {
+
+                    document.body.classList.remove(
+                        "oled-mode",
+                        "sepia-mode"
+                    );
+
+
+                    if (
+                        savedMode === "oled"
+                    ) {
+
+                        document.body.classList.add(
+                            "oled-mode"
+                        );
+
+                    }
+
+
+                    if (
+                        savedMode === "sepia"
+                    ) {
+
+                        document.body.classList.add(
+                            "sepia-mode"
+                        );
+
+                    }
+
+
+                    modeOptions.forEach(option => {
+
+                        option.classList.toggle(
+                            "active",
+                            option.dataset.mode ===
+                            savedMode
+                        );
+
+                    });
+
+                }
+
+
+
+                /* =================================================
+                   FULLSCREEN
+                ================================================== */
+
+                if (fullscreenButton) {
+
+                    fullscreenButton.addEventListener(
+                        "click",
+                        async () => {
+
+                            try {
+
+                                if (
+                                    !document.fullscreenElement
+                                ) {
+
+                                    await document.documentElement
+                                        .requestFullscreen();
+
+                                } else {
+
+                                    await document.exitFullscreen();
+
+                                }
+
+                            } catch (error) {
+
+                                document.body.classList.toggle(
+                                    "reader-fullscreen"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                document.addEventListener(
+                    "fullscreenchange",
+                    () => {
+
+                        document.body.classList.toggle(
+                            "reader-fullscreen",
+                            Boolean(
+                                document.fullscreenElement
+                            )
+                        );
+
+                    }
+                );
+
+
+
+                /* =================================================
+                   HIDE TOP BAR WHILE READING
+                ================================================== */
+
+                let lastScrollY =
+                    window.scrollY;
+
+
+                window.addEventListener(
+                    "scroll",
+                    () => {
+
+                        const currentScrollY =
+                            window.scrollY;
+
+
+                        if (
+                            currentScrollY >
+                                lastScrollY &&
+                            currentScrollY > 180
+                        ) {
+
+                            document.body.classList.add(
+                                "reader-fullscreen"
+                            );
+
+                        }
+
+
+                        if (
+                            currentScrollY <
+                            lastScrollY
+                        ) {
+
+                            document.body.classList.remove(
+                                "reader-fullscreen"
+                            );
+
+                        }
+
+
+                        lastScrollY =
+                            currentScrollY;
+
+                    },
+                    { passive: true }
+                );
+
+            }
+
+        );
+
+    </script>
 
 </body>
 
