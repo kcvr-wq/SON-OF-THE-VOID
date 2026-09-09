@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /*
-     * =====================================================
-     * INTRO
-     * =====================================================
-     */
+
+    /* =====================================================
+       INTRO
+    ===================================================== */
 
     const intro =
         document.getElementById("intro");
@@ -27,11 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /*
-     * =====================================================
-     * NAVIGATION
-     * =====================================================
-     */
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
 
     const navLinks =
         document.querySelectorAll(".nav-link");
@@ -49,9 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             navLinks.forEach(item => {
-
                 item.classList.remove("active");
-
             });
 
 
@@ -59,11 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             sections.forEach(section => {
-
-                section.classList.remove(
-                    "active-section"
-                );
-
+                section.classList.remove("active-section");
             });
 
 
@@ -94,27 +85,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /*
-     * =====================================================
-     * PATH OF THE VOID
-     * =====================================================
-     */
+    /* =====================================================
+       VOLUME OPEN / CLOSE
+    ===================================================== */
 
-    const pathOfTheVoid =
-        "PATH%20OF%20THE%20VOID/index.html";
+    const volumeHeaders =
+        document.querySelectorAll(".volume-header");
 
 
+    volumeHeaders.forEach(header => {
 
-    /*
-     * =====================================================
-     * START READING
-     * =====================================================
-     */
+        header.addEventListener("click", () => {
+
+            const volume =
+                header.closest(".volume-item");
+
+            const isOpen =
+                volume.classList.contains("open");
+
+
+            document
+                .querySelectorAll(".volume-item")
+                .forEach(item => {
+
+                    item.classList.remove("open");
+
+                    const itemHeader =
+                        item.querySelector(".volume-header");
+
+                    if (itemHeader) {
+
+                        itemHeader.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                });
+
+
+            if (!isOpen) {
+
+                volume.classList.add("open");
+
+                header.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+            }
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       START READING
+    ===================================================== */
 
     const startReading =
-        document.getElementById(
-            "startReading"
-        );
+        document.getElementById("startReading");
 
 
     if (startReading) {
@@ -124,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 window.location.href =
-                    pathOfTheVoid;
+                    "PATH%20OF%20THE%20VOID/chapter-01.html";
 
             }
         );
@@ -133,20 +166,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /*
-     * =====================================================
-     * CONTINUE READING
-     * =====================================================
-     *
-     * حاليًا نفس مكان البداية.
-     * سنربطه بنظام الحفظ الحقيقي
-     * عندما ننتهي من بناء القارئ.
-     */
+    /* =====================================================
+       CONTINUE READING
+    ===================================================== */
 
     const continueReading =
-        document.getElementById(
-            "continueReading"
-        );
+        document.getElementById("continueReading");
 
 
     if (continueReading) {
@@ -156,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 window.location.href =
-                    pathOfTheVoid;
+                    "PATH%20OF%20THE%20VOID/chapter-01.html";
 
             }
         );
@@ -165,16 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /*
-     * =====================================================
-     * DARK MODE
-     * =====================================================
-     */
+    /* =====================================================
+       DARK MODE
+    ===================================================== */
 
     const darkToggle =
-        document.getElementById(
-            "darkToggle"
-        );
+        document.getElementById("darkToggle");
 
 
     if (darkToggle) {
@@ -183,9 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                darkToggle.classList.toggle(
-                    "active"
-                );
+                darkToggle.classList.toggle("active");
 
 
                 if (
@@ -211,16 +230,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /*
-     * =====================================================
-     * MOTION
-     * =====================================================
-     */
+    /* =====================================================
+       MOTION
+    ===================================================== */
 
     const motionToggle =
-        document.getElementById(
-            "motionToggle"
-        );
+        document.getElementById("motionToggle");
 
 
     if (motionToggle) {
@@ -229,19 +244,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                motionToggle.classList.toggle(
-                    "active"
-                );
+                motionToggle.classList.toggle("active");
 
 
                 document.body.classList.toggle(
-
                     "no-motion",
-
                     !motionToggle.classList.contains(
                         "active"
                     )
-
                 );
 
             }
