@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       INTRO — FIRST VISIT ONLY
+       INTRO — ONCE PER SESSION
     ===================================================== */
 
     const intro =
@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const introSeen =
-        localStorage.getItem("sov_intro_seen");
+        sessionStorage.getItem("sov_intro_seen");
 
 
     if (introSeen === "true") {
 
         /*
-         * الانترو تم عرضه سابقًا.
-         * لا نعرضه ولا حتى ننتظر الـ3.2 ثانية.
+         * Refresh داخل نفس الجلسة:
+         * لا يظهر الانترو.
          */
 
         if (intro) {
@@ -38,8 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
 
         /*
-         * أول زيارة فقط.
+         * أول فتح للموقع في هذه الجلسة:
+         * اعرض الانترو.
          */
+
+        if (site) {
+
+            site.classList.remove("show");
+
+        }
+
 
         setTimeout(() => {
 
@@ -55,7 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-            localStorage.setItem(
+
+            sessionStorage.setItem(
                 "sov_intro_seen",
                 "true"
             );
@@ -162,7 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     const itemHeader =
-                        item.querySelector(".volume-header");
+                        item.querySelector(
+                            ".volume-header"
+                        );
 
 
                     if (itemHeader) {
@@ -308,7 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
             }
-
         );
 
     }
