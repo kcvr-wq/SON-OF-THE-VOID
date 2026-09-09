@@ -36,6 +36,15 @@ html {
 
     scroll-behavior: smooth;
 
+    scrollbar-width: none;
+
+}
+
+
+html::-webkit-scrollbar {
+
+    display: none;
+
 }
 
 
@@ -50,6 +59,15 @@ body {
     font-family: "Cairo", sans-serif;
 
     overflow-x: hidden;
+
+    scrollbar-width: none;
+
+}
+
+
+body::-webkit-scrollbar {
+
+    display: none;
 
 }
 
@@ -1455,7 +1473,7 @@ a {
 
 
 /* =====================================================
-   PATH OF THE VOID
+   VOLUMES
 ===================================================== */
 
 .volume-list {
@@ -1469,15 +1487,91 @@ a {
 
 .volume-item {
 
+    position: relative;
+
     width: 100%;
 
-    border-top:
-        1px solid
-        rgba(255,255,255,0.08);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.018),
+            rgba(255,255,255,0.005)
+        );
 
-    border-bottom:
+    border:
         1px solid
-        rgba(255,255,255,0.08);
+        rgba(255,255,255,0.075);
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+
+}
+
+
+.volume-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #730000,
+            transparent
+        );
+
+    transition:
+        width 0.5s ease;
+
+}
+
+
+.volume-item:hover::before,
+.volume-item.open::before {
+
+    width: 100%;
+
+}
+
+
+.volume-item:hover {
+
+    border-color:
+        rgba(110,0,0,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.022),
+            rgba(90,0,0,0.025)
+        );
+
+}
+
+
+.volume-item.open {
+
+    border-color:
+        rgba(105,0,0,0.45);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,0.28),
+        0 0 35px
+        rgba(90,0,0,0.05);
 
 }
 
@@ -1488,23 +1582,25 @@ a {
 
 .volume-header {
 
+    position: relative;
+
     width: 100%;
 
-    min-height: 82px;
+    min-height: 92px;
 
     display: grid;
 
     grid-template-columns:
-        45px
+        58px
         1fr
-        30px;
+        38px;
 
     align-items: center;
 
-    gap: 16px;
+    gap: 18px;
 
     padding:
-        14px 8px;
+        17px 20px;
 
     background: transparent;
 
@@ -1514,29 +1610,86 @@ a {
 
     cursor: pointer;
 
+    transition:
+        background 0.3s ease;
+
 }
 
 
 .volume-header:hover {
 
     background:
-        rgba(255,255,255,0.025);
+        rgba(255,255,255,0.015);
 
 }
 
+
+/* =====================================================
+   VOLUME NUMBER
+===================================================== */
 
 .volume-number {
 
-    color: #650000;
+    display: flex;
 
-    font-family: "Cinzel", serif;
+    align-items: center;
 
-    font-size: 10px;
+    justify-content: center;
 
-    letter-spacing: 2px;
+    width: 42px;
+
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(110,0,0,0.38);
+
+    background:
+        rgba(75,0,0,0.08);
+
+    color:
+        #770000;
+
+    font-family:
+        "Cinzel", serif;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
 
 }
 
+
+.volume-item:hover .volume-number,
+.volume-item.open .volume-number {
+
+    background:
+        rgba(105,0,0,0.13);
+
+    border-color:
+        rgba(135,0,0,0.5);
+
+    color:
+        #920000;
+
+    box-shadow:
+        0 0 18px
+        rgba(100,0,0,0.08);
+
+}
+
+
+/* =====================================================
+   VOLUME INFO
+===================================================== */
 
 .volume-info {
 
@@ -1544,32 +1697,62 @@ a {
 
     flex-direction: column;
 
-    gap: 3px;
+    gap: 5px;
 
 }
 
 
 .volume-name {
 
-    color: #d0d0d0;
+    color:
+        #d3d3d3;
 
-    font-family: "Cinzel", serif;
+    font-family:
+        "Cinzel", serif;
 
-    font-size: 16px;
+    font-size:
+        17px;
 
-    letter-spacing: 1px;
+    letter-spacing:
+        1.5px;
+
+    transition:
+        color 0.3s ease;
+
+}
+
+
+.volume-item:hover .volume-name,
+.volume-item.open .volume-name {
+
+    color:
+        #e3e3e3;
 
 }
 
 
 .volume-meta {
 
-    color: #555;
+    color:
+        #555;
 
-    font-size: 9px;
+    font-size:
+        9px;
 
 }
 
+
+.volume-item.open .volume-meta {
+
+    color:
+        #6d4b4b;
+
+}
+
+
+/* =====================================================
+   VOLUME ARROW
+===================================================== */
 
 .volume-arrow {
 
@@ -1579,22 +1762,56 @@ a {
 
     justify-content: center;
 
-    color: #650000;
+    width: 30px;
 
-    font-family: "Cinzel", serif;
+    height: 30px;
 
-    font-size: 18px;
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    color:
+        #690000;
+
+    font-family:
+        "Cinzel", serif;
+
+    font-size:
+        18px;
+
+    line-height:
+        1;
 
     transition:
-        transform 0.3s ease,
-        color 0.3s ease;
+        transform 0.4s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+.volume-item:hover .volume-arrow {
+
+    color:
+        #850000;
+
+    border-color:
+        rgba(100,0,0,0.35);
 
 }
 
 
 .volume-item.open .volume-arrow {
 
-    color: #850000;
+    color:
+        #9a0000;
+
+    border-color:
+        rgba(130,0,0,0.48);
+
+    background:
+        rgba(100,0,0,0.08);
 
     transform:
         rotate(45deg);
@@ -1603,59 +1820,70 @@ a {
 
 
 /* =====================================================
-   CHAPTER CONTAINER
+   VOLUME CHAPTERS
 ===================================================== */
 
 .volume-chapters {
 
-    max-height: 0;
+    display: grid;
 
-    overflow: hidden;
+    grid-template-rows:
+        0fr;
+
+    opacity: 0;
 
     transition:
-        max-height 0.45s ease;
+        grid-template-rows 0.5s ease,
+        opacity 0.3s ease;
 
 }
 
 
 .volume-item.open .volume-chapters {
 
-    max-height: 500px;
+    grid-template-rows:
+        1fr;
+
+    opacity: 1;
 
 }
 
 
 .volume-chapters-inner {
 
-    width: 100%;
+    min-height: 0;
+
+    overflow: hidden;
 
 }
 
 
 /* =====================================================
-   VOLUME CHAPTER
+   CHAPTER
 ===================================================== */
 
 .volume-chapter {
 
+    position: relative;
+
     display: grid;
 
     grid-template-columns:
-        42px
+        52px
         1fr
-        25px;
+        32px;
 
     align-items: center;
 
-    gap: 14px;
+    gap: 16px;
 
-    min-height: 68px;
+    min-height: 74px;
 
     margin:
-        0 8px;
+        0 16px;
 
     padding:
-        10px 8px;
+        11px 10px;
 
     border-top:
         1px solid
@@ -1663,9 +1891,50 @@ a {
 
     text-decoration: none;
 
+    opacity: 0;
+
+    transform:
+        translateY(-7px);
+
     transition:
-        background 0.25s ease,
-        padding-right 0.25s ease;
+        background 0.3s ease,
+        padding-right 0.3s ease,
+        opacity 0.35s ease,
+        transform 0.4s ease;
+
+}
+
+
+.volume-item.open .volume-chapter {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.volume-item.open .volume-chapter:nth-child(1) {
+
+    transition-delay:
+        0.08s;
+
+}
+
+
+.volume-item.open .volume-chapter:nth-child(2) {
+
+    transition-delay:
+        0.14s;
+
+}
+
+
+.volume-item.open .volume-chapter:nth-child(3) {
+
+    transition-delay:
+        0.20s;
 
 }
 
@@ -1673,24 +1942,68 @@ a {
 .volume-chapter:hover {
 
     background:
-        rgba(255,255,255,0.025);
+        rgba(255,255,255,0.018);
 
     padding-right:
-        14px;
+        17px;
 
 }
 
+
+/* =====================================================
+   CHAPTER NUMBER
+===================================================== */
 
 .chapter-number {
 
-    color: #650000;
+    display: flex;
 
-    font-family: "Cinzel", serif;
+    align-items: center;
 
-    font-size: 10px;
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        1px solid
+        rgba(100,0,0,0.23);
+
+    color:
+        #650000;
+
+    font-family:
+        "Cinzel", serif;
+
+    font-size:
+        9px;
+
+    transition:
+        border-color 0.3s ease,
+        color 0.3s ease,
+        background 0.3s ease;
 
 }
 
+
+.volume-chapter:hover .chapter-number {
+
+    color:
+        #850000;
+
+    border-color:
+        rgba(120,0,0,0.42);
+
+    background:
+        rgba(90,0,0,0.05);
+
+}
+
+
+/* =====================================================
+   CHAPTER INFO
+===================================================== */
 
 .chapter-info {
 
@@ -1698,54 +2011,132 @@ a {
 
     flex-direction: column;
 
-    gap: 3px;
+    gap: 4px;
 
 }
 
 
 .chapter-label {
 
-    color: #555;
+    color:
+        #555;
 
-    font-size: 9px;
+    font-size:
+        9px;
 
 }
 
 
 .chapter-title {
 
-    color: #bdbdbd;
+    color:
+        #bdbdbd;
 
-    font-size: 13px;
+    font-size:
+        13px;
+
+    transition:
+        color 0.3s ease;
 
 }
 
+
+.volume-chapter:hover .chapter-title {
+
+    color:
+        #d0d0d0;
+
+}
+
+
+/* =====================================================
+   CHAPTER ARROW
+===================================================== */
 
 .chapter-arrow {
 
-    color: #650000;
+    color:
+        #650000;
 
-    font-size: 16px;
+    font-size:
+        16px;
 
-    text-align: center;
+    text-align:
+        center;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 
 }
 
 
+.volume-chapter:hover .chapter-arrow {
+
+    color:
+        #900000;
+
+    transform:
+        translateX(-4px);
+
+}
+
+
+/* =====================================================
+   DISABLED CHAPTER
+===================================================== */
+
 .volume-chapter.disabled {
 
-    opacity: 0.28;
+    opacity:
+        0.26;
 
-    cursor: default;
+    cursor:
+        default;
 
 }
 
 
 .volume-chapter.disabled:hover {
 
-    background: transparent;
+    background:
+        transparent;
 
-    padding-right: 8px;
+    padding-right:
+        10px;
+
+}
+
+
+.volume-chapter.disabled:hover .chapter-number {
+
+    color:
+        #650000;
+
+    border-color:
+        rgba(100,0,0,0.23);
+
+    background:
+        transparent;
+
+}
+
+
+.volume-chapter.disabled:hover .chapter-title {
+
+    color:
+        #bdbdbd;
+
+}
+
+
+.volume-chapter.disabled:hover .chapter-arrow {
+
+    color:
+        #650000;
+
+    transform:
+        none;
 
 }
 
@@ -2152,7 +2543,7 @@ body.no-motion * {
 
         border-bottom:
             1px solid
-            rgba(255, 255, 255, 0.07);
+            rgba(255,255,255,0.07);
 
     }
 
@@ -2193,8 +2584,7 @@ body.no-motion * {
 
         display: grid;
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
         gap: 10px;
 
@@ -2239,7 +2629,7 @@ body.no-motion * {
 
         border-right:
             1px solid
-            rgba(100, 0, 0, 0.35);
+            rgba(100,0,0,0.35);
 
     }
 
@@ -2262,29 +2652,27 @@ body.no-motion * {
     }
 
 
-    .chapter-card {
+    .volume-header {
+
+        min-height: 82px;
 
         grid-template-columns:
-            45px
+            46px
             1fr
-            30px;
+            32px;
+
+        gap: 13px;
+
+        padding:
+            14px 13px;
 
     }
 
 
-    .volume-header {
+    .volume-number {
 
-        min-height: 76px;
-
-        grid-template-columns:
-            40px
-            1fr
-            28px;
-
-        gap: 12px;
-
-        padding:
-            13px 6px;
+        width: 36px;
+        height: 36px;
 
     }
 
@@ -2303,19 +2691,40 @@ body.no-motion * {
     }
 
 
+    .volume-arrow {
+
+        width: 27px;
+        height: 27px;
+
+        font-size: 16px;
+
+    }
+
+
     .volume-chapter {
 
         grid-template-columns:
-            38px
+            42px
             1fr
-            24px;
+            25px;
 
         gap: 10px;
 
-        min-height: 65px;
+        min-height: 68px;
 
         margin:
-            0 5px;
+            0 9px;
+
+        padding:
+            10px 7px;
+
+    }
+
+
+    .chapter-number {
+
+        width: 30px;
+        height: 30px;
 
     }
 
@@ -2325,6 +2734,7 @@ body.no-motion * {
         font-size: 12px;
 
     }
+
 
 }
 
@@ -2402,6 +2812,13 @@ body.no-motion * {
     .volume-name {
 
         font-size: 12px;
+
+    }
+
+
+    .volume-meta {
+
+        font-size: 8px;
 
     }
 
