@@ -24,7 +24,10 @@
          FONTS
     ====================================================== -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         rel="preconnect"
@@ -180,6 +183,9 @@
             background:
                 rgba(255,255,255,0.025);
 
+            transition:
+                opacity 0.3s ease;
+
         }
 
 
@@ -200,14 +206,11 @@
                 0 0 10px
                 rgba(120,0,0,0.35);
 
-            transition:
-                width 0.08s linear;
-
         }
 
 
         /* =====================================================
-           READER TOP BAR
+           TOP BAR
         ====================================================== */
 
         .reader-topbar {
@@ -255,7 +258,8 @@
             transform:
                 translateY(-100%);
 
-            pointer-events: none;
+            pointer-events:
+                none;
 
         }
 
@@ -395,7 +399,7 @@
 
 
         /* =====================================================
-           READER PAGE
+           READER
         ====================================================== */
 
         .reader-page {
@@ -625,14 +629,6 @@
         }
 
 
-        .chapter-content p:last-child {
-
-            margin-bottom:
-                0;
-
-        }
-
-
         .scene-break {
 
             display: flex;
@@ -719,49 +715,6 @@
 
 
         /* =====================================================
-           BOOKMARK
-        ====================================================== */
-
-        .bookmark-point {
-
-            position:
-                relative;
-
-        }
-
-
-        .bookmark-point::before {
-
-            content: "";
-
-            position: absolute;
-
-            right:
-                -18px;
-
-            top:
-                50%;
-
-            width:
-                5px;
-
-            height:
-                5px;
-
-            border-radius:
-                50%;
-
-            background:
-                #830000;
-
-            box-shadow:
-                0 0 10px
-                rgba(130,0,0,0.5);
-
-        }
-
-
-        /* =====================================================
            CHAPTER END
         ====================================================== */
 
@@ -824,7 +777,7 @@
 
 
         /* =====================================================
-           CHAPTER NAVIGATION
+           NAVIGATION
         ====================================================== */
 
         .chapter-navigation {
@@ -836,7 +789,8 @@
                 auto
                 1fr;
 
-            align-items: center;
+            align-items:
+                center;
 
             gap:
                 15px;
@@ -977,9 +931,11 @@
 
             display: flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
         }
 
@@ -994,9 +950,11 @@
 
             display: flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
             border:
                 1px solid
@@ -1018,12 +976,6 @@
             letter-spacing:
                 1px;
 
-            transition:
-                background 0.3s ease,
-                border-color 0.3s ease,
-                color 0.3s ease,
-                transform 0.3s ease;
-
         }
 
 
@@ -1037,9 +989,6 @@
 
             color:
                 #a00000;
-
-            transform:
-                translateY(-2px);
 
         }
 
@@ -1106,6 +1055,12 @@
                     100%
                 );
 
+            max-height:
+                calc(100vh - 100px);
+
+            overflow-y:
+                auto;
+
             padding:
                 24px;
 
@@ -1142,9 +1097,11 @@
 
             display: flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
             padding-bottom:
                 15px;
@@ -1293,7 +1250,7 @@
 
 
         /* =====================================================
-           OLYD / SEPIA
+           OLED
         ====================================================== */
 
         body.oled-mode {
@@ -1307,10 +1264,14 @@
         body.oled-mode .reader-topbar {
 
             background:
-                rgba(0,0,0,0.9);
+                rgba(0,0,0,0.92);
 
         }
 
+
+        /* =====================================================
+           SEPIA
+        ====================================================== */
 
         body.sepia-mode {
 
@@ -1362,7 +1323,7 @@
 
 
         /* =====================================================
-           FONT AMIRI
+           AMIRI
         ====================================================== */
 
         body.amiri-mode {
@@ -1378,15 +1339,8 @@
            HIDDEN UI
         ====================================================== */
 
-        body.reader-ui-hidden {
-
-            cursor:
-                default;
-
-        }
-
-
-        body.reader-ui-hidden .reader-topbar {
+        body.reader-ui-hidden
+        .reader-topbar {
 
             opacity:
                 0;
@@ -1400,7 +1354,8 @@
         }
 
 
-        body.reader-ui-hidden .reading-progress {
+        body.reader-ui-hidden
+        .reading-progress {
 
             opacity:
                 0;
@@ -1435,6 +1390,14 @@
 
                 display:
                     none;
+
+            }
+
+
+            .reader-actions {
+
+                gap:
+                    5px;
 
             }
 
@@ -1476,14 +1439,6 @@
 
                 font-size:
                     31px;
-
-            }
-
-
-            .chapter-subtitle {
-
-                font-size:
-                    12px;
 
             }
 
@@ -1572,7 +1527,7 @@
 
 
         /* =====================================================
-           REDUCED MOTION
+           NO MOTION
         ====================================================== */
 
         body.no-motion * {
@@ -1619,7 +1574,6 @@
         class="reader-topbar"
         id="readerTopbar"
     >
-
 
         <a
             href="../index.html"
@@ -1688,7 +1642,6 @@
 
     <main class="reader-page">
 
-
         <article class="reader-container">
 
 
@@ -1739,7 +1692,6 @@
                 id="chapterContent"
             >
 
-
                 <p>
                     لم يكن الصباح مختلفًا عن أي صباح آخر، أو هكذا بدا الأمر في البداية.
                     كانت السماء مغطاة بطبقة رقيقة من السحب، والريح تتحرك ببطء فوق أسطح
@@ -1773,9 +1725,11 @@
 
 
                 <div class="scene-break">
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </div>
 
 
@@ -1784,7 +1738,7 @@
                 </p>
 
 
-                <p class="bookmark-target">
+                <p>
                     اختفت أصوات الطيور.
                 </p>
 
@@ -1888,9 +1842,11 @@
 
 
                 <div class="scene-break">
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </div>
 
 
@@ -1983,9 +1939,11 @@
 
 
                 <div class="scene-break">
+
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </div>
 
 
@@ -2045,13 +2003,12 @@
                     كان بداية.
                 </p>
 
-
             </section>
 
 
 
             <!-- =================================================
-                 CHAPTER END
+                 END
             ================================================== -->
 
             <div class="chapter-end">
@@ -2096,7 +2053,6 @@
                     <a
                         href="../index.html"
                         class="chapter-list-button"
-                        title="العودة إلى الموقع"
                     >
                         SOV
                     </a>
@@ -2422,21 +2378,9 @@
                     document.body;
 
 
-                const chapterContent =
-                    document.getElementById(
-                        "chapterContent"
-                    );
-
-
                 const progressBar =
                     document.getElementById(
                         "readingProgressBar"
-                    );
-
-
-                const readerTopbar =
-                    document.getElementById(
-                        "readerTopbar"
                     );
 
 
@@ -2476,12 +2420,13 @@
                     );
 
 
-
                 /* =================================================
-                   SETTINGS STORAGE KEYS
+                   GLOBAL SETTINGS
+                   
+                   هذه المفاتيح مشتركة بين جميع الفصول.
                 ================================================== */
 
-                const STORAGE = {
+                const SETTINGS = {
 
                     size:
                         "sov_reader_size",
@@ -2499,17 +2444,87 @@
                         "sov_reader_paragraph",
 
                     mode:
-                        "sov_reader_mode",
+                        "sov_reader_mode"
+
+                };
+
+
+                /* =================================================
+                   CHAPTER-SPECIFIC STORAGE
+                   
+                   هذه البيانات خاصة بالفصل الأول فقط.
+                ================================================== */
+
+                const CHAPTER = {
 
                     position:
-                        "sov_chapter_01_position"
+                        "sov_chapter_01_position",
+
+                    bookmark:
+                        "sov_chapter_01_bookmark"
 
                 };
 
 
 
                 /* =================================================
-                   READING PROGRESS
+                   MIGRATE OLD SETTINGS
+                   
+                   لو كانت نسخة سابقة خزنت الإعدادات بطريقة قديمة،
+                   ننقلها للمفاتيح العامة مرة واحدة.
+                ================================================== */
+
+                const oldSettings = {
+
+                    size:
+                        "sov_reader_size",
+
+                    font:
+                        "sov_reader_font",
+
+                    width:
+                        "sov_reader_width",
+
+                    line:
+                        "sov_reader_line",
+
+                    paragraph:
+                        "sov_reader_paragraph",
+
+                    mode:
+                        "sov_reader_mode"
+
+                };
+
+
+                Object.keys(oldSettings).forEach(key => {
+
+                    const value =
+                        localStorage.getItem(
+                            oldSettings[key]
+                        );
+
+
+                    if (
+                        value !== null &&
+                        !localStorage.getItem(
+                            SETTINGS[key]
+                        )
+                    ) {
+
+                        localStorage.setItem(
+                            SETTINGS[key],
+                            value
+                        );
+
+                    }
+
+                });
+
+
+
+                /* =================================================
+                   READING PROGRESS + POSITION
                 ================================================== */
 
                 function updateProgress() {
@@ -2520,9 +2535,7 @@
                         window.innerHeight;
 
 
-                    if (
-                        maxScroll <= 0
-                    ) {
+                    if (maxScroll <= 0) {
 
                         progressBar.style.width =
                             "0%";
@@ -2550,7 +2563,7 @@
 
 
                     localStorage.setItem(
-                        STORAGE.position,
+                        CHAPTER.position,
                         String(
                             window.scrollY
                         )
@@ -2568,13 +2581,13 @@
 
 
                 /* =================================================
-                   RESTORE POSITION
+                   RESTORE CHAPTER POSITION
                 ================================================== */
 
                 const savedPosition =
                     parseFloat(
                         localStorage.getItem(
-                            STORAGE.position
+                            CHAPTER.position
                         )
                     );
 
@@ -2606,7 +2619,7 @@
 
 
                 /* =================================================
-                   SETTINGS OPEN
+                   SETTINGS OPEN / CLOSE
                 ================================================== */
 
                 if (settingsButton) {
@@ -2629,16 +2642,15 @@
                 }
 
 
-
-                /* =================================================
-                   SETTINGS CLOSE
-                ================================================== */
-
                 function closeSettingsPanel() {
 
-                    settingsOverlay.classList.remove(
-                        "open"
-                    );
+                    if (settingsOverlay) {
+
+                        settingsOverlay.classList.remove(
+                            "open"
+                        );
+
+                    }
 
                 }
 
@@ -2677,6 +2689,8 @@
 
                 /* =================================================
                    FONT SIZE
+                   
+                   GLOBAL — كل الفصول
                 ================================================== */
 
                 const sizeOptions =
@@ -2716,7 +2730,7 @@
 
 
                             localStorage.setItem(
-                                STORAGE.size,
+                                SETTINGS.size,
                                 size
                             );
 
@@ -2732,6 +2746,8 @@
 
                 /* =================================================
                    FONT
+                   
+                   GLOBAL — كل الفصول
                 ================================================== */
 
                 const fontOptions =
@@ -2781,7 +2797,7 @@
 
 
                             localStorage.setItem(
-                                STORAGE.font,
+                                SETTINGS.font,
                                 font
                             );
 
@@ -2797,6 +2813,8 @@
 
                 /* =================================================
                    WIDTH
+                   
+                   GLOBAL — كل الفصول
                 ================================================== */
 
                 const widthOptions =
@@ -2836,7 +2854,7 @@
 
 
                             localStorage.setItem(
-                                STORAGE.width,
+                                SETTINGS.width,
                                 width
                             );
 
@@ -2852,6 +2870,8 @@
 
                 /* =================================================
                    LINE HEIGHT
+                   
+                   GLOBAL — كل الفصول
                 ================================================== */
 
                 const lineOptions =
@@ -2891,7 +2911,7 @@
 
 
                             localStorage.setItem(
-                                STORAGE.line,
+                                SETTINGS.line,
                                 line
                             );
 
@@ -2907,6 +2927,8 @@
 
                 /* =================================================
                    PARAGRAPH SPACING
+                   
+                   GLOBAL — كل الفصول
                 ================================================== */
 
                 const paragraphOptions =
@@ -2946,7 +2968,7 @@
 
 
                             localStorage.setItem(
-                                STORAGE.paragraph,
+                                SETTINGS.paragraph,
                                 paragraph
                             );
 
@@ -2962,6 +2984,8 @@
 
                 /* =================================================
                    READING MODE
+                   
+                   GLOBAL — كل الفصول
                 ================================================== */
 
                 const modeOptions =
@@ -3023,7 +3047,7 @@
 
 
                             localStorage.setItem(
-                                STORAGE.mode,
+                                SETTINGS.mode,
                                 mode
                             );
 
@@ -3035,42 +3059,42 @@
 
 
                 /* =================================================
-                   LOAD SAVED SETTINGS
+                   LOAD GLOBAL SETTINGS
                 ================================================== */
 
                 const savedSize =
                     localStorage.getItem(
-                        STORAGE.size
+                        SETTINGS.size
                     );
 
 
                 const savedFont =
                     localStorage.getItem(
-                        STORAGE.font
+                        SETTINGS.font
                     );
 
 
                 const savedWidth =
                     localStorage.getItem(
-                        STORAGE.width
+                        SETTINGS.width
                     );
 
 
                 const savedLine =
                     localStorage.getItem(
-                        STORAGE.line
+                        SETTINGS.line
                     );
 
 
                 const savedParagraph =
                     localStorage.getItem(
-                        STORAGE.paragraph
+                        SETTINGS.paragraph
                     );
 
 
                 const savedMode =
                     localStorage.getItem(
-                        STORAGE.mode
+                        SETTINGS.mode
                     );
 
 
@@ -3234,18 +3258,14 @@
 
 
                 /* =================================================
-                   BOOKMARK
+                   BOOKMARK — CHAPTER 01 ONLY
                 ================================================== */
-
-                const bookmarkKey =
-                    "sov_chapter_01_bookmark";
-
 
                 function updateBookmarkButton() {
 
                     const bookmark =
                         localStorage.getItem(
-                            bookmarkKey
+                            CHAPTER.bookmark
                         );
 
 
@@ -3283,20 +3303,20 @@
 
                             const bookmark =
                                 localStorage.getItem(
-                                    bookmarkKey
+                                    CHAPTER.bookmark
                                 );
 
 
                             if (bookmark) {
 
                                 localStorage.removeItem(
-                                    bookmarkKey
+                                    CHAPTER.bookmark
                                 );
 
                             } else {
 
                                 localStorage.setItem(
-                                    bookmarkKey,
+                                    CHAPTER.bookmark,
                                     String(
                                         window.scrollY
                                     )
@@ -3328,7 +3348,7 @@
                         () => {
 
                             window.location.href =
-                                "../index.html#chapters";
+                                "../index.html";
 
                         }
                     );
@@ -3405,61 +3425,57 @@
                     );
 
 
-                    clearTimeout(uiTimer);
-
-
-                    uiTimer = setTimeout(
-                        () => {
-
-                            if (
-                                !settingsOverlay.classList.contains(
-                                    "open"
-                                )
-                            ) {
-
-                                body.classList.add(
-                                    "reader-ui-hidden"
-                                );
-
-                            }
-
-                        },
-                        2600
+                    clearTimeout(
+                        uiTimer
                     );
 
-                }
 
+                    uiTimer =
+                        setTimeout(
+                            () => {
 
-                function handleActivity() {
+                                if (
+                                    !settingsOverlay.classList.contains(
+                                        "open"
+                                    )
+                                ) {
 
-                    showReaderUI();
+                                    body.classList.add(
+                                        "reader-ui-hidden"
+                                    );
+
+                                }
+
+                            },
+                            2600
+                        );
 
                 }
 
 
                 document.addEventListener(
                     "mousemove",
-                    handleActivity,
+                    showReaderUI,
                     { passive: true }
                 );
 
 
                 document.addEventListener(
                     "touchstart",
-                    handleActivity,
+                    showReaderUI,
                     { passive: true }
                 );
 
 
                 document.addEventListener(
                     "click",
-                    handleActivity
+                    showReaderUI
                 );
 
 
                 document.addEventListener(
                     "keydown",
-                    handleActivity
+                    showReaderUI
                 );
 
 
