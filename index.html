@@ -127,15 +127,22 @@
                 <button
                     class="nav-link active"
                     data-section="home"
+                    type="button"
                 >
                     <span>01</span>
                     الرئيسية
                 </button>
 
 
+                <!-- =========================================
+                     الفصول
+                     أصبح مرتبطًا بالمجلد المستقل
+                ========================================== -->
+
                 <button
                     class="nav-link"
-                    data-section="chapters"
+                    type="button"
+                    onclick="window.location.href='chapters/index.html'"
                 >
                     <span>02</span>
                     الفصول
@@ -145,15 +152,22 @@
                 <button
                     class="nav-link"
                     data-section="world"
+                    type="button"
                 >
                     <span>03</span>
                     عالم الرواية
                 </button>
 
 
+                <!-- =========================================
+                     إعدادات الموقع
+                     أصبحت مرتبطة بالمجلد المستقل
+                ========================================== -->
+
                 <button
                     class="nav-link"
-                    data-section="settings"
+                    type="button"
+                    onclick="window.location.href='settings/index.html'"
                 >
                     <span>04</span>
                     إعدادات الموقع
@@ -176,14 +190,14 @@
 
         <!-- =========================
              MAIN CONTENT
-        ========================== -->
+        ========================= -->
 
         <main class="main-content">
 
 
             <!-- =========================
                  HOME
-            ========================== -->
+            ========================= -->
 
             <section
                 id="home"
@@ -319,6 +333,7 @@
                                 <button
                                     class="primary-button"
                                     id="startReading"
+                                    type="button"
                                 >
                                     ابدأ القراءة
                                 </button>
@@ -327,6 +342,7 @@
                                 <button
                                     class="secondary-button"
                                     id="continueReading"
+                                    type="button"
                                 >
                                     تابع القراءة
                                 </button>
@@ -440,6 +456,8 @@
 
             <!-- =========================
                  CHAPTERS
+                 النسخة القديمة محفوظة مؤقتًا
+                 حتى نتأكد أن الصفحة الجديدة تعمل
             ========================== -->
 
             <section
@@ -654,6 +672,8 @@
 
             <!-- =========================
                  SETTINGS
+                 النسخة القديمة محفوظة مؤقتًا
+                 حتى نتأكد أن الصفحة الجديدة تعمل
             ========================== -->
 
             <section
@@ -699,6 +719,7 @@
                         <button
                             class="toggle active"
                             id="darkToggle"
+                            type="button"
                         >
                             <span></span>
                         </button>
@@ -725,6 +746,7 @@
                         <button
                             class="toggle active"
                             id="motionToggle"
+                            type="button"
                         >
                             <span></span>
                         </button>
