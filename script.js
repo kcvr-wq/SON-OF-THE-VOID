@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       INTRO — SHOW ONLY ON FIRST VISIT
+       INTRO — FIRST VISIT ONLY
     ===================================================== */
 
     const intro =
@@ -19,13 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (introSeen === "true") {
 
         /*
-         * المستخدم شاهد الانترو سابقًا
-         * لذلك نخفيه مباشرة
+         * الزائر شاهد الانترو من قبل
+         * نخفيه فورًا بدون أي Animation
          */
 
         if (intro) {
 
-            intro.classList.add("hide");
+            intro.style.display = "none";
 
         }
 
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
 
         /*
-         * أول زيارة للموقع
-         * نعرض الانترو ثم نحفظ أنه ظهر
+         * أول زيارة
+         * الانترو يظهر بشكل طبيعي
          */
 
         setTimeout(() => {
