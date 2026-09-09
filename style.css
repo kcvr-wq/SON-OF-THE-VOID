@@ -806,77 +806,148 @@ a {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        190px;
+        1.35fr
+        0.65fr;
 
-    gap: 0;
-
-    margin-top: 34px;
+    gap: 1px;
 
     max-width: 700px;
 
-    border-top:
-        1px solid
-        var(--border);
+    margin-top: 38px;
 
-    border-bottom:
+    background:
+        rgba(120, 0, 0, 0.18);
+
+    border:
         1px solid
-        var(--border);
+        rgba(255, 255, 255, 0.07);
 
 }
 
+
+/* =====================================================
+   INFORMATION BLOCK
+===================================================== */
 
 .information-block {
 
     position: relative;
 
-    display: grid;
+    min-height: 125px;
 
-    grid-template-columns: 38px 1fr;
+    padding: 22px 24px;
 
-    align-items: center;
+    background:
+        linear-gradient(
+            145deg,
+            #0d0d0d,
+            #080808
+        );
 
-    gap: 13px;
+    overflow: hidden;
 
-    min-height: 105px;
-
-    padding:
-        18px 20px;
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease,
+        border-color 0.35s ease;
 
 }
 
 
-.information-block:first-child {
+/* RED ACCENT */
 
-    border-left:
-        1px solid
-        var(--border);
+.information-block::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    width: 3px;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            #780000,
+            transparent
+        );
+
+    opacity: 0.8;
+
+}
+
+
+/* GLOW */
+
+.information-block::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -40px;
+
+    bottom: -70px;
+
+    width: 150px;
+
+    height: 150px;
+
+    background:
+        rgba(110, 0, 0, 0.12);
+
+    filter: blur(55px);
+
+    pointer-events: none;
+
+}
+
+
+/* HOVER */
+
+.information-block:hover {
+
+    background:
+        linear-gradient(
+            145deg,
+            #111111,
+            #090909
+        );
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =====================================================
+   INFORMATION TOP
+===================================================== */
+
+.information-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
 
 }
 
 
 .information-number {
 
-    align-self: start;
-
-    padding-top: 2px;
-
-    color: #600000;
+    color: #650000;
 
     font-family: "Cinzel", serif;
-
-    font-size: 10px;
-
-}
-
-
-.information-label {
-
-    display: block;
-
-    margin-bottom: 11px;
-
-    color: #4f4f4f;
 
     font-size: 10px;
 
@@ -885,18 +956,39 @@ a {
 }
 
 
-.chapter-count {
+.information-label {
 
-    color: #d1d1d1;
+    color: #4f4f4f;
 
     font-family: "Cinzel", serif;
 
-    font-size: 17px;
+    font-size: 9px;
 
-    font-weight: 500;
+    letter-spacing: 3px;
 
 }
 
+
+/* =====================================================
+   INFORMATION CONTENT
+===================================================== */
+
+.information-content h3 {
+
+    margin-bottom: 12px;
+
+    color: #d6d6d6;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+
+/* =====================================================
+   GENRES
+===================================================== */
 
 .genre-list {
 
@@ -904,29 +996,75 @@ a {
 
     flex-wrap: wrap;
 
-    gap: 8px;
+    gap: 7px;
 
 }
 
 
 .genre-list span {
 
-    position: relative;
+    display: inline-flex;
 
-    color: #a3a3a3;
+    align-items: center;
 
-    font-size: 12px;
+    min-height: 27px;
+
+    padding:
+        4px 10px;
+
+    color: #909090;
+
+    font-size: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
 
 }
 
 
-.genre-list span:not(:last-child)::after {
+.genre-list span:hover {
 
-    content: "·";
+    color: #d0d0d0;
 
-    margin-right: 8px;
+    background:
+        rgba(100, 0, 0, 0.12);
 
-    color: #620000;
+    border-color:
+        rgba(120, 0, 0, 0.45);
+
+}
+
+
+/* =====================================================
+   CHAPTER COUNT
+===================================================== */
+
+.chapter-count {
+
+    display: block;
+
+    color: #a00000;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 18px
+        rgba(120, 0, 0, 0.25);
 
 }
 
@@ -1715,13 +1853,16 @@ body.no-motion * {
     }
 
 
-    .information-block:first-child {
+    .information-block {
 
-        border-left: 0;
+        min-height: 115px;
 
-        border-bottom:
-            1px solid
-            var(--border);
+    }
+
+
+    .information-block:hover {
+
+        transform: none;
 
     }
 
