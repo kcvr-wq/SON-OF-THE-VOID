@@ -48,6 +48,28 @@ html::-webkit-scrollbar {
 }
 
 
+/* =====================================================
+   INTRO STATE
+===================================================== */
+
+html.intro-seen #intro {
+
+    display: none !important;
+
+}
+
+
+html.intro-seen #site {
+
+    opacity: 1 !important;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body {
 
     min-height: 100vh;
@@ -131,9 +153,13 @@ a {
 }
 
 
-html.intro-seen #intro {
+#intro.hide {
 
-    display: none !important;
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
 
 }
 
@@ -310,13 +336,6 @@ html.intro-seen #intro {
 #site.show {
 
     opacity: 1;
-
-}
-
-
-html.intro-seen #site {
-
-    opacity: 1 !important;
 
 }
 
@@ -2524,7 +2543,8 @@ body.no-motion * {
 
         display: grid;
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
         gap: 10px;
 
