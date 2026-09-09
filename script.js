@@ -77,13 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        NAVIGATION
+       الصفحات المستقلة:
+       الفصول → chapters/index.html
+       إعدادات الموقع → settings/index.html
     ===================================================== */
 
     const navLinks =
         document.querySelectorAll(".nav-link");
-
-    const sections =
-        document.querySelectorAll(".page-section");
 
 
     navLinks.forEach(link => {
@@ -92,6 +92,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const targetId =
                 link.dataset.section;
+
+
+            /*
+             * إذا كان الرابط للفصول
+             */
+
+            if (
+                link.textContent.includes("الفصول")
+                &&
+                !targetId
+            ) {
+
+                window.location.href =
+                    "chapters/index.html";
+
+                return;
+
+            }
+
+
+            /*
+             * إذا كان الرابط لإعدادات الموقع
+             */
+
+            if (
+                link.textContent.includes("إعدادات الموقع")
+                &&
+                !targetId
+            ) {
+
+                window.location.href =
+                    "settings/index.html";
+
+                return;
+
+            }
+
+
+            /*
+             * الأقسام الموجودة داخل الرئيسية
+             */
+
+            if (!targetId) {
+                return;
+            }
+
+
+            const sections =
+                document.querySelectorAll(".page-section");
 
 
             navLinks.forEach(item => {
@@ -255,11 +304,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       DARK MODE
+       SITE THEME
+       إعدادات عامة للموقع
     ===================================================== */
 
     const darkToggle =
         document.getElementById("darkToggle");
+
+
+    const savedTheme =
+        localStorage.getItem(
+            "sov_site_theme"
+        ) || "dark";
+
+
+    function applySiteTheme(theme) {
+
+        if (!darkToggle) {
+            return;
+        }
+
+
+        if (theme === "dark") {
+
+            darkToggle.classList.add(
+                "active"
+            );
+
+            document.body.style.filter =
+                "none";
+
+        } else {
+
+            darkToggle.classList.remove(
+                "active"
+            );
+
+            document.body.style.filter =
+                "brightness(0.75)";
+
+        }
+
+
+        localStorage.setItem(
+            "sov_site_theme",
+            theme
+        );
+
+    }
 
 
     if (darkToggle) {
@@ -268,26 +360,24 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                darkToggle.classList.toggle("active");
-
-
-                if (
+                const isDark =
                     darkToggle.classList.contains(
                         "active"
-                    )
-                ) {
+                    );
 
-                    document.body.style.filter =
-                        "none";
 
-                } else {
-
-                    document.body.style.filter =
-                        "brightness(0.75)";
-
-                }
+                applySiteTheme(
+                    isDark
+                        ? "light"
+                        : "dark"
+                );
 
             }
+        );
+
+
+        applySiteTheme(
+            savedTheme
         );
 
     }
@@ -296,10 +386,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        MOTION
+       إعداد الحركة العامة للموقع
     ===================================================== */
 
     const motionToggle =
         document.getElementById("motionToggle");
+
+
+    const savedMotion =
+        localStorage.getItem(
+            "sov_site_motion"
+        ) || "on";
+
+
+    function applyMotion(motion) {
+
+        const enabled =
+            motion === "on";
+
+
+        if (motionToggle) {
+
+            motionToggle.classList.toggle(
+                "active",
+                enabled
+            );
+
+        }
+
+
+        document.body.classList.toggle(
+            "no-motion",
+            !enabled
+        );
+
+
+        localStorage.setItem(
+            "sov_site_motion",
+            motion
+        );
+
+    }
 
 
     if (motionToggle) {
@@ -308,17 +435,24 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                motionToggle.classList.toggle("active");
-
-
-                document.body.classList.toggle(
-                    "no-motion",
-                    !motionToggle.classList.contains(
+                const enabled =
+                    motionToggle.classList.contains(
                         "active"
-                    )
+                    );
+
+
+                applyMotion(
+                    enabled
+                        ? "off"
+                        : "on"
                 );
 
             }
+        );
+
+
+        applyMotion(
+            savedMotion
         );
 
     }
