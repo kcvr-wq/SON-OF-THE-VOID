@@ -19,15 +19,15 @@
 
 
     <!-- =====================================================
-         INTRO CHECK
-         يتم التنفيذ قبل عرض الصفحة لمنع ظهور الانترو للحظة
+         SESSION INTRO CHECK
+         يمنع ظهور جزء من الانترو عند تحديث الصفحة
     ====================================================== -->
 
     <script>
         (function () {
 
             if (
-                localStorage.getItem("sov_intro_seen") === "true"
+                sessionStorage.getItem("sov_intro_seen") === "true"
             ) {
 
                 document.documentElement.classList.add(
@@ -117,7 +117,6 @@
                 <span>S</span>OV
             </div>
 
-
             <div class="sidebar-title">
                 SON OF THE VOID
             </div>
@@ -195,9 +194,6 @@
 
                     <div class="hero-content">
 
-
-                        <!-- COVER -->
-
                         <div class="cover-area">
 
                             <div class="cover-frame">
@@ -212,8 +208,6 @@
                         </div>
 
 
-
-                        <!-- HERO INFO -->
 
                         <div class="hero-info">
 
@@ -241,8 +235,6 @@
                             </p>
 
 
-
-                            <!-- NOVEL INFORMATION -->
 
                             <div class="novel-information">
 
@@ -322,8 +314,6 @@
 
 
 
-                            <!-- BUTTONS -->
-
                             <div class="hero-buttons">
 
                                 <button
@@ -381,7 +371,6 @@
 
 
                     <div class="about-main">
-
 
                         <div class="about-quote">
 
@@ -479,7 +468,6 @@
                 <div class="volume-list">
 
                     <div class="volume-item">
-
 
                         <button
                             class="volume-header"
@@ -753,10 +741,6 @@
     </div>
 
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
 
     <script src="script.js"></script>
 
