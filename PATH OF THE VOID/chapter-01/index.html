@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
+
+    <title>الفصل الأول — SON OF THE VOID</title>
+
+    <link
+        rel="stylesheet"
+        href="reader.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         READING PROGRESS
+    ========================== -->
+
+    <div
+        id="readingProgress"
+        class="reading-progress"
+    ></div>
+
+
+
+    <!-- =========================
+         READER
+    ========================== -->
+
+    <main class="reader">
+
+
+        <!-- HEADER -->
+
+        <header class="reader-header">
+
+
+            <button
+                class="reader-back"
+                id="backHome"
+            >
+                العودة
+            </button>
+
+
+            <div class="reader-title">
+
+                <span>
+                    PATH OF THE VOID
+                </span>
+
+                <h1>
+                    الفصل الأول
+                </h1>
+
+            </div>
+
+
+            <button
+                class="reader-settings-button"
+                id="openReaderSettings"
+            >
+                الإعدادات
+            </button>
+
+
+        </header>
+
+
+
+        <!-- CHAPTER -->
+
+        <article
+            class="chapter"
+            id="chapterContent"
+        >
+
+
+            <div class="chapter-heading">
+
+                <span>
+                    PATH OF THE VOID
+                </span>
+
+                <h2>
+                    الفصل الأول
+                </h2>
+
+                <p>
+                    حين بدأت السماء بالصمت
+                </p>
+
+            </div>
+
+
+
+            <div class="chapter-text">
+
+
+                <p>
+
+                    لم يكن الليل مختلفًا في ذلك اليوم.
+                    كانت الرياح تمر بين الأشجار القديمة،
+                    والقرية تستعد للنوم كما تفعل كل ليلة.
+
+                </p>
+
+
+                <p>
+
+                    لكن الطفل الواقف عند أطراف الغابة
+                    كان ينظر إلى السماء منذ وقت طويل.
+
+                    لم يكن يعرف لماذا يشعر بأن شيئًا ما
+                    يراقبه من مكان بعيد.
+
+                </p>
+
+
+                <p>
+
+                    رفع رأسه ببطء.
+
+                    لم يرَ قمرًا.
+
+                    لم يرَ نجومًا.
+
+                    كانت السماء سوداء تمامًا.
+
+                </p>
+
+
+                <p>
+
+                    ثم ظهر ذلك الضوء.
+
+                    نقطة صغيرة في البداية،
+                    بالكاد يمكن رؤيتها.
+
+                    وبعد لحظات بدأت تكبر.
+
+                </p>
+
+
+                <p>
+
+                    تراجع الطفل خطوة واحدة.
+
+                    لم يكن الصوت الذي سمعه
+                    صوت رعد، ولا صوت ريح.
+
+                    كان أشبه بنبضٍ يأتي من السماء نفسها.
+
+                </p>
+
+
+                <p>
+
+                    في تلك اللحظة،
+                    انطفأت جميع مصابيح القرية.
+
+                    وساد الصمت.
+
+                </p>
+
+
+                <p>
+
+                    لم يتحرك أحد.
+
+                    ولم يعرف أحد أن تلك اللحظة
+                    كانت بداية شيء لن يستطيع أحد
+                    إيقافه لاحقًا.
+
+                </p>
+
+
+                <p>
+
+                    أما الطفل...
+
+                    فظل واقفًا وحده،
+                    ينظر إلى الظلام.
+
+                </p>
+
+
+                <p>
+
+                    ثم سمع صوتًا خلفه.
+
+                </p>
+
+
+                <p class="chapter-dialogue">
+
+                    "لا تنظر إلى السماء."
+
+                </p>
+
+
+                <p>
+
+                    استدار الطفل بسرعة.
+
+                    لم يكن هناك أحد.
+
+                </p>
+
+
+                <p>
+
+                    لكنه عرف شيئًا واحدًا.
+
+                    لم يعد وحده.
+
+                </p>
+
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="chapter-navigation">
+
+
+            <button
+                class="chapter-nav disabled"
+                disabled
+            >
+
+                <span>
+                    السابق
+                </span>
+
+                <strong>
+                    لا يوجد
+                </strong>
+
+            </button>
+
+
+            <button
+                class="chapter-nav"
+                id="openChapterList"
+            >
+
+                <span>
+                    الفصول
+                </span>
+
+                <strong>
+                    القائمة
+                </strong>
+
+            </button>
+
+
+            <button
+                class="chapter-nav disabled"
+                disabled
+            >
+
+                <span>
+                    التالي
+                </span>
+
+                <strong>
+                    قريبًا
+                </strong>
+
+            </button>
+
+
+        </nav>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         READER SETTINGS
+    ========================== -->
+
+    <div
+        id="settingsOverlay"
+        class="settings-overlay"
+    ></div>
+
+
+    <aside
+        id="readerSettings"
+        class="reader-settings"
+    >
+
+
+        <div class="settings-header">
+
+            <div>
+
+                <span>
+                    READING SYSTEM
+                </span>
+
+                <h2>
+                    إعدادات القراءة
+                </h2>
+
+            </div>
+
+
+            <button
+                id="closeReaderSettings"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- FONT SIZE -->
+
+        <div class="setting-group">
+
+            <label>
+                حجم الخط
+            </label>
+
+
+            <div class="setting-buttons">
+
+                <button
+                    data-size="small"
+                >
+                    صغير
+                </button>
+
+                <button
+                    data-size="medium"
+                    class="selected"
+                >
+                    متوسط
+                </button>
+
+                <button
+                    data-size="large"
+                >
+                    كبير
+                </button>
+
+                <button
+                    data-size="xlarge"
+                >
+                    كبير جدًا
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FONT -->
+
+        <div class="setting-group">
+
+            <label>
+                نوع الخط
+            </label>
+
+
+            <div class="setting-buttons font-buttons">
+
+                <button
+                    data-font="cairo"
+                    class="selected"
+                >
+                    Cairo
+                </button>
+
+                <button
+                    data-font="naskh"
+                >
+                    Naskh
+                </button>
+
+                <button
+                    data-font="serif"
+                >
+                    Serif
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WIDTH -->
+
+        <div class="setting-group">
+
+            <label>
+                عرض النص
+            </label>
+
+
+            <div class="setting-buttons">
+
+                <button
+                    data-width="narrow"
+                >
+                    ضيق
+                </button>
+
+                <button
+                    data-width="medium"
+                    class="selected"
+                >
+                    متوسط
+                </button>
+
+                <button
+                    data-width="wide"
+                >
+                    واسع
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- LINE HEIGHT -->
+
+        <div class="setting-group">
+
+            <label>
+                تباعد الأسطر
+            </label>
+
+
+            <div class="setting-buttons">
+
+                <button
+                    data-line="normal"
+                >
+                    عادي
+                </button>
+
+                <button
+                    data-line="relaxed"
+                    class="selected"
+                >
+                    مريح
+                </button>
+
+                <button
+                    data-line="spacious"
+                >
+                    واسع
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PARAGRAPH -->
+
+        <div class="setting-group">
+
+            <label>
+                تباعد الفقرات
+            </label>
+
+
+            <div class="setting-buttons">
+
+                <button
+                    data-paragraph="small"
+                >
+                    صغير
+                </button>
+
+                <button
+                    data-paragraph="medium"
+                    class="selected"
+                >
+                    متوسط
+                </button>
+
+                <button
+                    data-paragraph="large"
+                >
+                    كبير
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- THEME -->
+
+        <div class="setting-group">
+
+            <label>
+                المظهر
+            </label>
+
+
+            <div class="setting-buttons">
+
+                <button
+                    data-theme="dark"
+                    class="selected"
+                >
+                    داكن
+                </button>
+
+                <button
+                    data-theme="oled"
+                >
+                    OLED
+                </button>
+
+                <button
+                    data-theme="light"
+                >
+                    فاتح
+                </button>
+
+                <button
+                    data-theme="sepia"
+                >
+                    Sepia
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROGRESS -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <strong>
+                    شريط التقدم
+                </strong>
+
+                <small>
+                    إظهار نسبة القراءة أعلى الشاشة
+                </small>
+
+            </div>
+
+
+            <button
+                class="mini-toggle active"
+                id="progressToggle"
+            >
+
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- AUTO SAVE -->
+
+        <div class="setting-row">
+
+            <div>
+
+                <strong>
+                    حفظ الإعدادات
+                </strong>
+
+                <small>
+                    حفظ إعدادات القراءة تلقائيًا
+                </small>
+
+            </div>
+
+
+            <span class="save-status">
+                تلقائي
+            </span>
+
+        </div>
+
+
+
+    </aside>
+
+
+
+    <!-- =========================
+         CHAPTER LIST
+    ========================== -->
+
+    <div
+        id="chapterListOverlay"
+        class="chapter-list-overlay"
+    >
+
+        <div class="chapter-list-panel">
+
+
+            <button
+                class="close-list"
+                id="closeChapterList"
+            >
+                ×
+            </button>
+
+
+            <span>
+                PATH OF THE VOID
+            </span>
+
+
+            <h2>
+                الفصول
+            </h2>
+
+
+            <a
+                href="index.html"
+                class="chapter-list-item active"
+            >
+
+                <small>
+                    الفصل الأول
+                </small>
+
+                <strong>
+                    حين بدأت السماء بالصمت
+                </strong>
+
+            </a>
+
+
+            <div class="chapter-list-item disabled">
+
+                <small>
+                    الفصل الثاني
+                </small>
+
+                <strong>
+                    قريبًا
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="reader.js"></script>
+
+</body>
+
+</html>
