@@ -1,12 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const intro = document.getElementById("intro");
-    const site = document.getElementById("site");
-
-
     /*
-     * شاشة الدخول
+     * =====================================================
+     * INTRO
+     * =====================================================
      */
+
+    const intro =
+        document.getElementById("intro");
+
+    const site =
+        document.getElementById("site");
+
 
     setTimeout(() => {
 
@@ -23,37 +28,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-     * التنقل بين الأقسام
+     * =====================================================
+     * NAVIGATION
+     * =====================================================
      */
 
-    const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll(".page-section");
+    const navLinks =
+        document.querySelectorAll(".nav-link");
+
+    const sections =
+        document.querySelectorAll(".page-section");
+
 
     navLinks.forEach(link => {
 
         link.addEventListener("click", () => {
 
-            const targetId = link.dataset.section;
+            const targetId =
+                link.dataset.section;
+
 
             navLinks.forEach(item => {
+
                 item.classList.remove("active");
+
             });
+
 
             link.classList.add("active");
 
+
             sections.forEach(section => {
-                section.classList.remove("active-section");
+
+                section.classList.remove(
+                    "active-section"
+                );
+
             });
 
-            const targetSection = document.getElementById(targetId);
+
+            const targetSection =
+                document.getElementById(targetId);
+
 
             if (targetSection) {
-                targetSection.classList.add("active-section");
+
+                targetSection.classList.add(
+                    "active-section"
+                );
+
             }
 
+
             window.scrollTo({
+
                 top: 0,
+
                 behavior: "smooth"
+
             });
 
         });
@@ -63,119 +95,157 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-     * مسار الفصل الأول
+     * =====================================================
+     * PATH OF THE VOID
+     * =====================================================
      */
 
-    const chapterOnePath =
-        "PATH OF THE VOID/chapter-01/index.html";
+    const pathOfTheVoid =
+        "PATH%20OF%20THE%20VOID/index.html";
 
 
 
     /*
-     * زر ابدأ القراءة
-     *
-     * يبدأ من بداية الفصل
+     * =====================================================
+     * START READING
+     * =====================================================
      */
 
     const startReading =
-        document.getElementById("startReading");
+        document.getElementById(
+            "startReading"
+        );
+
 
     if (startReading) {
 
-        startReading.addEventListener("click", () => {
+        startReading.addEventListener(
+            "click",
+            () => {
 
-            window.location.href =
-                chapterOnePath;
+                window.location.href =
+                    pathOfTheVoid;
 
-        });
+            }
+        );
 
     }
 
 
 
     /*
-     * زر تابع القراءة
+     * =====================================================
+     * CONTINUE READING
+     * =====================================================
      *
-     * يفتح آخر موضع محفوظ
+     * حاليًا نفس مكان البداية.
+     * سنربطه بنظام الحفظ الحقيقي
+     * عندما ننتهي من بناء القارئ.
      */
 
     const continueReading =
-        document.getElementById("continueReading");
+        document.getElementById(
+            "continueReading"
+        );
+
 
     if (continueReading) {
 
-        continueReading.addEventListener("click", () => {
-
-            const savedPosition =
-                localStorage.getItem("sov-reading-position");
-
-            if (savedPosition) {
+        continueReading.addEventListener(
+            "click",
+            () => {
 
                 window.location.href =
-                    chapterOnePath + "#continue";
-
-            } else {
-
-                window.location.href =
-                    chapterOnePath;
+                    pathOfTheVoid;
 
             }
-
-        });
+        );
 
     }
 
 
 
     /*
-     * الوضع المظلم
+     * =====================================================
+     * DARK MODE
+     * =====================================================
      */
 
     const darkToggle =
-        document.getElementById("darkToggle");
+        document.getElementById(
+            "darkToggle"
+        );
+
 
     if (darkToggle) {
 
-        darkToggle.addEventListener("click", () => {
+        darkToggle.addEventListener(
+            "click",
+            () => {
 
-            darkToggle.classList.toggle("active");
+                darkToggle.classList.toggle(
+                    "active"
+                );
 
-            if (darkToggle.classList.contains("active")) {
 
-                document.body.style.filter = "none";
+                if (
+                    darkToggle.classList.contains(
+                        "active"
+                    )
+                ) {
 
-            } else {
+                    document.body.style.filter =
+                        "none";
 
-                document.body.style.filter =
-                    "brightness(0.75)";
+                } else {
+
+                    document.body.style.filter =
+                        "brightness(0.75)";
+
+                }
 
             }
-
-        });
+        );
 
     }
 
 
 
     /*
-     * الحركة
+     * =====================================================
+     * MOTION
+     * =====================================================
      */
 
     const motionToggle =
-        document.getElementById("motionToggle");
+        document.getElementById(
+            "motionToggle"
+        );
+
 
     if (motionToggle) {
 
-        motionToggle.addEventListener("click", () => {
+        motionToggle.addEventListener(
+            "click",
+            () => {
 
-            motionToggle.classList.toggle("active");
+                motionToggle.classList.toggle(
+                    "active"
+                );
 
-            document.body.classList.toggle(
-                "no-motion",
-                !motionToggle.classList.contains("active")
-            );
 
-        });
+                document.body.classList.toggle(
+
+                    "no-motion",
+
+                    !motionToggle.classList.contains(
+                        "active"
+                    )
+
+                );
+
+            }
+        );
 
     }
 
