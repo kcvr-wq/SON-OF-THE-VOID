@@ -806,10 +806,12 @@ a {
     display: grid;
 
     grid-template-columns:
-        1.35fr
-        0.65fr;
+        minmax(0, 1.45fr)
+        minmax(180px, 0.75fr);
 
     gap: 1px;
+
+    width: 100%;
 
     max-width: 700px;
 
@@ -833,6 +835,8 @@ a {
 
     position: relative;
 
+    min-width: 0;
+
     min-height: 125px;
 
     padding: 22px 24px;
@@ -853,8 +857,6 @@ a {
 
 }
 
-
-/* RED ACCENT */
 
 .information-block::before {
 
@@ -883,8 +885,6 @@ a {
 }
 
 
-/* GLOW */
-
 .information-block::after {
 
     content: "";
@@ -908,8 +908,6 @@ a {
 
 }
 
-
-/* HOVER */
 
 .information-block:hover {
 
@@ -938,12 +936,16 @@ a {
 
     justify-content: space-between;
 
+    gap: 10px;
+
     margin-bottom: 18px;
 
 }
 
 
 .information-number {
+
+    flex-shrink: 0;
 
     color: #650000;
 
@@ -966,12 +968,25 @@ a {
 
     letter-spacing: 3px;
 
+    white-space: nowrap;
+
 }
 
 
 /* =====================================================
    INFORMATION CONTENT
 ===================================================== */
+
+.information-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-width: 0;
+
+}
+
 
 .information-content h3 {
 
@@ -982,6 +997,8 @@ a {
     font-size: 18px;
 
     font-weight: 600;
+
+    white-space: nowrap;
 
 }
 
@@ -1007,6 +1024,8 @@ a {
 
     align-items: center;
 
+    justify-content: center;
+
     min-height: 27px;
 
     padding:
@@ -1015,6 +1034,8 @@ a {
     color: #909090;
 
     font-size: 11px;
+
+    white-space: nowrap;
 
     background:
         rgba(255, 255, 255, 0.025);
@@ -1061,6 +1082,10 @@ a {
     font-weight: 500;
 
     letter-spacing: 1px;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
 
     text-shadow:
         0 0 18px
@@ -1867,6 +1892,27 @@ body.no-motion * {
     }
 
 
+    .information-content h3 {
+
+        white-space: normal;
+
+    }
+
+
+    .information-label {
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .chapter-count {
+
+        font-size: 19px;
+
+    }
+
+
     .hero-buttons {
 
         flex-direction: column;
@@ -1985,6 +2031,22 @@ body.no-motion * {
     .about-text p {
 
         font-size: 13px;
+
+    }
+
+
+    .information-top {
+
+        margin-bottom: 14px;
+
+    }
+
+
+    .information-label {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
 
     }
 
