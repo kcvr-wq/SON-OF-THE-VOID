@@ -15,11 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
 
         if (intro) {
+
             intro.classList.add("hide");
+
         }
 
         if (site) {
+
             site.classList.add("show");
+
         }
 
     }, 3200);
@@ -46,7 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             navLinks.forEach(item => {
+
                 item.classList.remove("active");
+
             });
 
 
@@ -54,7 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             sections.forEach(section => {
-                section.classList.remove("active-section");
+
+                section.classList.remove(
+                    "active-section"
+                );
+
             });
 
 
@@ -100,6 +110,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const volume =
                 header.closest(".volume-item");
 
+
+            if (!volume) return;
+
+
             const isOpen =
                 volume.classList.contains("open");
 
@@ -110,8 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     item.classList.remove("open");
 
+
                     const itemHeader =
                         item.querySelector(".volume-header");
+
 
                     if (itemHeader) {
 
@@ -128,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isOpen) {
 
                 volume.classList.add("open");
+
 
                 header.setAttribute(
                     "aria-expanded",
