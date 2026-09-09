@@ -3,19 +3,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const intro = document.getElementById("intro");
     const site = document.getElementById("site");
 
+
     /*
      * شاشة الدخول
-     * تختفي تلقائيًا بعد 3.2 ثوانٍ
      */
+
     setTimeout(() => {
-        intro.classList.add("hide");
-        site.classList.add("show");
+
+        if (intro) {
+            intro.classList.add("hide");
+        }
+
+        if (site) {
+            site.classList.add("show");
+        }
+
     }, 3200);
+
 
 
     /*
      * التنقل بين الأقسام
      */
+
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll(".page-section");
 
@@ -45,41 +55,84 @@ document.addEventListener("DOMContentLoaded", () => {
                 top: 0,
                 behavior: "smooth"
             });
+
         });
 
     });
 
 
+
+    /*
+     * مسار الفصل الأول
+     */
+
+    const chapterOnePath =
+        "PATH OF THE VOID/chapter-01/index.html";
+
+
+
     /*
      * زر ابدأ القراءة
+     *
+     * يبدأ من بداية الفصل
      */
-    const startReading = document.getElementById("startReading");
+
+    const startReading =
+        document.getElementById("startReading");
 
     if (startReading) {
+
         startReading.addEventListener("click", () => {
-            window.location.href = "chapters/chapter-01/index.html";
+
+            window.location.href =
+                chapterOnePath;
+
         });
+
     }
+
 
 
     /*
      * زر تابع القراءة
-     * حاليًا يبدأ من الفصل الأول
-     * وسنطور نظام الحفظ لاحقًا
+     *
+     * يفتح آخر موضع محفوظ
      */
-    const continueReading = document.getElementById("continueReading");
+
+    const continueReading =
+        document.getElementById("continueReading");
 
     if (continueReading) {
+
         continueReading.addEventListener("click", () => {
-            window.location.href = "chapters/chapter-01/index.html";
+
+            const savedPosition =
+                localStorage.getItem("sov-reading-position");
+
+            if (savedPosition) {
+
+                window.location.href =
+                    chapterOnePath + "#continue";
+
+            } else {
+
+                window.location.href =
+                    chapterOnePath;
+
+            }
+
         });
+
     }
+
 
 
     /*
      * الوضع المظلم
      */
-    const darkToggle = document.getElementById("darkToggle");
+
+    const darkToggle =
+        document.getElementById("darkToggle");
 
     if (darkToggle) {
 
@@ -88,9 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
             darkToggle.classList.toggle("active");
 
             if (darkToggle.classList.contains("active")) {
+
                 document.body.style.filter = "none";
+
             } else {
-                document.body.style.filter = "brightness(0.75)";
+
+                document.body.style.filter =
+                    "brightness(0.75)";
+
             }
 
         });
@@ -98,10 +156,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /*
      * الحركة
      */
-    const motionToggle = document.getElementById("motionToggle");
+
+    const motionToggle =
+        document.getElementById("motionToggle");
 
     if (motionToggle) {
 
