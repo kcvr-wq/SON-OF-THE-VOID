@@ -826,10 +826,6 @@ a {
 }
 
 
-/* =====================================================
-   INFORMATION BLOCK
-===================================================== */
-
 .information-block {
 
     position: relative;
@@ -858,10 +854,6 @@ a {
 
 }
 
-
-/* =====================================================
-   INFORMATION TOP
-===================================================== */
 
 .information-top {
 
@@ -906,10 +898,6 @@ a {
 }
 
 
-/* =====================================================
-   INFORMATION CONTENT
-===================================================== */
-
 .information-content {
 
     min-width: 0;
@@ -929,10 +917,6 @@ a {
 
 }
 
-
-/* =====================================================
-   GENRES
-===================================================== */
 
 .genre-list {
 
@@ -973,10 +957,6 @@ a {
 }
 
 
-/* =====================================================
-   CHAPTER COUNT
-===================================================== */
-
 .chapter-count {
 
     display: block;
@@ -1001,10 +981,6 @@ a {
 
 }
 
-
-/* =====================================================
-   SUBTLE RED ACCENT
-===================================================== */
 
 .information-block::after {
 
@@ -1053,10 +1029,6 @@ a {
 }
 
 
-/* =========================
-   COMMON
-========================= */
-
 .primary-button,
 .secondary-button {
 
@@ -1090,10 +1062,6 @@ a {
 
 }
 
-
-/* =========================
-   START READING
-========================= */
 
 .primary-button {
 
@@ -1138,10 +1106,6 @@ a {
 
 }
 
-
-/* =========================
-   CONTINUE READING
-========================= */
 
 .secondary-button {
 
@@ -1497,6 +1461,84 @@ a {
 
 
 /* =====================================================
+   VOLUME CARD
+===================================================== */
+
+.volume-card {
+
+    min-height: 125px;
+
+}
+
+
+.volume-card > div {
+
+    min-width: 0;
+
+}
+
+
+.volume-card small {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #650000;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.volume-card h3 {
+
+    margin-top: 0;
+
+    color: #d0d0d0;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+}
+
+
+.volume-description {
+
+    margin-top: 7px;
+
+    color: #5f5f5f;
+
+    font-size: 11px;
+
+}
+
+
+.volume-card b {
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+
+}
+
+
+.volume-card:hover b {
+
+    color: #8a0000;
+
+    transform:
+        translateX(-4px);
+
+}
+
+
+/* =====================================================
    WORLD
 ===================================================== */
 
@@ -1660,6 +1702,266 @@ a {
 
     background:
         #a00000;
+
+}
+
+
+/* =====================================================
+   VOLUME PAGE
+===================================================== */
+
+.volume-page {
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        70px 8vw
+        100px;
+
+}
+
+
+.volume-header {
+
+    max-width: 900px;
+
+    margin-bottom: 45px;
+
+}
+
+
+.volume-back {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 35px;
+
+    padding:
+        10px 16px;
+
+    color: #777;
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        var(--border);
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+
+}
+
+
+.volume-back:hover {
+
+    color: #eee;
+
+    background:
+        rgba(100, 0, 0, 0.06);
+
+    border-color:
+        rgba(110, 0, 0, 0.45);
+
+}
+
+
+.volume-header h1 {
+
+    margin-top: 0;
+
+    font-family: "Cinzel", serif;
+
+    font-size:
+        clamp(42px, 6vw, 76px);
+
+    line-height: 0.95;
+
+    letter-spacing: 3px;
+
+}
+
+
+.volume-header h1 span {
+
+    color: #760000;
+
+}
+
+
+.volume-header > p {
+
+    max-width: 650px;
+
+}
+
+
+.volume-divider {
+
+    width: 90px;
+
+    height: 1px;
+
+    margin-top: 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #700000,
+            transparent
+        );
+
+}
+
+
+.volume-chapters {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-width: 900px;
+
+}
+
+
+.volume-chapter {
+
+    display: grid;
+
+    grid-template-columns:
+        75px
+        1fr
+        40px;
+
+    align-items: center;
+
+    min-height: 105px;
+
+    padding:
+        18px 22px;
+
+    background:
+        #080808;
+
+    border:
+        1px solid
+        var(--border);
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.volume-chapter:hover {
+
+    background:
+        #0c0c0c;
+
+    border-color:
+        rgba(100, 0, 0, 0.6);
+
+    transform:
+        translateX(-5px);
+
+}
+
+
+.volume-chapter-number {
+
+    color: #650000;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.volume-chapter-info small {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #5c5c5c;
+
+    font-size: 11px;
+
+}
+
+
+.volume-chapter-info h2 {
+
+    color: #d0d0d0;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+
+.volume-chapter-info p {
+
+    margin-top: 5px;
+
+    color: #555;
+
+    font-size: 11px;
+
+}
+
+
+.volume-chapter-arrow {
+
+    color: #650000;
+
+    font-size: 20px;
+
+    text-align: center;
+
+}
+
+
+.volume-chapter.disabled {
+
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+}
+
+
+.volume-chapter.disabled:hover {
+
+    background:
+        #080808;
+
+    border-color:
+        var(--border);
+
+    transform: none;
 
 }
 
@@ -2020,6 +2322,64 @@ body.no-motion * {
 
     }
 
+
+    .volume-card {
+
+        min-height: 115px;
+
+    }
+
+
+    .volume-card h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    .volume-description {
+
+        font-size: 10px;
+
+    }
+
+
+    .volume-page {
+
+        padding:
+            45px 22px 90px;
+
+    }
+
+
+    .volume-header h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .volume-chapter {
+
+        grid-template-columns:
+            50px
+            1fr
+            35px;
+
+        min-height: 95px;
+
+        padding:
+            15px;
+
+    }
+
+
+    .volume-chapter-info h2 {
+
+        font-size: 15px;
+
+    }
+
 }
 
 
@@ -2089,6 +2449,13 @@ body.no-motion * {
         font-size: 7px;
 
         letter-spacing: 1.5px;
+
+    }
+
+
+    .volume-header h1 {
+
+        font-size: 34px;
 
     }
 
