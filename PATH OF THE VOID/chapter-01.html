@@ -31,7 +31,7 @@
 
     <link
         rel="preconnect"
-        href="https://fonts.gstatic.com"
+        href="https://fonts.googleapis.com"
         crossorigin
     >
 
@@ -1603,15 +1603,6 @@
 
             <button
                 class="reader-action"
-                id="bookmarkButton"
-                type="button"
-            >
-                حفظ الموضع
-            </button>
-
-
-            <button
-                class="reader-action"
                 id="settingsButton"
                 type="button"
             >
@@ -2400,12 +2391,6 @@
                     );
 
 
-                const bookmarkButton =
-                    document.getElementById(
-                        "bookmarkButton"
-                    );
-
-
                 const fullscreenButton =
                     document.getElementById(
                         "fullscreenButton"
@@ -2450,16 +2435,13 @@
                 /* =================================================
                    CHAPTER-SPECIFIC STORAGE
                    
-                   هذه البيانات خاصة بالفصل الأول فقط.
+                   هذا الموقع خاص بالفصل الأول.
                 ================================================== */
 
                 const CHAPTER = {
 
                     position:
-                        "sov_chapter_01_position",
-
-                    bookmark:
-                        "sov_chapter_01_bookmark"
+                        "sov_chapter_01_position"
 
                 };
 
@@ -2521,7 +2503,7 @@
 
 
                 /* =================================================
-                   READING PROGRESS + POSITION
+                   READING PROGRESS + AUTO SAVE
                 ================================================== */
 
                 function updateProgress() {
@@ -2558,6 +2540,11 @@
                     progressBar.style.width =
                         progress + "%";
 
+
+                    /*
+                       حفظ موضع القراءة تلقائيًا.
+                       لا يوجد زر للحفظ.
+                    */
 
                     localStorage.setItem(
                         CHAPTER.position,
@@ -3251,86 +3238,6 @@
                     });
 
                 }
-
-
-
-                /* =================================================
-                   BOOKMARK — CHAPTER 01 ONLY
-                ================================================== */
-
-                function updateBookmarkButton() {
-
-                    const bookmark =
-                        localStorage.getItem(
-                            CHAPTER.bookmark
-                        );
-
-
-                    if (!bookmarkButton) return;
-
-
-                    if (bookmark) {
-
-                        bookmarkButton.textContent =
-                            "إزالة الحفظ";
-
-                        bookmarkButton.classList.add(
-                            "active"
-                        );
-
-                    } else {
-
-                        bookmarkButton.textContent =
-                            "حفظ الموضع";
-
-                        bookmarkButton.classList.remove(
-                            "active"
-                        );
-
-                    }
-
-                }
-
-
-                if (bookmarkButton) {
-
-                    bookmarkButton.addEventListener(
-                        "click",
-                        () => {
-
-                            const bookmark =
-                                localStorage.getItem(
-                                    CHAPTER.bookmark
-                                );
-
-
-                            if (bookmark) {
-
-                                localStorage.removeItem(
-                                    CHAPTER.bookmark
-                                );
-
-                            } else {
-
-                                localStorage.setItem(
-                                    CHAPTER.bookmark,
-                                    String(
-                                        window.scrollY
-                                    )
-                                );
-
-                            }
-
-
-                            updateBookmarkButton();
-
-                        }
-                    );
-
-                }
-
-
-                updateBookmarkButton();
 
 
 
