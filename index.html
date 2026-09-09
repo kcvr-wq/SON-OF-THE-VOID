@@ -18,6 +18,28 @@
     <title>SON OF THE VOID</title>
 
 
+    <!-- =====================================================
+         INTRO CHECK
+         يتم التنفيذ قبل عرض الصفحة لمنع ظهور الانترو للحظة
+    ====================================================== -->
+
+    <script>
+        (function () {
+
+            if (
+                localStorage.getItem("sov_intro_seen") === "true"
+            ) {
+
+                document.documentElement.classList.add(
+                    "intro-seen"
+                );
+
+            }
+
+        })();
+    </script>
+
+
     <!-- =========================
          FAVICON
     ========================== -->
@@ -94,6 +116,7 @@
             <div class="logo">
                 <span>S</span>OV
             </div>
+
 
             <div class="sidebar-title">
                 SON OF THE VOID
@@ -224,8 +247,6 @@
                             <div class="novel-information">
 
 
-                                <!-- GENRES -->
-
                                 <div class="information-block">
 
                                     <div class="information-top">
@@ -265,8 +286,6 @@
                                 </div>
 
 
-
-                                <!-- CHAPTER COUNT -->
 
                                 <div class="information-block">
 
@@ -364,8 +383,6 @@
                     <div class="about-main">
 
 
-                        <!-- QUOTE -->
-
                         <div class="about-quote">
 
                             <span class="quote-mark">
@@ -380,8 +397,6 @@
                         </div>
 
 
-
-                        <!-- TEXT -->
 
                         <div class="about-text">
 
@@ -414,12 +429,14 @@
 
 
                             <p class="about-final">
+
                                 حتى يصبح السؤال الحقيقي ليس عمّا سيحدث،
                                 بل:
 
                                 <strong>
                                     ماذا لو كانت البداية مختلفة عمّا ظن الجميع؟
                                 </strong>
+
                             </p>
 
                         </div>
@@ -461,11 +478,6 @@
 
                 <div class="volume-list">
 
-
-                    <!-- =========================
-                         PATH OF THE VOID
-                    ========================== -->
-
                     <div class="volume-item">
 
 
@@ -506,8 +518,6 @@
                             <div class="volume-chapters-inner">
 
 
-                                <!-- CHAPTER 01 -->
-
                                 <a
                                     href="PATH%20OF%20THE%20VOID/chapter-01.html"
                                     class="volume-chapter"
@@ -538,15 +548,11 @@
                                 </a>
 
 
-
-                                <!-- CHAPTER 02 -->
-
                                 <div class="volume-chapter disabled">
 
                                     <span class="chapter-number">
                                         02
                                     </span>
-
 
                                     <span class="chapter-info">
 
@@ -560,7 +566,6 @@
 
                                     </span>
 
-
                                     <span class="chapter-arrow">
                                         —
                                     </span>
@@ -568,15 +573,11 @@
                                 </div>
 
 
-
-                                <!-- CHAPTER 03 -->
-
                                 <div class="volume-chapter disabled">
 
                                     <span class="chapter-number">
                                         03
                                     </span>
-
 
                                     <span class="chapter-info">
 
@@ -589,7 +590,6 @@
                                         </span>
 
                                     </span>
-
 
                                     <span class="chapter-arrow">
                                         —
@@ -693,7 +693,6 @@
 
                 <div class="settings-box">
 
-
                     <div class="setting-row">
 
                         <div>
@@ -743,7 +742,6 @@
                         </button>
 
                     </div>
-
 
                 </div>
 
