@@ -131,13 +131,9 @@ a {
 }
 
 
-#intro.hide {
+html.intro-seen #intro {
 
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
+    display: none !important;
 
 }
 
@@ -228,6 +224,7 @@ a {
 .intro-line {
 
     width: 100px;
+
     height: 1px;
 
     margin: 25px auto;
@@ -313,6 +310,13 @@ a {
 #site.show {
 
     opacity: 1;
+
+}
+
+
+html.intro-seen #site {
+
+    opacity: 1 !important;
 
 }
 
@@ -781,6 +785,7 @@ a {
 .hero-divider {
 
     width: 85px;
+
     height: 1px;
 
     margin:
@@ -1624,10 +1629,6 @@ a {
 }
 
 
-/* =====================================================
-   VOLUME NUMBER
-===================================================== */
-
 .volume-number {
 
     display: flex;
@@ -1637,7 +1638,6 @@ a {
     justify-content: center;
 
     width: 42px;
-
     height: 42px;
 
     border:
@@ -1686,10 +1686,6 @@ a {
 
 }
 
-
-/* =====================================================
-   VOLUME INFO
-===================================================== */
 
 .volume-info {
 
@@ -1750,10 +1746,6 @@ a {
 }
 
 
-/* =====================================================
-   VOLUME ARROW
-===================================================== */
-
 .volume-arrow {
 
     display: flex;
@@ -1763,7 +1755,6 @@ a {
     justify-content: center;
 
     width: 30px;
-
     height: 30px;
 
     border:
@@ -1950,10 +1941,6 @@ a {
 }
 
 
-/* =====================================================
-   CHAPTER NUMBER
-===================================================== */
-
 .chapter-number {
 
     display: flex;
@@ -1963,7 +1950,6 @@ a {
     justify-content: center;
 
     width: 34px;
-
     height: 34px;
 
     border:
@@ -2000,10 +1986,6 @@ a {
 
 }
 
-
-/* =====================================================
-   CHAPTER INFO
-===================================================== */
 
 .chapter-info {
 
@@ -2049,10 +2031,6 @@ a {
 }
 
 
-/* =====================================================
-   CHAPTER ARROW
-===================================================== */
-
 .chapter-arrow {
 
     color:
@@ -2082,10 +2060,6 @@ a {
 }
 
 
-/* =====================================================
-   DISABLED CHAPTER
-===================================================== */
-
 .volume-chapter.disabled {
 
     opacity:
@@ -2104,39 +2078,6 @@ a {
 
     padding-right:
         10px;
-
-}
-
-
-.volume-chapter.disabled:hover .chapter-number {
-
-    color:
-        #650000;
-
-    border-color:
-        rgba(100,0,0,0.23);
-
-    background:
-        transparent;
-
-}
-
-
-.volume-chapter.disabled:hover .chapter-title {
-
-    color:
-        #bdbdbd;
-
-}
-
-
-.volume-chapter.disabled:hover .chapter-arrow {
-
-    color:
-        #650000;
-
-    transform:
-        none;
 
 }
 
@@ -2485,8 +2426,7 @@ body.no-motion * {
 
         order: 2;
 
-        margin:
-            0 auto;
+        margin: 0 auto;
 
     }
 
@@ -2734,7 +2674,6 @@ body.no-motion * {
         font-size: 12px;
 
     }
-
 
 }
 
