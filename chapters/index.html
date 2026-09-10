@@ -17,1561 +17,105 @@
 
     <title>الفصول — SON OF THE VOID</title>
 
-
-    <!-- =====================================================
-         FONTS
-    ====================================================== -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- =====================================================
-         FAVICON
-    ====================================================== -->
-
     <link
         rel="icon"
         type="image/svg+xml"
         href="../assets/favicon/favicon.svg"
     >
 
-
-    <style>
-
-        /* =====================================================
-           ROOT
-        ====================================================== */
-
-        :root {
-
-            --black: #050505;
-            --black-2: #080808;
-            --card: #0d0d0d;
-
-            --red: #650000;
-            --red-light: #8b0000;
-
-            --text: #eeeeee;
-            --text-soft: #918888;
-            --text-dark: #5f5757;
-
-            --border:
-                rgba(255,255,255,0.07);
-
-        }
-
-
-        /* =====================================================
-           RESET
-        ====================================================== */
-
-        * {
-
-            margin: 0;
-            padding: 0;
-
-            box-sizing: border-box;
-
-        }
-
-
-        html {
-
-            scroll-behavior: smooth;
-
-            scrollbar-width: none;
-
-        }
-
-
-        html::-webkit-scrollbar {
-
-            display: none;
-
-        }
-
-
-        body {
-
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at 50% -15%,
-                    rgba(165,29,29,0.10),
-                    transparent 42%
-                ),
-                var(--black);
-
-            color:
-                var(--text);
-
-            font-family:
-                "Cairo",
-                sans-serif;
-
-            overflow-x:
-                hidden;
-
-            scrollbar-width:
-                none;
-
-        }
-
-
-        body::-webkit-scrollbar {
-
-            display:
-                none;
-
-        }
-
-
-        button,
-        input,
-        select {
-
-            font:
-                inherit;
-
-        }
-
-
-        button {
-
-            border:
-                0;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        a {
-
-            color:
-                inherit;
-
-            text-decoration:
-                none;
-
-        }
-
-
-        /* =====================================================
-           TOP BAR
-        ====================================================== */
-
-        .topbar {
-
-            position:
-                sticky;
-
-            top:
-                0;
-
-            z-index:
-                100;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            padding:
-                18px 34px;
-
-            background:
-                rgba(5,5,5,0.88);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.045);
-
-            backdrop-filter:
-                blur(14px);
-
-            -webkit-backdrop-filter:
-                blur(14px);
-
-        }
-
-
-        .brand {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                12px;
-
-        }
-
-
-        .brand-mark {
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            border:
-                1px solid
-                rgba(105,0,0,0.4);
-
-            background:
-                rgba(85,0,0,0.07);
-
-            color:
-                #790000;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                12px;
-
-            letter-spacing:
-                1px;
-
-        }
-
-
-        .brand-name {
-
-            color:
-                #d4cdcd;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                13px;
-
-            letter-spacing:
-                2px;
-
-        }
-
-
-        .home-button {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            padding:
-                10px 15px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.06);
-
-            color:
-                #aaa0a0;
-
-            font-size:
-                12px;
-
-            transition:
-                color 0.25s ease,
-                border-color 0.25s ease,
-                background 0.25s ease;
-
-        }
-
-
-        .home-button:hover {
-
-            color:
-                #ffffff;
-
-            border-color:
-                rgba(105,0,0,0.42);
-
-            background:
-                rgba(85,0,0,0.05);
-
-        }
-
-
-        /* =====================================================
-           PAGE
-        ====================================================== */
-
-        .page {
-
-            width:
-                min(
-                    1080px,
-                    calc(100% - 40px)
-                );
-
-            margin:
-                0 auto;
-
-            padding:
-                82px 0 100px;
-
-        }
-
-
-        .page-header {
-
-            margin-bottom:
-                42px;
-
-        }
-
-
-        .eyebrow {
-
-            margin-bottom:
-                12px;
-
-            color:
-                var(--red-light);
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                11px;
-
-            letter-spacing:
-                4px;
-
-        }
-
-
-        .page-title {
-
-            color:
-                #f1eaea;
-
-            font-size:
-                clamp(
-                    38px,
-                    6vw,
-                    66px
-                );
-
-            font-weight:
-                700;
-
-            line-height:
-                1.1;
-
-        }
-
-
-        .page-description {
-
-            max-width:
-                620px;
-
-            margin-top:
-                17px;
-
-            color:
-                var(--text-soft);
-
-            font-size:
-                14px;
-
-            line-height:
-                2;
-
-        }
-
-
-        /* =====================================================
-           QUICK ACTIONS
-        ====================================================== */
-
-        .quick-panel {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                minmax(0, 1fr)
-                auto
-                auto;
-
-            gap:
-                10px;
-
-            margin-bottom:
-                25px;
-
-        }
-
-
-        .search-box {
-
-            position:
-                relative;
-
-        }
-
-
-        .search-input {
-
-            width:
-                100%;
-
-            height:
-                48px;
-
-            padding:
-                0 17px;
-
-            outline:
-                none;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.07);
-
-            background:
-                rgba(255,255,255,0.012);
-
-            color:
-                #ded8d8;
-
-            font-size:
-                12px;
-
-            transition:
-                border-color 0.25s ease,
-                background 0.25s ease;
-
-        }
-
-
-        .search-input::placeholder {
-
-            color:
-                #5e5656;
-
-        }
-
-
-        .search-input:focus {
-
-            border-color:
-                rgba(115,0,0,0.55);
-
-            background:
-                rgba(95,0,0,0.025);
-
-        }
-
-
-        .sort-select {
-
-            min-width:
-                150px;
-
-            height:
-                48px;
-
-            padding:
-                0 13px;
-
-            outline:
-                none;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.07);
-
-            background:
-                #0c0c0c;
-
-            color:
-                #9e9595;
-
-            font-size:
-                11px;
-
-            cursor:
-                pointer;
-
-        }
-
-
-        .reset-button {
-
-            height:
-                48px;
-
-            padding:
-                0 16px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.07);
-
-            background:
-                rgba(255,255,255,0.012);
-
-            color:
-                #777;
-
-            font-size:
-                11px;
-
-            transition:
-                0.25s ease;
-
-        }
-
-
-        .reset-button:hover {
-
-            color:
-                #d0c8c8;
-
-            border-color:
-                rgba(105,0,0,0.42);
-
-            background:
-                rgba(85,0,0,0.05);
-
-        }
-
-
-        /* =====================================================
-           VOLUME
-        ====================================================== */
-
-        .volume-list {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                18px;
-
-        }
-
-
-        .volume-item {
-
-            overflow:
-                hidden;
-
-            border:
-                1px solid
-                var(--border);
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.018),
-                    rgba(255,255,255,0.005)
-                ),
-                var(--card);
-
-            transition:
-                border-color 0.3s ease;
-
-        }
-
-
-        .volume-item:hover {
-
-            border-color:
-                rgba(165,29,29,0.35);
-
-        }
-
-
-        .volume-item.open {
-
-            border-color:
-                rgba(165,29,29,0.46);
-
-        }
-
-
-        .volume-header {
-
-            width:
-                100%;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                58px
-                1fr
-                42px;
-
-            align-items:
-                center;
-
-            gap:
-                18px;
-
-            padding:
-                25px 24px;
-
-            background:
-                transparent;
-
-            color:
-                inherit;
-
-            text-align:
-                right;
-
-        }
-
-
-        .volume-number {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border:
-                1px solid
-                rgba(110,0,0,0.38);
-
-            background:
-                rgba(75,0,0,0.08);
-
-            color:
-                #770000;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                2px;
-
-        }
-
-
-        .volume-info {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                5px;
-
-        }
-
-
-        .volume-name {
-
-            color:
-                #d7d0d0;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                clamp(
-                    16px,
-                    2vw,
-                    22px
-                );
-
-            letter-spacing:
-                1.5px;
-
-            direction:
-                ltr;
-
-            text-align:
-                right;
-
-        }
-
-
-        .volume-meta {
-
-            color:
-                #625959;
-
-            font-size:
-                10px;
-
-        }
-
-
-        .volume-status {
-
-            margin-top:
-                2px;
-
-            color:
-                #755d5d;
-
-            font-size:
-                9px;
-
-        }
-
-
-        .volume-arrow {
-
-            width:
-                34px;
-
-            height:
-                34px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.06);
-
-            color:
-                #720000;
-
-            font-family:
-                Arial,
-                sans-serif;
-
-            font-size:
-                20px;
-
-            transition:
-                transform 0.3s ease,
-                color 0.25s ease,
-                border-color 0.25s ease,
-                background 0.25s ease;
-
-        }
-
-
-        .volume-item.open .volume-arrow {
-
-            transform:
-                rotate(45deg);
-
-            color:
-                #a00000;
-
-            border-color:
-                rgba(130,0,0,0.45);
-
-            background:
-                rgba(100,0,0,0.08);
-
-        }
-
-
-        /* =====================================================
-           CHAPTER AREA
-        ====================================================== */
-
-        .volume-chapters {
-
-            display:
-                grid;
-
-            grid-template-rows:
-                0fr;
-
-            transition:
-                grid-template-rows 0.4s ease;
-
-        }
-
-
-        .volume-item.open .volume-chapters {
-
-            grid-template-rows:
-                1fr;
-
-        }
-
-
-        .volume-chapters-inner {
-
-            min-height:
-                0;
-
-            overflow:
-                hidden;
-
-            border-top:
-                1px solid
-                transparent;
-
-        }
-
-
-        .volume-item.open .volume-chapters-inner {
-
-            border-top-color:
-                #211111;
-
-            padding:
-                10px 12px 14px;
-
-        }
-
-
-        /* =====================================================
-           CHAPTER
-        ====================================================== */
-
-        .chapter {
-
-            position:
-                relative;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                52px
-                minmax(0, 1fr)
-                auto;
-
-            align-items:
-                center;
-
-            gap:
-                16px;
-
-            min-height:
-                96px;
-
-            padding:
-                13px 12px;
-
-            border:
-                1px solid
-                transparent;
-
-            color:
-                inherit;
-
-            text-decoration:
-                none;
-
-            cursor:
-                pointer;
-
-            transition:
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-
-        }
-
-
-        .chapter.hidden {
-
-            display:
-                none;
-
-        }
-
-
-        .chapter:hover {
-
-            background:
-                rgba(255,255,255,0.018);
-
-            border-color:
-                #351515;
-
-            transform:
-                translateX(-3px);
-
-        }
-
-
-        .chapter-number {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            width:
-                36px;
-
-            height:
-                36px;
-
-            border:
-                1px solid
-                rgba(100,0,0,0.28);
-
-            color:
-                #700000;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                9px;
-
-        }
-
-
-        .chapter-info {
-
-            min-width:
-                0;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                4px;
-
-        }
-
-
-        .chapter-label {
-
-            color:
-                #5d5353;
-
-            font-size:
-                9px;
-
-        }
-
-
-        .chapter-title {
-
-            overflow:
-                hidden;
-
-            color:
-                #c1baba;
-
-            font-size:
-                13px;
-
-            font-weight:
-                500;
-
-            text-overflow:
-                ellipsis;
-
-            white-space:
-                nowrap;
-
-        }
-
-
-        .chapter-meta {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                10px;
-
-            margin-top:
-                2px;
-
-        }
-
-
-        .chapter-status {
-
-            color:
-                #807171;
-
-            font-size:
-                9px;
-
-        }
-
-
-        .chapter-progress-text {
-
-            color:
-                #650000;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                8px;
-
-            letter-spacing:
-                1px;
-
-        }
-
-
-        .chapter-right {
-
-            min-width:
-                155px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                12px;
-
-        }
-
-
-        .progress-track {
-
-            width:
-                105px;
-
-            height:
-                3px;
-
-            overflow:
-                hidden;
-
-            background:
-                rgba(255,255,255,0.06);
-
-        }
-
-
-        .progress-bar {
-
-            width:
-                0%;
-
-            height:
-                100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #4a0000,
-                    #8b0000
-                );
-
-            transition:
-                width 0.35s ease;
-
-        }
-
-
-        .chapter-open {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            width:
-                34px;
-
-            height:
-                34px;
-
-            border:
-                1px solid
-                rgba(100,0,0,0.30);
-
-            color:
-                #700000;
-
-            background:
-                rgba(80,0,0,0.035);
-
-            transition:
-                0.25s ease;
-
-        }
-
-
-        .chapter:hover .chapter-open {
-
-            color:
-                #a00000;
-
-            border-color:
-                rgba(135,0,0,0.45);
-
-            background:
-                rgba(100,0,0,0.08);
-
-        }
-
-
-        .chapter.disabled {
-
-            opacity:
-                0.35;
-
-            cursor:
-                default;
-
-        }
-
-
-        .chapter.disabled:hover {
-
-            background:
-                transparent;
-
-            border-color:
-                transparent;
-
-            transform:
-                none;
-
-        }
-
-
-        .chapter.disabled .chapter-open {
-
-            display:
-                none;
-
-        }
-
-
-        /* =====================================================
-           EMPTY STATE
-        ====================================================== */
-
-        .empty-state {
-
-            display:
-                none;
-
-            padding:
-                35px 20px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.05);
-
-            color:
-                #655d5d;
-
-            text-align:
-                center;
-
-            font-size:
-                12px;
-
-        }
-
-
-        .empty-state.show {
-
-            display:
-                block;
-
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ====================================================== */
-
-        .footer {
-
-            margin-top:
-                80px;
-
-            padding-top:
-                25px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.045);
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            color:
-                #5d5555;
-
-            font-size:
-                11px;
-
-        }
-
-
-        .footer-logo {
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            letter-spacing:
-                2px;
-
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 760px) {
-
-            .topbar {
-
-                padding:
-                    14px 16px;
-
-            }
-
-
-            .brand-name {
-
-                display:
-                    none;
-
-            }
-
-
-            .home-button {
-
-                padding:
-                    9px 12px;
-
-                font-size:
-                    11px;
-
-            }
-
-
-            .page {
-
-                width:
-                    min(
-                        100% - 24px,
-                        1080px
-                    );
-
-                padding-top:
-                    58px;
-
-            }
-
-
-            .quick-panel {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .sort-select,
-            .reset-button {
-
-                width:
-                    100%;
-
-            }
-
-
-            .volume-header {
-
-                grid-template-columns:
-                    46px
-                    1fr
-                    36px;
-
-                gap:
-                    12px;
-
-                padding:
-                    20px 16px;
-
-            }
-
-
-            .volume-number {
-
-                width:
-                    36px;
-
-                height:
-                    36px;
-
-            }
-
-
-            .volume-name {
-
-                font-size:
-                    16px;
-
-            }
-
-
-            .chapter {
-
-                grid-template-columns:
-                    40px
-                    minmax(0,1fr);
-
-                gap:
-                    12px;
-
-                min-height:
-                    88px;
-
-                padding:
-                    13px 9px;
-
-            }
-
-
-            .chapter-right {
-
-                grid-column:
-                    2;
-
-                min-width:
-                    0;
-
-                justify-content:
-                    space-between;
-
-                gap:
-                    10px;
-
-            }
-
-
-            .progress-track {
-
-                flex:
-                    1;
-
-                width:
-                    auto;
-
-            }
-
-
-            .chapter-title {
-
-                white-space:
-                    normal;
-
-                line-height:
-                    1.7;
-
-            }
-
-
-            .footer {
-
-                margin-top:
-                    60px;
-
-                align-items:
-                    flex-start;
-
-                flex-direction:
-                    column;
-
-                gap:
-                    8px;
-
-            }
-
-        }
-
-
-    </style>
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
 
 </head>
 
 
-<body>
+<body data-page="chapters">
 
+    <!-- SIDEBAR -->
 
-    <!-- =====================================================
-         TOP BAR
-    ====================================================== -->
+    <aside class="sidebar">
 
-    <header class="topbar">
+        <div class="logo">
+            <span>S</span>OV
+        </div>
 
-        <a
-            href="../index.html"
-            class="brand"
-        >
+        <div class="sidebar-title">
+            SON OF THE VOID
+        </div>
 
-            <span class="brand-mark">
-                SOV
-            </span>
+        <nav>
 
-            <span class="brand-name">
-                SON OF THE VOID
-            </span>
-
-        </a>
-
-
-        <a
-            href="../index.html"
-            class="home-button"
-        >
-
-            <span>
-                ←
-            </span>
-
-            <span>
+            <button
+                class="nav-link"
+                data-href="../index.html"
+                type="button"
+            >
+                <span>01</span>
                 الرئيسية
-            </span>
+            </button>
 
-        </a>
-
-    </header>
-
-
-
-    <!-- =====================================================
-         PAGE
-    ====================================================== -->
-
-    <main class="page">
-
-
-        <header class="page-header">
-
-            <p class="eyebrow">
-                THE CHRONICLES
-            </p>
-
-
-            <h1 class="page-title">
+            <button
+                class="nav-link active"
+                data-href="index.html"
+                type="button"
+            >
+                <span>02</span>
                 الفصول
-            </h1>
+            </button>
+
+            <button
+                class="nav-link"
+                data-href="../index.html#world"
+                type="button"
+            >
+                <span>03</span>
+                عالم الرواية
+            </button>
+
+            <button
+                class="nav-link"
+                data-href="../settings/index.html"
+                type="button"
+            >
+                <span>04</span>
+                إعدادات الموقع
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span></span>
+            SON OF THE VOID
+        </div>
+
+    </aside>
 
 
-            <p class="page-description">
-                اختر المجلد الذي تريد قراءته، وتابع تقدمك في الفصول من مكان واحد.
-            </p>
+    <main class="inner-page">
 
-        </header>
+        <div class="inner-content">
+
+            <header class="inner-header">
+
+                <p class="eyebrow">
+                    THE CHRONICLES
+                </p>
+
+                <h1 class="inner-title">
+                    الفصول
+                </h1>
+
+                <p class="inner-description">
+                    اختر المجلد الذي تريد قراءته،
+                    وتابع تقدمك في الفصول من مكان واحد.
+                </p>
+
+            </header>
 
 
-
-        <!-- =================================================
-             SEARCH / SORT
-        ================================================== -->
-
-        <section class="quick-panel">
-
-
-            <div class="search-box">
+            <section class="quick-panel">
 
                 <input
                     id="chapterSearch"
@@ -1581,558 +125,430 @@
                     autocomplete="off"
                 >
 
-            </div>
+                <select
+                    id="chapterSort"
+                    class="sort-select"
+                >
+                    <option value="number-asc">
+                        ترتيب الفصول: تصاعدي
+                    </option>
 
+                    <option value="number-desc">
+                        ترتيب الفصول: تنازلي
+                    </option>
 
-            <select
-                id="chapterSort"
-                class="sort-select"
-            >
+                    <option value="progress-desc">
+                        حسب التقدم
+                    </option>
 
-                <option value="number-asc">
-                    ترتيب الفصول: تصاعدي
-                </option>
-
-                <option value="number-desc">
-                    ترتيب الفصول: تنازلي
-                </option>
-
-                <option value="progress-desc">
-                    حسب التقدم
-                </option>
-
-                <option value="progress-asc">
-                    الأقل تقدمًا أولًا
-                </option>
-
-            </select>
-
-
-            <button
-                id="resetFilters"
-                class="reset-button"
-                type="button"
-            >
-                إعادة ضبط
-            </button>
-
-        </section>
-
-
-
-        <!-- =================================================
-             VOLUME
-        ================================================== -->
-
-        <section class="volume-list">
-
-            <div
-                class="volume-item"
-                data-volume="1"
-            >
-
+                    <option value="progress-asc">
+                        الأقل تقدمًا أولًا
+                    </option>
+                </select>
 
                 <button
-                    class="volume-header"
+                    id="resetFilters"
+                    class="reset-button"
                     type="button"
-                    aria-expanded="false"
                 >
-
-                    <span class="volume-number">
-                        01
-                    </span>
-
-
-                    <span class="volume-info">
-
-                        <span class="volume-name">
-                            PATH OF THE VOID
-                        </span>
-
-                        <span class="volume-meta">
-                            المجلد الأول
-                        </span>
-
-                        <span
-                            class="volume-status"
-                            id="volumeStatus"
-                        >
-                            01 فصل متاح
-                        </span>
-
-                    </span>
-
-
-                    <span class="volume-arrow">
-                        +
-                    </span>
-
+                    إعادة ضبط
                 </button>
 
+            </section>
 
 
-                <div class="volume-chapters">
+            <section class="reading-summary">
+
+                <div class="reading-summary-top">
+
+                    <div>
+
+                        <div class="reading-summary-label">
+                            CONTINUE READING
+                        </div>
+
+                        <div
+                            id="summaryTitle"
+                            class="reading-summary-title"
+                        >
+                            لم تبدأ القراءة بعد
+                        </div>
+
+                        <div
+                            id="summaryText"
+                            class="reading-summary-text"
+                        >
+                            ابدأ الفصل الأول للبدء.
+                        </div>
+
+                    </div>
+
+                    <a
+                        id="summaryButton"
+                        class="primary-button reading-summary-link"
+                        href="../PATH%20OF%20THE%20VOID/chapter-01.html"
+                    >
+                        ابدأ القراءة
+                    </a>
+
+                </div>
+
+                <div class="summary-progress">
 
                     <div
-                        class="volume-chapters-inner"
-                        id="chapterList"
+                        id="summaryProgressBar"
+                        class="summary-progress-bar"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <section class="volume-list">
+
+                <div
+                    class="volume-item"
+                    data-volume="1"
+                >
+
+                    <button
+                        class="volume-header"
+                        type="button"
+                        aria-expanded="false"
                     >
 
+                        <span class="volume-number">
+                            01
+                        </span>
 
-                        <!-- =================================
-                             CHAPTER 01
-                        ================================== -->
+                        <span class="volume-info">
 
-                        <a
-                            class="chapter"
-                            href="../PATH%20OF%20THE%20VOID/chapter-01.html"
-                            data-number="1"
-                            data-title="حين بدأت السماء بالصمت"
-                            data-chapter="01"
+                            <span class="volume-name">
+                                PATH OF THE VOID
+                            </span>
+
+                            <span class="volume-meta">
+                                المجلد الأول
+                            </span>
+
+                            <span
+                                class="volume-status"
+                                id="volumeStatus"
+                            >
+                                01 فصل متاح
+                            </span>
+
+                        </span>
+
+                        <span class="volume-arrow">
+                            +
+                        </span>
+
+                    </button>
+
+
+                    <div class="volume-chapters">
+
+                        <div
+                            class="volume-chapters-inner"
+                            id="chapterList"
                         >
 
-                            <span class="chapter-number">
-                                01
-                            </span>
+                            <a
+                                class="chapter"
+                                href="../PATH%20OF%20THE%20VOID/chapter-01.html"
+                                data-number="1"
+                                data-title="حين بدأت السماء بالصمت"
+                                data-chapter="01"
+                            >
 
-
-                            <span class="chapter-info">
-
-                                <span class="chapter-label">
-                                    الفصل الأول
+                                <span class="chapter-number">
+                                    01
                                 </span>
 
+                                <span class="chapter-info">
 
-                                <span class="chapter-title">
-                                    حين بدأت السماء بالصمت
-                                </span>
-
-
-                                <span class="chapter-meta">
-
-                                    <span
-                                        class="chapter-status"
-                                        data-status
-                                    >
-                                        لم تبدأ القراءة
+                                    <span class="chapter-label">
+                                        الفصل الأول
                                     </span>
 
-
-                                    <span
-                                        class="chapter-progress-text"
-                                        data-progress-text
-                                    >
-                                        0%
+                                    <span class="chapter-title">
+                                        حين بدأت السماء بالصمت
                                     </span>
 
-                                </span>
+                                    <span class="chapter-meta">
 
-                            </span>
+                                        <span
+                                            class="chapter-status"
+                                            data-status
+                                        >
+                                            لم تبدأ القراءة
+                                        </span>
 
+                                        <span
+                                            class="chapter-progress-text"
+                                            data-progress-text
+                                        >
+                                            0%
+                                        </span>
 
-                            <span class="chapter-right">
-
-                                <span class="progress-track">
-
-                                    <span
-                                        class="progress-bar"
-                                        data-progress-bar
-                                    ></span>
-
-                                </span>
-
-
-                                <span class="chapter-open">
-                                    ←
-                                </span>
-
-                            </span>
-
-                        </a>
-
-
-
-                        <!-- =================================
-                             CHAPTER 02
-                        ================================== -->
-
-                        <article
-                            class="chapter disabled"
-                            data-number="2"
-                            data-title="قريبًا"
-                            data-chapter="02"
-                        >
-
-                            <span class="chapter-number">
-                                02
-                            </span>
-
-
-                            <span class="chapter-info">
-
-                                <span class="chapter-label">
-                                    الفصل الثاني
-                                </span>
-
-
-                                <span class="chapter-title">
-                                    قريبًا
-                                </span>
-
-
-                                <span class="chapter-meta">
-
-                                    <span class="chapter-status">
-                                        غير متاح
                                     </span>
 
                                 </span>
 
-                            </span>
+                                <span class="chapter-right">
 
+                                    <span class="chapter-progress-track">
 
-                            <span class="chapter-right">
+                                        <span
+                                            class="chapter-progress-bar"
+                                            data-progress-bar
+                                        ></span>
 
-                                <span class="progress-track">
+                                    </span>
 
-                                    <span class="progress-bar"></span>
-
-                                </span>
-
-
-                                <span class="chapter-open">
-                                    —
-                                </span>
-
-                            </span>
-
-                        </article>
-
-
-
-                        <!-- =================================
-                             CHAPTER 03
-                        ================================== -->
-
-                        <article
-                            class="chapter disabled"
-                            data-number="3"
-                            data-title="قريبًا"
-                            data-chapter="03"
-                        >
-
-                            <span class="chapter-number">
-                                03
-                            </span>
-
-
-                            <span class="chapter-info">
-
-                                <span class="chapter-label">
-                                    الفصل الثالث
-                                </span>
-
-
-                                <span class="chapter-title">
-                                    قريبًا
-                                </span>
-
-
-                                <span class="chapter-meta">
-
-                                    <span class="chapter-status">
-                                        غير متاح
+                                    <span class="chapter-open">
+                                        ←
                                     </span>
 
                                 </span>
 
-                            </span>
+                            </a>
 
 
-                            <span class="chapter-right">
+                            <article
+                                class="chapter disabled"
+                                data-number="2"
+                                data-title="قريبًا"
+                                data-chapter="02"
+                            >
 
-                                <span class="progress-track">
+                                <span class="chapter-number">
+                                    02
+                                </span>
 
-                                    <span class="progress-bar"></span>
+                                <span class="chapter-info">
+
+                                    <span class="chapter-label">
+                                        الفصل الثاني
+                                    </span>
+
+                                    <span class="chapter-title">
+                                        قريبًا
+                                    </span>
+
+                                    <span class="chapter-meta">
+
+                                        <span class="chapter-status">
+                                            غير متاح
+                                        </span>
+
+                                    </span>
 
                                 </span>
 
+                                <span class="chapter-right">
 
-                                <span class="chapter-open">
-                                    —
+                                    <span class="chapter-progress-track">
+
+                                        <span class="chapter-progress-bar"></span>
+
+                                    </span>
+
+                                    <span class="chapter-open">
+                                        —
+                                    </span>
+
                                 </span>
 
-                            </span>
+                            </article>
 
-                        </article>
 
+                            <article
+                                class="chapter disabled"
+                                data-number="3"
+                                data-title="قريبًا"
+                                data-chapter="03"
+                            >
+
+                                <span class="chapter-number">
+                                    03
+                                </span>
+
+                                <span class="chapter-info">
+
+                                    <span class="chapter-label">
+                                        الفصل الثالث
+                                    </span>
+
+                                    <span class="chapter-title">
+                                        قريبًا
+                                    </span>
+
+                                    <span class="chapter-meta">
+
+                                        <span class="chapter-status">
+                                            غير متاح
+                                        </span>
+
+                                    </span>
+
+                                </span>
+
+                                <span class="chapter-right">
+
+                                    <span class="chapter-progress-track">
+
+                                        <span class="chapter-progress-bar"></span>
+
+                                    </span>
+
+                                    <span class="chapter-open">
+                                        —
+                                    </span>
+
+                                </span>
+
+                            </article>
+
+                        </div>
 
                     </div>
 
                 </div>
 
+            </section>
+
+
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+                لا توجد نتائج مطابقة للبحث.
             </div>
 
-        </section>
-
-
-
-        <div
-            id="emptyState"
-            class="empty-state"
-        >
-            لا توجد نتائج مطابقة للبحث.
         </div>
-
-
-
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
-
-        <footer class="footer">
-
-            <span>
-                SON OF THE VOID
-            </span>
-
-
-            <span class="footer-logo">
-                SOV
-            </span>
-
-        </footer>
-
 
     </main>
 
 
+    <script src="../script.js"></script>
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
 
     <script>
-
         document.addEventListener(
             "DOMContentLoaded",
             () => {
 
-
-                /* =================================================
-                   ELEMENTS
-                ================================================= */
-
-                const chapterSearch =
+                const search =
                     document.getElementById(
                         "chapterSearch"
                     );
 
-
-                const chapterSort =
+                const sort =
                     document.getElementById(
                         "chapterSort"
                     );
 
-
-                const resetFilters =
+                const reset =
                     document.getElementById(
                         "resetFilters"
                     );
-
 
                 const chapterList =
                     document.getElementById(
                         "chapterList"
                     );
 
-
-                const emptyState =
+                const empty =
                     document.getElementById(
                         "emptyState"
                     );
-
 
                 const volumeStatus =
                     document.getElementById(
                         "volumeStatus"
                     );
 
+                const summaryTitle =
+                    document.getElementById(
+                        "summaryTitle"
+                    );
 
-                const volumeHeaders =
-                    document.querySelectorAll(
-                        ".volume-header"
+                const summaryText =
+                    document.getElementById(
+                        "summaryText"
+                    );
+
+                const summaryButton =
+                    document.getElementById(
+                        "summaryButton"
+                    );
+
+                const summaryProgress =
+                    document.getElementById(
+                        "summaryProgressBar"
                     );
 
 
+                function chapterProgress(number) {
 
-                /* =================================================
-                   VOLUME OPEN / CLOSE
-                ================================================== */
-
-                volumeHeaders.forEach(header => {
-
-                    header.addEventListener(
-                        "click",
-                        () => {
-
-                            const volume =
-                                header.closest(
-                                    ".volume-item"
-                                );
-
-
-                            if (!volume) {
-                                return;
-                            }
-
-
-                            const isOpen =
-                                volume.classList.contains(
-                                    "open"
-                                );
-
-
-                            document
-                                .querySelectorAll(
-                                    ".volume-item"
-                                )
-                                .forEach(item => {
-
-                                    item.classList.remove(
-                                        "open"
-                                    );
-
-
-                                    const itemHeader =
-                                        item.querySelector(
-                                            ".volume-header"
-                                        );
-
-
-                                    if (itemHeader) {
-
-                                        itemHeader.setAttribute(
-                                            "aria-expanded",
-                                            "false"
-                                        );
-
-                                    }
-
-                                });
-
-
-                            if (!isOpen) {
-
-                                volume.classList.add(
-                                    "open"
-                                );
-
-
-                                header.setAttribute(
-                                    "aria-expanded",
-                                    "true"
-                                );
-
-                            }
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   CHAPTER DATA
-                ================================================== */
-
-                const chapter01PositionKey =
-                    "sov_chapter_01_position";
-
-
-                function getChapter01Progress() {
-
-                    const savedPosition =
+                    const progress =
                         parseFloat(
                             localStorage.getItem(
-                                chapter01PositionKey
+                                `sov_chapter_${number}_progress`
                             )
                         );
 
-
-                    if (
-                        !Number.isFinite(
-                            savedPosition
-                        ) ||
-                        savedPosition <= 0
-                    ) {
-
-                        return 0;
-
+                    if (Number.isFinite(progress)) {
+                        return Math.min(100, Math.max(0, progress));
                     }
 
+                    const legacy =
+                        parseFloat(
+                            localStorage.getItem(
+                                `sov_chapter_${number}_position`
+                            )
+                        );
 
-                    /*
-                     * تقدير نسبة التقدم من موضع القراءة.
-                     * يستخدم نفس ارتفاع صفحة الفصل تقريبًا.
-                     */
-
-                    const estimatedMaxScroll =
-                        5200;
-
-
-                    const progress =
-                        (
-                            savedPosition /
-                            estimatedMaxScroll
-                        ) * 100;
+                    return Number.isFinite(legacy)
+                        ? 0
+                        : 0;
+                }
 
 
-                    return Math.min(
-                        100,
-                        Math.max(
-                            0,
-                            progress
-                        )
-                    );
+                function chapterTitle(number) {
+
+                    const chapter =
+                        document.querySelector(
+                            `[data-chapter="${number}"]`
+                        );
+
+                    return chapter
+                        ? chapter.dataset.title
+                        : `الفصل ${number}`;
 
                 }
 
 
+                function updateChapter(chapter) {
 
-                /* =================================================
-                   UPDATE CHAPTER STATUS
-                ================================================== */
-
-                function updateChapterProgress() {
-
-                    const chapter =
-                        document.querySelector(
-                            '[data-chapter="01"]'
-                        );
-
-
-                    if (!chapter) {
-                        return;
-                    }
-
+                    const number =
+                        chapter.dataset.chapter;
 
                     const progress =
-                        getChapter01Progress();
+                        chapterProgress(number);
 
-
-                    const progressBar =
+                    const bar =
                         chapter.querySelector(
                             "[data-progress-bar]"
                         );
 
-
-                    const progressText =
+                    const text =
                         chapter.querySelector(
                             "[data-progress-text]"
                         );
-
 
                     const status =
                         chapter.querySelector(
@@ -2140,18 +556,18 @@
                         );
 
 
-                    if (progressBar) {
+                    if (bar) {
 
-                        progressBar.style.width =
-                            progress + "%";
+                        bar.style.width =
+                            `${progress}%`;
 
                     }
 
 
-                    if (progressText) {
+                    if (text) {
 
-                        progressText.textContent =
-                            Math.round(progress) + "%";
+                        text.textContent =
+                            `${Math.round(progress)}%`;
 
                     }
 
@@ -2177,65 +593,103 @@
 
                     }
 
+                }
 
-                    if (volumeStatus) {
 
-                        if (progress >= 100) {
+                function updateSummary() {
 
-                            volumeStatus.textContent =
-                                "01 فصل متاح · مكتمل";
+                    const lastChapter =
+                        localStorage.getItem(
+                            "sov_last_chapter"
+                        ) || "01";
 
-                        } else if (progress > 0) {
+                    const progress =
+                        chapterProgress(
+                            lastChapter
+                        );
 
-                            volumeStatus.textContent =
-                                "01 فصل متاح · قيد القراءة";
+                    const title =
+                        chapterTitle(
+                            lastChapter
+                        );
 
-                        } else {
 
-                            volumeStatus.textContent =
-                                "01 فصل متاح";
+                    if (progress > 0) {
 
-                        }
+                        summaryTitle.textContent =
+                            `الفصل ${lastChapter} — ${title}`;
+
+                        summaryText.textContent =
+                            progress >= 100
+                                ? "الفصل مكتمل."
+                                : `آخر تقدم: ${Math.round(progress)}%`;
+
+                        summaryButton.textContent =
+                            progress >= 100
+                                ? "إعادة القراءة"
+                                : "تابع القراءة";
+
+                    } else {
+
+                        summaryTitle.textContent =
+                            "لم تبدأ القراءة بعد";
+
+                        summaryText.textContent =
+                            "ابدأ الفصل الأول للبدء.";
+
+                        summaryButton.textContent =
+                            "ابدأ القراءة";
 
                     }
+
+
+                    summaryButton.href =
+                        `../PATH%20OF%20THE%20VOID/chapter-${String(lastChapter).padStart(2, "0")}.html`;
+
+                    summaryProgress.style.width =
+                        `${progress}%`;
 
                 }
 
 
+                function updateAll() {
 
-                /* =================================================
-                   GET CHAPTER PROGRESS
-                ================================================== */
-
-                function getChapterProgress(chapter) {
-
-                    const chapterNumber =
-                        chapter.dataset.chapter;
+                    document
+                        .querySelectorAll(".chapter[data-chapter]")
+                        .forEach(updateChapter);
 
 
-                    if (
-                        chapterNumber === "01"
-                    ) {
+                    const progress =
+                        chapterProgress("01");
 
-                        return getChapter01Progress();
+
+                    if (progress >= 100) {
+
+                        volumeStatus.textContent =
+                            "01 فصل متاح · مكتمل";
+
+                    } else if (progress > 0) {
+
+                        volumeStatus.textContent =
+                            "01 فصل متاح · قيد القراءة";
+
+                    } else {
+
+                        volumeStatus.textContent =
+                            "01 فصل متاح";
 
                     }
 
 
-                    return 0;
+                    updateSummary();
 
                 }
 
 
+                function render() {
 
-                /* =================================================
-                   FILTER + SORT
-                ================================================== */
-
-                function renderChapters() {
-
-                    const search =
-                        chapterSearch.value
+                    const query =
+                        search.value
                             .trim()
                             .toLowerCase();
 
@@ -2248,225 +702,216 @@
                         );
 
 
-                    const sortMode =
-                        chapterSort.value;
+                    const mode =
+                        sort.value;
 
 
                     chapters.sort(
                         (a, b) => {
 
                             const numberA =
-                                Number(
-                                    a.dataset.number
-                                );
-
+                                Number(a.dataset.number);
 
                             const numberB =
-                                Number(
-                                    b.dataset.number
-                                );
-
+                                Number(b.dataset.number);
 
                             const progressA =
-                                getChapterProgress(
-                                    a
+                                chapterProgress(
+                                    a.dataset.chapter
                                 );
-
 
                             const progressB =
-                                getChapterProgress(
-                                    b
+                                chapterProgress(
+                                    b.dataset.chapter
                                 );
 
 
                             if (
-                                sortMode ===
-                                "number-desc"
+                                mode === "number-desc"
                             ) {
-
-                                return (
-                                    numberB -
-                                    numberA
-                                );
-
+                                return numberB - numberA;
                             }
 
 
                             if (
-                                sortMode ===
-                                "progress-desc"
+                                mode === "progress-desc"
                             ) {
-
-                                return (
-                                    progressB -
-                                    progressA
-                                );
-
+                                return progressB - progressA;
                             }
 
 
                             if (
-                                sortMode ===
-                                "progress-asc"
+                                mode === "progress-asc"
                             ) {
-
-                                return (
-                                    progressA -
-                                    progressB
-                                );
-
+                                return progressA - progressB;
                             }
 
 
-                            return (
-                                numberA -
-                                numberB
-                            );
+                            return numberA - numberB;
 
                         }
                     );
 
 
-                    let visibleCount =
-                        0;
+                    let visible = 0;
 
 
-                    chapters.forEach(
-                        chapter => {
+                    chapters.forEach(chapter => {
 
-                            const title =
-                                (
-                                    chapter.dataset.title ||
-                                    ""
-                                ).toLowerCase();
+                        const title =
+                            (
+                                chapter.dataset.title ||
+                                ""
+                            ).toLowerCase();
 
+                        const number =
+                            (
+                                chapter.dataset.number ||
+                                ""
+                            ).toLowerCase();
 
-                            const number =
-                                (
-                                    chapter.dataset.number ||
-                                    ""
-                                ).toLowerCase();
-
-
-                            const label =
-                                (
-                                    chapter.querySelector(
-                                        ".chapter-label"
-                                    )?.textContent ||
-                                    ""
-                                ).toLowerCase();
+                        const label =
+                            (
+                                chapter.querySelector(
+                                    ".chapter-label"
+                                )?.textContent || ""
+                            ).toLowerCase();
 
 
-                            const matches =
-                                !search ||
-                                title.includes(search) ||
-                                number.includes(search) ||
-                                label.includes(search);
+                        const match =
+                            !query ||
+                            title.includes(query) ||
+                            number.includes(query) ||
+                            label.includes(query);
 
 
-                            chapter.classList.toggle(
-                                "hidden",
-                                !matches
-                            );
+                        chapter.classList.toggle(
+                            "hidden",
+                            !match
+                        );
 
 
-                            if (matches) {
-
-                                visibleCount++;
-
-                            }
-
-
-                            chapterList.appendChild(
-                                chapter
-                            );
-
+                        if (match) {
+                            visible++;
                         }
-                    );
 
 
-                    emptyState.classList.toggle(
+                        chapterList.appendChild(
+                            chapter
+                        );
+
+                    });
+
+
+                    empty.classList.toggle(
                         "show",
-                        visibleCount === 0
+                        visible === 0
                     );
 
                 }
 
 
+                document
+                    .querySelectorAll(".volume-header")
+                    .forEach(header => {
 
-                /* =================================================
-                   SEARCH
-                ================================================== */
+                        header.addEventListener(
+                            "click",
+                            () => {
 
-                chapterSearch.addEventListener(
+                                const volume =
+                                    header.closest(
+                                        ".volume-item"
+                                    );
+
+                                const isOpen =
+                                    volume.classList.contains(
+                                        "open"
+                                    );
+
+
+                                document
+                                    .querySelectorAll(
+                                        ".volume-item"
+                                    )
+                                    .forEach(item => {
+
+                                        item.classList.remove(
+                                            "open"
+                                        );
+
+                                        item
+                                            .querySelector(
+                                                ".volume-header"
+                                            )
+                                            ?.setAttribute(
+                                                "aria-expanded",
+                                                "false"
+                                            );
+
+                                    });
+
+
+                                if (!isOpen) {
+
+                                    volume.classList.add(
+                                        "open"
+                                    );
+
+                                    header.setAttribute(
+                                        "aria-expanded",
+                                        "true"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    });
+
+
+                search.addEventListener(
                     "input",
-                    renderChapters
+                    render
                 );
 
 
-
-                /* =================================================
-                   SORT
-                ================================================== */
-
-                chapterSort.addEventListener(
+                sort.addEventListener(
                     "change",
-                    renderChapters
+                    render
                 );
 
 
-
-                /* =================================================
-                   RESET
-                ================================================== */
-
-                resetFilters.addEventListener(
+                reset.addEventListener(
                     "click",
                     () => {
 
-                        chapterSearch.value =
-                            "";
+                        search.value = "";
+                        sort.value = "number-asc";
 
-                        chapterSort.value =
-                            "number-asc";
-
-
-                        renderChapters();
+                        render();
 
                     }
                 );
 
 
+                updateAll();
+                render();
 
-                /* =================================================
-                   INITIALIZE
-                ================================================== */
-
-                updateChapterProgress();
-
-                renderChapters();
-
-
-                /*
-                 * تحديث الصفحة تلقائيًا عند العودة إليها
-                 * من التبويب أو بعد تغيير التخزين.
-                 */
 
                 window.addEventListener(
                     "pageshow",
                     () => {
 
-                        updateChapterProgress();
-
-                        renderChapters();
+                        updateAll();
+                        render();
 
                     }
                 );
 
             }
-
         );
-
     </script>
 
 </body>
