@@ -1,23 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
     /* =====================================================
-       GLOBAL KEYS
+       STORAGE KEYS
     ===================================================== */
 
     const KEYS = {
-        intro: "sov_intro_seen",
 
-        lastChapter: "sov_last_chapter",
+        intro:
+            "sov_intro_seen",
 
-        siteTheme: "sov_site_theme",
-        siteMotion: "sov_site_motion",
+        lastChapter:
+            "sov_last_chapter",
 
-        readerSize: "sov_reader_size",
-        readerFont: "sov_reader_font",
-        readerWidth: "sov_reader_width",
-        readerLine: "sov_reader_line",
-        readerParagraph: "sov_reader_paragraph",
-        readerMode: "sov_reader_mode"
+        siteTheme:
+            "sov_site_theme",
+
+        siteMotion:
+            "sov_site_motion",
+
+        readerSize:
+            "sov_reader_size",
+
+        readerFont:
+            "sov_reader_font",
+
+        readerWidth:
+            "sov_reader_width",
+
+        readerLine:
+            "sov_reader_line",
+
+        readerParagraph:
+            "sov_reader_paragraph",
+
+        readerMode:
+            "sov_reader_mode"
+
     };
 
 
@@ -25,27 +44,46 @@ document.addEventListener("DOMContentLoaded", () => {
        INTRO
     ===================================================== */
 
-    const intro = document.getElementById("intro");
-    const site = document.getElementById("site");
+    const intro =
+        document.getElementById("intro");
+
+    const site =
+        document.getElementById("site");
+
 
     if (intro && site) {
 
         const introSeen =
-            sessionStorage.getItem(KEYS.intro);
+            sessionStorage.getItem(
+                KEYS.intro
+            );
+
 
         if (introSeen === "true") {
 
-            intro.style.display = "none";
-            site.classList.add("show");
+            intro.style.display =
+                "none";
+
+            site.classList.add(
+                "show"
+            );
 
         } else {
 
-            site.classList.remove("show");
+            site.classList.remove(
+                "show"
+            );
+
 
             setTimeout(() => {
 
-                intro.classList.add("hide");
-                site.classList.add("show");
+                intro.classList.add(
+                    "hide"
+                );
+
+                site.classList.add(
+                    "show"
+                );
 
                 sessionStorage.setItem(
                     KEYS.intro,
@@ -60,96 +98,214 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MAIN SITE NAVIGATION
+       NAVIGATION
     ===================================================== */
 
     const navLinks =
-        document.querySelectorAll(".nav-link");
+        document.querySelectorAll(
+            ".nav-link"
+        );
+
 
     const currentPage =
-        document.body.dataset.page || "home";
+        document.body.dataset.page ||
+        "home";
+
+
+    function activateHashSection() {
+
+        const hash =
+            window.location.hash
+                .replace("#", "")
+                .trim();
+
+
+        if (!hash) {
+            return;
+        }
+
+
+        const target =
+            document.getElementById(
+                hash
+            );
+
+
+        if (!target) {
+            return;
+        }
+
+
+        const sections =
+            document.querySelectorAll(
+                ".page-section"
+            );
+
+
+        sections.forEach(section => {
+
+            section.classList.remove(
+                "active-section"
+            );
+
+        });
+
+
+        target.classList.add(
+            "active-section"
+        );
+
+
+        navLinks.forEach(link => {
+
+            link.classList.toggle(
+                "active",
+                link.dataset.section === hash
+            );
+
+        });
+
+
+        setTimeout(() => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "auto"
+            });
+
+        }, 0);
+
+    }
+
 
     navLinks.forEach(link => {
 
         const section =
             link.dataset.section;
 
-        if (section === currentPage) {
 
-            link.classList.add("active");
+        if (
+            section &&
+            section === currentPage
+        ) {
 
-        } else if (!section) {
-
-            link.classList.remove("active");
+            link.classList.add(
+                "active"
+            );
 
         }
 
 
-        link.addEventListener("click", () => {
+        link.addEventListener(
+            "click",
+            () => {
 
-            if (link.dataset.href) {
-
-                window.location.href =
+                const href =
                     link.dataset.href;
 
-                return;
 
-            }
+                /* صفحة مستقلة */
 
-            if (!section) {
-                return;
-            }
+                if (href) {
 
-            const target =
-                document.getElementById(section);
+                    window.location.href =
+                        href;
 
-            if (!target) {
-                return;
-            }
+                    return;
 
-            document
-                .querySelectorAll(".page-section")
-                .forEach(item => {
+                }
+
+
+                /* قسم داخل الصفحة */
+
+                if (!section) {
+                    return;
+                }
+
+
+                const target =
+                    document.getElementById(
+                        section
+                    );
+
+
+                if (!target) {
+                    return;
+                }
+
+
+                document
+                    .querySelectorAll(
+                        ".page-section"
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            "active-section"
+                        );
+
+                    });
+
+
+                target.classList.add(
+                    "active-section"
+                );
+
+
+                navLinks.forEach(item => {
 
                     item.classList.remove(
-                        "active-section"
+                        "active"
                     );
 
                 });
 
-            target.classList.add(
-                "active-section"
-            );
 
-            navLinks.forEach(item => {
-
-                item.classList.remove(
+                link.classList.add(
                     "active"
                 );
 
-            });
 
-            link.classList.add("active");
+                window.history.replaceState(
+                    null,
+                    "",
+                    `#${section}`
+                );
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
 
-        });
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            }
+        );
 
     });
 
 
+    /*
+     * مهم جدًا:
+     * index.html#world
+     *
+     * يفتح عالم الرواية مباشرة.
+     */
+
+    activateHashSection();
+
+
     /* =====================================================
-       HOME — START / CONTINUE
+       HOME — START READING
     ===================================================== */
 
     const startReading =
-        document.getElementById("startReading");
-
-    const continueReading =
-        document.getElementById("continueReading");
+        document.getElementById(
+            "startReading"
+        );
 
 
     function getLastChapter() {
@@ -163,20 +319,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function chapterUrl(number) {
 
-        const padded =
-            String(number).padStart(2, "0");
-
-        return `PATH%20OF%20THE%20VOID/chapter-${padded}.html`;
-
-    }
+        const chapter =
+            String(number)
+                .padStart(2, "0");
 
 
-    function openLastChapter() {
-
-        window.location.href =
-            chapterUrl(
-                getLastChapter()
-            );
+        return `PATH%20OF%20THE%20VOID/chapter-${chapter}.html`;
 
     }
 
@@ -196,28 +344,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    const continueReading =
+        document.getElementById(
+            "continueReading"
+        );
+
+
     if (continueReading) {
 
         continueReading.addEventListener(
             "click",
-            openLastChapter
+            () => {
+
+                window.location.href =
+                    chapterUrl(
+                        getLastChapter()
+                    );
+
+            }
         );
 
     }
 
 
     /* =====================================================
-       SHARED SITE SETTINGS
+       SITE THEME
     ===================================================== */
 
     const themeOptions =
         document.querySelectorAll(
             "[data-theme]"
-        );
-
-    const motionOptions =
-        document.querySelectorAll(
-            "[data-motion]"
         );
 
 
@@ -228,6 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
             theme === "light"
         );
 
+
         themeOptions.forEach(option => {
 
             option.classList.toggle(
@@ -237,33 +394,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
         localStorage.setItem(
             KEYS.siteTheme,
             theme
-        );
-
-    }
-
-
-    function applyMotion(motion) {
-
-        document.body.classList.toggle(
-            "no-motion",
-            motion === "off"
-        );
-
-        motionOptions.forEach(option => {
-
-            option.classList.toggle(
-                "active",
-                option.dataset.motion === motion
-            );
-
-        });
-
-        localStorage.setItem(
-            KEYS.siteMotion,
-            motion
         );
 
     }
@@ -291,6 +425,42 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.getItem(
                 KEYS.siteTheme
             ) || "dark"
+        );
+
+    }
+
+
+    /* =====================================================
+       SITE MOTION
+    ===================================================== */
+
+    const motionOptions =
+        document.querySelectorAll(
+            "[data-motion]"
+        );
+
+
+    function applyMotion(motion) {
+
+        document.body.classList.toggle(
+            "no-motion",
+            motion === "off"
+        );
+
+
+        motionOptions.forEach(option => {
+
+            option.classList.toggle(
+                "active",
+                option.dataset.motion === motion
+            );
+
+        });
+
+
+        localStorage.setItem(
+            KEYS.siteMotion,
+            motion
         );
 
     }
@@ -324,7 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       READER
+       READER DETECTION
     ===================================================== */
 
     const chapterContent =
@@ -338,19 +508,35 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    if (!chapterContent || !readingProgressBar) {
+    /*
+     * إذا لم تكن هذه صفحة قراءة،
+     * نتوقف هنا بعد تشغيل النظام العام.
+     */
+
+    if (
+        !chapterContent ||
+        !readingProgressBar
+    ) {
+
         return;
+
     }
 
 
+    /* =====================================================
+       READER CHAPTER
+    ===================================================== */
+
     const chapterNumber =
-        document.body.dataset.chapter || "01";
+        document.body.dataset.chapter ||
+        "01";
+
 
     const chapterKey =
         `sov_chapter_${chapterNumber}`;
 
 
-    const readerKeys = {
+    const READER_KEYS = {
 
         position:
             `${chapterKey}_position`,
@@ -365,18 +551,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       READER HELPERS
+       READING PROGRESS
     ===================================================== */
 
     function getReadingProgress() {
 
-        const maxScroll =
-            document.documentElement.scrollHeight -
+        const documentHeight =
+            document.documentElement
+                .scrollHeight;
+
+
+        const viewportHeight =
             window.innerHeight;
 
+
+        const maxScroll =
+            documentHeight -
+            viewportHeight;
+
+
         if (maxScroll <= 0) {
+
             return 0;
+
         }
+
 
         return Math.min(
             100,
@@ -392,21 +591,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    function updateReadingProgress(
+        progress
+    ) {
+
+        const value =
+            Math.min(
+                100,
+                Math.max(
+                    0,
+                    progress
+                )
+            );
+
+
+        readingProgressBar.style.width =
+            `${value}%`;
+
+    }
+
+
+    /* =====================================================
+       SAVE READING STATE
+    ===================================================== */
+
     function saveReadingState() {
 
-        const progress =
+        const rawProgress =
             getReadingProgress();
 
 
+        const progress =
+            rawProgress >= 98
+                ? 100
+                : rawProgress;
+
+
         localStorage.setItem(
-            readerKeys.position,
+            READER_KEYS.position,
             String(window.scrollY)
         );
 
 
         localStorage.setItem(
-            readerKeys.progress,
+            READER_KEYS.progress,
             String(progress)
+        );
+
+
+        localStorage.setItem(
+            READER_KEYS.completed,
+            progress >= 100
+                ? "true"
+                : "false"
         );
 
 
@@ -416,91 +653,16 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        const completed =
-            progress >= 98;
-
-
-        localStorage.setItem(
-            readerKeys.completed,
-            completed
-                ? "true"
-                : "false"
-        );
-
-
-        if (completed) {
-
-            localStorage.setItem(
-                `${chapterKey}_progress`,
-                "100"
-            );
-
-        }
-
-        updateReaderProgress(
-            completed
-                ? 100
-                : progress
+        updateReadingProgress(
+            progress
         );
 
     }
 
 
-    function updateReaderProgress(value) {
-
-        const progress =
-            Math.min(
-                100,
-                Math.max(
-                    0,
-                    value
-                )
-            );
-
-        readingProgressBar.style.width =
-            `${progress}%`;
-
-    }
-
-
-    function restoreReadingPosition() {
-
-        const savedPosition =
-            parseFloat(
-                localStorage.getItem(
-                    readerKeys.position
-                )
-            );
-
-
-        if (
-            Number.isFinite(savedPosition) &&
-            savedPosition > 20
-        ) {
-
-            setTimeout(() => {
-
-                window.scrollTo({
-                    top: savedPosition,
-                    behavior: "auto"
-                });
-
-                updateReaderProgress(
-                    getReadingProgress()
-                );
-
-            }, 120);
-
-        } else {
-
-            updateReaderProgress(
-                getReadingProgress()
-            );
-
-        }
-
-    }
-
+    /* =====================================================
+       SCROLL
+    ===================================================== */
 
     window.addEventListener(
         "scroll",
@@ -513,7 +675,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "resize",
         () => {
 
-            updateReaderProgress(
+            updateReadingProgress(
                 getReadingProgress()
             );
 
@@ -527,11 +689,61 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    restoreReadingPosition();
+    window.addEventListener(
+        "beforeunload",
+        saveReadingState
+    );
 
 
     /* =====================================================
-       READER SETTINGS
+       RESTORE POSITION
+    ===================================================== */
+
+    const savedPosition =
+        parseFloat(
+            localStorage.getItem(
+                READER_KEYS.position
+            )
+        );
+
+
+    if (
+        Number.isFinite(
+            savedPosition
+        ) &&
+        savedPosition > 20
+    ) {
+
+        setTimeout(() => {
+
+            window.scrollTo({
+
+                top:
+                    savedPosition,
+
+                behavior:
+                    "auto"
+
+            });
+
+
+            updateReadingProgress(
+                getReadingProgress()
+            );
+
+        }, 120);
+
+    } else {
+
+        updateReadingProgress(
+            getReadingProgress()
+        );
+
+    }
+
+
+    /* =====================================================
+       SETTINGS PANEL
     ===================================================== */
 
     const settingsButton =
@@ -569,9 +781,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
+                if (!settingsOverlay) {
+                    return;
+                }
+
+
                 settingsOverlay.classList.add(
                     "open"
                 );
+
 
                 document.body.classList.remove(
                     "reader-ui-hidden"
@@ -618,7 +836,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "keydown",
         event => {
 
-            if (event.key === "Escape") {
+            if (
+                event.key ===
+                "Escape"
+            ) {
 
                 closeSettingsPanel();
 
@@ -629,70 +850,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       GENERIC SETTING BINDERS
-    ===================================================== */
-
-    function bindOptions(
-        selector,
-        storageKey,
-        callback
-    ) {
-
-        const options =
-            document.querySelectorAll(
-                selector
-            );
-
-        options.forEach(option => {
-
-            option.addEventListener(
-                "click",
-                () => {
-
-                    const value =
-                        option.dataset[
-                            Object.keys(
-                                option.dataset
-                            )[0]
-                        ];
-
-                    callback(
-                        value,
-                        option,
-                        options
-                    );
-
-                    localStorage.setItem(
-                        storageKey,
-                        value
-                    );
-
-                    options.forEach(item => {
-
-                        item.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-                    option.classList.add(
-                        "active"
-                    );
-
-                    updateReaderProgress(
-                        getReadingProgress()
-                    );
-
-                }
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       SIZE
+       FONT SIZE
     ===================================================== */
 
     const sizeOptions =
@@ -710,12 +868,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 const value =
                     option.dataset.size;
 
+
                 document.documentElement
                     .style
                     .setProperty(
                         "--reader-size",
                         `${value}px`
                     );
+
 
                 sizeOptions.forEach(item => {
 
@@ -725,13 +885,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 });
 
+
                 option.classList.add(
                     "active"
                 );
 
+
                 localStorage.setItem(
                     KEYS.readerSize,
                     value
+                );
+
+
+                updateReadingProgress(
+                    getReadingProgress()
                 );
 
             }
@@ -783,6 +950,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem(
                     KEYS.readerFont,
                     value
+                );
+
+
+                updateReadingProgress(
+                    getReadingProgress()
                 );
 
             }
@@ -838,6 +1010,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     value
                 );
 
+
+                updateReadingProgress(
+                    getReadingProgress()
+                );
+
             }
         );
 
@@ -891,6 +1068,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     value
                 );
 
+
+                updateReadingProgress(
+                    getReadingProgress()
+                );
+
             }
         );
 
@@ -898,7 +1080,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       PARAGRAPH
+       PARAGRAPH SPACING
     ===================================================== */
 
     const paragraphOptions =
@@ -944,6 +1126,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     value
                 );
 
+
+                updateReadingProgress(
+                    getReadingProgress()
+                );
+
             }
         );
 
@@ -951,7 +1138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MODE
+       READER MODE
     ===================================================== */
 
     const modeOptions =
@@ -976,7 +1163,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                if (mode === "oled") {
+                if (
+                    mode === "oled"
+                ) {
 
                     document.body.classList.add(
                         "oled-mode"
@@ -985,7 +1174,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                if (mode === "sepia") {
+                if (
+                    mode === "sepia"
+                ) {
 
                     document.body.classList.add(
                         "sepia-mode"
@@ -1028,6 +1219,7 @@ document.addEventListener("DOMContentLoaded", () => {
             KEYS.readerSize
         );
 
+
     if (savedSize) {
 
         document.documentElement
@@ -1037,11 +1229,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${savedSize}px`
             );
 
+
         sizeOptions.forEach(option => {
 
             option.classList.toggle(
                 "active",
-                option.dataset.size === savedSize
+                option.dataset.size ===
+                savedSize
             );
 
         });
@@ -1054,6 +1248,7 @@ document.addEventListener("DOMContentLoaded", () => {
             KEYS.readerFont
         );
 
+
     if (savedFont) {
 
         document.body.classList.toggle(
@@ -1061,11 +1256,13 @@ document.addEventListener("DOMContentLoaded", () => {
             savedFont === "amiri"
         );
 
+
         fontOptions.forEach(option => {
 
             option.classList.toggle(
                 "active",
-                option.dataset.font === savedFont
+                option.dataset.font ===
+                savedFont
             );
 
         });
@@ -1078,6 +1275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             KEYS.readerWidth
         );
 
+
     if (savedWidth) {
 
         document.documentElement
@@ -1087,11 +1285,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${savedWidth}px`
             );
 
+
         widthOptions.forEach(option => {
 
             option.classList.toggle(
                 "active",
-                option.dataset.width === savedWidth
+                option.dataset.width ===
+                savedWidth
             );
 
         });
@@ -1104,6 +1304,7 @@ document.addEventListener("DOMContentLoaded", () => {
             KEYS.readerLine
         );
 
+
     if (savedLine) {
 
         document.documentElement
@@ -1113,11 +1314,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 savedLine
             );
 
+
         lineOptions.forEach(option => {
 
             option.classList.toggle(
                 "active",
-                option.dataset.line === savedLine
+                option.dataset.line ===
+                savedLine
             );
 
         });
@@ -1130,6 +1333,7 @@ document.addEventListener("DOMContentLoaded", () => {
             KEYS.readerParagraph
         );
 
+
     if (savedParagraph) {
 
         document.documentElement
@@ -1139,11 +1343,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${savedParagraph}px`
             );
 
+
         paragraphOptions.forEach(option => {
 
             option.classList.toggle(
                 "active",
-                option.dataset.paragraph === savedParagraph
+                option.dataset.paragraph ===
+                savedParagraph
             );
 
         });
@@ -1156,6 +1362,7 @@ document.addEventListener("DOMContentLoaded", () => {
             KEYS.readerMode
         );
 
+
     if (savedMode) {
 
         document.body.classList.remove(
@@ -1164,7 +1371,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        if (savedMode === "oled") {
+        if (
+            savedMode === "oled"
+        ) {
 
             document.body.classList.add(
                 "oled-mode"
@@ -1173,7 +1382,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        if (savedMode === "sepia") {
+        if (
+            savedMode === "sepia"
+        ) {
 
             document.body.classList.add(
                 "sepia-mode"
@@ -1186,7 +1397,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             option.classList.toggle(
                 "active",
-                option.dataset.mode === savedMode
+                option.dataset.mode ===
+                savedMode
             );
 
         });
@@ -1195,7 +1407,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CHAPTER LIST BUTTON
+       CHAPTER LIST
     ===================================================== */
 
     const chapterListButton =
@@ -1209,6 +1421,9 @@ document.addEventListener("DOMContentLoaded", () => {
         chapterListButton.addEventListener(
             "click",
             () => {
+
+                saveReadingState();
+
 
                 window.location.href =
                     "../chapters/index.html";
@@ -1237,14 +1452,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 try {
 
-                    if (!document.fullscreenElement) {
+                    if (
+                        !document.fullscreenElement
+                    ) {
 
-                        await document.documentElement
+                        await document
+                            .documentElement
                             .requestFullscreen();
 
                     } else {
 
-                        await document.exitFullscreen();
+                        await document
+                            .exitFullscreen();
 
                     }
 
@@ -1270,6 +1489,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+
             fullscreenButton.textContent =
                 document.fullscreenElement
                     ? "خروج"
@@ -1280,7 +1500,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       HIDE UI
+       HIDE READER UI
     ===================================================== */
 
     let uiTimer = null;
