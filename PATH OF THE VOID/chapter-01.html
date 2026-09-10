@@ -21,1529 +21,32 @@
 
 
     <!-- =====================================================
-         FONTS
+         FAVICON
     ====================================================== -->
 
     <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
+        rel="icon"
+        type="image/svg+xml"
+        href="../assets/favicon/favicon.svg"
     >
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-        crossorigin
-    >
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap"
         rel="stylesheet"
+        href="../style.css"
     >
-
-
-    <style>
-
-        /* =====================================================
-           ROOT
-        ====================================================== */
-
-        :root {
-
-            --black: #050505;
-            --black-2: #080808;
-            --black-3: #0d0d0d;
-
-            --red: #650000;
-            --red-light: #8b0000;
-
-            --text: #c4c4c4;
-            --text-soft: #929292;
-            --text-dark: #555;
-
-            --border:
-                rgba(255,255,255,0.07);
-
-            --reader-width: 780px;
-
-            --reader-size: 20px;
-
-            --reader-line-height: 2.15;
-
-            --reader-paragraph-space: 28px;
-
-            --reader-font:
-                "Cairo",
-                sans-serif;
-
-        }
-
-
-        /* =====================================================
-           RESET
-        ====================================================== */
-
-        * {
-
-            margin: 0;
-            padding: 0;
-
-            box-sizing: border-box;
-
-        }
-
-
-        html {
-
-            scroll-behavior: smooth;
-
-            scrollbar-width: none;
-
-        }
-
-
-        html::-webkit-scrollbar {
-
-            display: none;
-
-        }
-
-
-        body {
-
-            min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at top center,
-                    rgba(85,0,0,0.055),
-                    transparent 38%
-                ),
-                var(--black);
-
-            color:
-                var(--text);
-
-            font-family:
-                var(--reader-font);
-
-            overflow-x: hidden;
-
-        }
-
-
-        body::-webkit-scrollbar {
-
-            display: none;
-
-        }
-
-
-        button,
-        a {
-
-            font: inherit;
-
-        }
-
-
-        button {
-
-            border: 0;
-
-            cursor: pointer;
-
-        }
-
-
-        a {
-
-            color: inherit;
-
-            text-decoration: none;
-
-        }
-
-
-        /* =====================================================
-           READING PROGRESS
-        ====================================================== */
-
-        .reading-progress {
-
-            position: fixed;
-
-            top: 0;
-            right: 0;
-
-            width: 100%;
-            height: 2px;
-
-            z-index: 1100;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            transition:
-                opacity 0.3s ease;
-
-        }
-
-
-        .reading-progress-bar {
-
-            width: 0%;
-
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #450000,
-                    #850000
-                );
-
-            box-shadow:
-                0 0 10px
-                rgba(120,0,0,0.35);
-
-        }
-
-
-        /* =====================================================
-           TOP BAR
-        ====================================================== */
-
-        .reader-topbar {
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            width: 100%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding:
-                15px 26px;
-
-            background:
-                rgba(5,5,5,0.86);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.045);
-
-            backdrop-filter:
-                blur(14px);
-
-            transition:
-                opacity 0.35s ease,
-                transform 0.35s ease;
-
-        }
-
-
-        .reader-topbar.hidden {
-
-            opacity: 0;
-
-            transform:
-                translateY(-100%);
-
-            pointer-events:
-                none;
-
-        }
-
-
-        .reader-brand {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 11px;
-
-            color:
-                #666;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                9px;
-
-            letter-spacing:
-                2px;
-
-        }
-
-
-        .reader-brand-mark {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            width: 29px;
-            height: 29px;
-
-            border:
-                1px solid
-                rgba(105,0,0,0.4);
-
-            background:
-                rgba(85,0,0,0.07);
-
-            color:
-                #790000;
-
-            font-size:
-                9px;
-
-        }
-
-
-        .reader-actions {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-
-            flex-wrap: wrap;
-
-        }
-
-
-        .reader-action {
-
-            min-width:
-                38px;
-
-            height:
-                35px;
-
-            padding:
-                0 11px;
-
-            display: inline-flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.06);
-
-            background:
-                rgba(255,255,255,0.012);
-
-            color:
-                #727272;
-
-            font-size:
-                10px;
-
-            transition:
-                color 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
-
-        }
-
-
-        .reader-action:hover {
-
-            color:
-                #d0d0d0;
-
-            background:
-                rgba(90,0,0,0.07);
-
-            border-color:
-                rgba(120,0,0,0.38);
-
-            transform:
-                translateY(-1px);
-
-        }
-
-
-        .reader-action.active {
-
-            color:
-                #bdbdbd;
-
-            border-color:
-                rgba(120,0,0,0.42);
-
-            background:
-                rgba(95,0,0,0.08);
-
-        }
-
-
-        /* =====================================================
-           READER
-        ====================================================== */
-
-        .reader-page {
-
-            width: 100%;
-
-            padding:
-                88px 24px 130px;
-
-        }
-
-
-        .reader-container {
-
-            width:
-                min(
-                    100%,
-                    var(--reader-width)
-                );
-
-            margin:
-                0 auto;
-
-        }
-
-
-        /* =====================================================
-           CHAPTER HEADER
-        ====================================================== */
-
-        .chapter-header {
-
-            position: relative;
-
-            padding:
-                25px 0 55px;
-
-            text-align:
-                center;
-
-        }
-
-
-        .chapter-header::after {
-
-            content: "";
-
-            display: block;
-
-            width: 95px;
-
-            height: 1px;
-
-            margin:
-                32px auto 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #6d0000,
-                    transparent
-                );
-
-        }
-
-
-        .chapter-overline {
-
-            margin-bottom:
-                12px;
-
-            color:
-                #650000;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                5px;
-
-        }
-
-
-        .chapter-number {
-
-            color:
-                #4f4f4f;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                3px;
-
-        }
-
-
-        .chapter-header h1 {
-
-            margin-top:
-                14px;
-
-            color:
-                #dddddd;
-
-            font-size:
-                clamp(35px,5vw,57px);
-
-            font-weight:
-                600;
-
-            line-height:
-                1.35;
-
-        }
-
-
-        .chapter-subtitle {
-
-            margin-top:
-                9px;
-
-            color:
-                #666;
-
-            font-size:
-                13px;
-
-        }
-
-
-        .chapter-symbol {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap:
-                12px;
-
-            margin-top:
-                22px;
-
-            color:
-                #570000;
-
-        }
-
-
-        .chapter-symbol::before,
-        .chapter-symbol::after {
-
-            content: "";
-
-            width:
-                34px;
-
-            height:
-                1px;
-
-            background:
-                rgba(105,0,0,0.4);
-
-        }
-
-
-        .chapter-symbol span {
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                8px;
-
-            letter-spacing:
-                2px;
-
-        }
-
-
-        /* =====================================================
-           CHAPTER CONTENT
-        ====================================================== */
-
-        .chapter-content {
-
-            width: 100%;
-
-        }
-
-
-        .chapter-content p {
-
-            margin-bottom:
-                var(--reader-paragraph-space);
-
-            color:
-                var(--text);
-
-            font-family:
-                var(--reader-font);
-
-            font-size:
-                var(--reader-size);
-
-            font-weight:
-                400;
-
-            line-height:
-                var(--reader-line-height);
-
-            text-align:
-                right;
-
-        }
-
-
-        .scene-break {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap:
-                9px;
-
-            margin:
-                52px 0;
-
-        }
-
-
-        .scene-break span {
-
-            width:
-                4px;
-
-            height:
-                4px;
-
-            border-radius:
-                50%;
-
-            background:
-                #680000;
-
-        }
-
-
-        .scene-break::before,
-        .scene-break::after {
-
-            content: "";
-
-            width:
-                35px;
-
-            height:
-                1px;
-
-            background:
-                rgba(100,0,0,0.35);
-
-        }
-
-
-        .highlight {
-
-            margin:
-                42px 0;
-
-            padding:
-                21px 25px;
-
-            border-right:
-                1px solid
-                rgba(100,0,0,0.45);
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(80,0,0,0.025),
-                    transparent
-                );
-
-            color:
-                #b7b7b7;
-
-            font-family:
-                var(--reader-font);
-
-            font-size:
-                calc(var(--reader-size) + 1px);
-
-            line-height:
-                2;
-
-        }
-
-
-        /* =====================================================
-           CHAPTER END
-        ====================================================== */
-
-        .chapter-end {
-
-            padding-top:
-                35px;
-
-            margin-top:
-                60px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.045);
-
-            text-align:
-                center;
-
-        }
-
-
-        .chapter-end-line {
-
-            width:
-                70px;
-
-            height:
-                1px;
-
-            margin:
-                0 auto 18px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    #700000,
-                    transparent
-                );
-
-        }
-
-
-        .chapter-end p {
-
-            color:
-                #4f4f4f;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                8px;
-
-            letter-spacing:
-                3px;
-
-        }
-
-
-        /* =====================================================
-           NAVIGATION
-        ====================================================== */
-
-        .chapter-navigation {
-
-            display: grid;
-
-            grid-template-columns:
-                1fr
-                auto
-                1fr;
-
-            align-items:
-                center;
-
-            gap:
-                15px;
-
-            margin-top:
-                72px;
-
-            padding-top:
-                24px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.045);
-
-        }
-
-
-        .chapter-nav-button {
-
-            min-height:
-                62px;
-
-            padding:
-                10px 16px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.06);
-
-            background:
-                rgba(255,255,255,0.012);
-
-            color:
-                #888;
-
-            transition:
-                border-color 0.3s ease,
-                background 0.3s ease,
-                color 0.3s ease,
-                transform 0.3s ease;
-
-        }
-
-
-        .chapter-nav-button:hover {
-
-            border-color:
-                rgba(105,0,0,0.42);
-
-            background:
-                rgba(85,0,0,0.045);
-
-            color:
-                #d0d0d0;
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        .chapter-nav-button.disabled {
-
-            opacity:
-                0.35;
-
-            cursor:
-                default;
-
-        }
-
-
-        .chapter-nav-button.disabled:hover {
-
-            border-color:
-                rgba(255,255,255,0.06);
-
-            background:
-                rgba(255,255,255,0.012);
-
-            color:
-                #888;
-
-            transform:
-                none;
-
-        }
-
-
-        .chapter-nav-button.previous {
-
-            text-align:
-                right;
-
-        }
-
-
-        .chapter-nav-button.next {
-
-            text-align:
-                left;
-
-        }
-
-
-        .chapter-nav-label {
-
-            display: block;
-
-            margin-bottom:
-                3px;
-
-            color:
-                #4d4d4d;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                8px;
-
-            letter-spacing:
-                2px;
-
-        }
-
-
-        .chapter-nav-title {
-
-            font-size:
-                12px;
-
-        }
-
-
-        .chapter-nav-center {
-
-            display: flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-        }
-
-
-        .chapter-list-button {
-
-            width:
-                56px;
-
-            height:
-                56px;
-
-            display: flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            border:
-                1px solid
-                rgba(105,0,0,0.32);
-
-            background:
-                rgba(80,0,0,0.05);
-
-            color:
-                #700000;
-
-            font-family:
-                "Cinzel",
-                serif;
-
-            font-size:
-                9px;
-
-            letter-spacing:
-                1px;
-
-        }
-
-
-        .chapter-list-button:hover {
-
-            background:
-                rgba(100,0,0,0.1);
-
-            border-color:
-                rgba(135,0,0,0.48);
-
-            color:
-                #a00000;
-
-        }
-
-
-        /* =====================================================
-           SETTINGS OVERLAY
-        ====================================================== */
-
-        .reader-settings-overlay {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 1200;
-
-            display: flex;
-
-            align-items: flex-start;
-
-            justify-content: flex-start;
-
-            padding:
-                78px 24px 24px;
-
-            background:
-                rgba(0,0,0,0.47);
-
-            opacity:
-                0;
-
-            visibility:
-                hidden;
-
-            pointer-events:
-                none;
-
-            transition:
-                opacity 0.3s ease,
-                visibility 0.3s ease;
-
-        }
-
-
-        .reader-settings-overlay.open {
-
-            opacity:
-                1;
-
-            visibility:
-                visible;
-
-            pointer-events:
-                auto;
-
-        }
-
-
-        .reader-settings {
-
-            width:
-                min(
-                    360px,
-                    100%
-                );
-
-            max-height:
-                calc(100vh - 100px);
-
-            overflow-y:
-                auto;
-
-            padding:
-                24px;
-
-            background:
-                #0a0a0a;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.07);
-
-            box-shadow:
-                0 20px 70px
-                rgba(0,0,0,0.65);
-
-            transform:
-                translateY(-12px);
-
-            transition:
-                transform 0.3s ease;
-
-        }
-
-
-        .reader-settings-overlay.open
-        .reader-settings {
-
-            transform:
-                translateY(0);
-
-        }
-
-
-        .settings-title {
-
-            display: flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            padding-bottom:
-                15px;
-
-            margin-bottom:
-                18px;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.055);
-
-        }
-
-
-        .settings-title h3 {
-
-            color:
-                #d0d0d0;
-
-            font-size:
-                15px;
-
-            font-weight:
-                500;
-
-        }
-
-
-        .close-settings {
-
-            color:
-                #555;
-
-            background:
-                transparent;
-
-            font-size:
-                20px;
-
-        }
-
-
-        .close-settings:hover {
-
-            color:
-                #a00000;
-
-        }
-
-
-        .setting-group {
-
-            margin-bottom:
-                22px;
-
-        }
-
-
-        .setting-group:last-child {
-
-            margin-bottom:
-                0;
-
-        }
-
-
-        .setting-group label {
-
-            display: block;
-
-            margin-bottom:
-                9px;
-
-            color:
-                #636363;
-
-            font-size:
-                10px;
-
-        }
-
-
-        .setting-options {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
-            gap:
-                6px;
-
-        }
-
-
-        .setting-option {
-
-            min-height:
-                36px;
-
-            padding:
-                7px 4px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.055);
-
-            background:
-                rgba(255,255,255,0.01);
-
-            color:
-                #656565;
-
-            font-size:
-                10px;
-
-            transition:
-                0.25s ease;
-
-        }
-
-
-        .setting-option:hover {
-
-            border-color:
-                rgba(105,0,0,0.3);
-
-            color:
-                #a0a0a0;
-
-        }
-
-
-        .setting-option.active {
-
-            color:
-                #d0d0d0;
-
-            border-color:
-                rgba(115,0,0,0.5);
-
-            background:
-                rgba(90,0,0,0.08);
-
-        }
-
-
-        /* =====================================================
-           OLED
-        ====================================================== */
-
-        body.oled-mode {
-
-            background:
-                #000000;
-
-        }
-
-
-        body.oled-mode .reader-topbar {
-
-            background:
-                rgba(0,0,0,0.92);
-
-        }
-
-
-        /* =====================================================
-           SEPIA
-        ====================================================== */
-
-        body.sepia-mode {
-
-            background:
-                #17120c;
-
-        }
-
-
-        body.sepia-mode .reader-topbar {
-
-            background:
-                rgba(23,18,12,0.92);
-
-            border-color:
-                rgba(190,160,110,0.08);
-
-        }
-
-
-        body.sepia-mode .chapter-header h1 {
-
-            color:
-                #e0ccb0;
-
-        }
-
-
-        body.sepia-mode .chapter-content p {
-
-            color:
-                #c9b392;
-
-        }
-
-
-        body.sepia-mode .highlight {
-
-            color:
-                #c8b493;
-
-            background:
-                rgba(150,120,75,0.04);
-
-            border-color:
-                rgba(170,140,90,0.25);
-
-        }
-
-
-        /* =====================================================
-           AMIRI
-        ====================================================== */
-
-        body.amiri-mode {
-
-            --reader-font:
-                "Amiri",
-                serif;
-
-        }
-
-
-        /* =====================================================
-           HIDDEN UI
-        ====================================================== */
-
-        body.reader-ui-hidden
-        .reader-topbar {
-
-            opacity:
-                0;
-
-            transform:
-                translateY(-100%);
-
-            pointer-events:
-                none;
-
-        }
-
-
-        body.reader-ui-hidden
-        .reading-progress {
-
-            opacity:
-                0;
-
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 700px) {
-
-            .reader-topbar {
-
-                padding:
-                    11px 13px;
-
-            }
-
-
-            .reader-brand {
-
-                font-size:
-                    8px;
-
-            }
-
-
-            .reader-brand span {
-
-                display:
-                    none;
-
-            }
-
-
-            .reader-actions {
-
-                gap:
-                    5px;
-
-            }
-
-
-            .reader-action {
-
-                min-width:
-                    32px;
-
-                height:
-                    33px;
-
-                padding:
-                    0 8px;
-
-                font-size:
-                    9px;
-
-            }
-
-
-            .reader-page {
-
-                padding:
-                    55px 18px 95px;
-
-            }
-
-
-            .chapter-header {
-
-                padding:
-                    20px 0 42px;
-
-            }
-
-
-            .chapter-header h1 {
-
-                font-size:
-                    31px;
-
-            }
-
-
-            .chapter-content p {
-
-                font-size:
-                    18px;
-
-                line-height:
-                    2.05;
-
-                margin-bottom:
-                    25px;
-
-            }
-
-
-            .highlight {
-
-                padding:
-                    18px;
-
-                font-size:
-                    18px;
-
-            }
-
-
-            .chapter-navigation {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .chapter-nav-center {
-
-                order:
-                    -1;
-
-            }
-
-
-            .chapter-nav-button {
-
-                width:
-                    100%;
-
-            }
-
-
-            .reader-settings-overlay {
-
-                justify-content:
-                    center;
-
-                padding:
-                    68px 14px 14px;
-
-            }
-
-        }
-
-
-        @media (max-width: 420px) {
-
-            .chapter-header h1 {
-
-                font-size:
-                    28px;
-
-            }
-
-
-            .chapter-content p {
-
-                font-size:
-                    17px;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           NO MOTION
-        ====================================================== */
-
-        body.no-motion * {
-
-            animation:
-                none !important;
-
-            transition:
-                none !important;
-
-        }
-
-    </style>
 
 </head>
 
 
-<body>
+<body
+    data-page="reader"
+    data-chapter="01"
+>
 
 
     <!-- =====================================================
@@ -1565,13 +68,133 @@
 
 
     <!-- =====================================================
-         TOP BAR
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <span>
+                S
+            </span>
+
+            OV
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <div class="sidebar-title">
+            SON OF THE VOID
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav>
+
+
+            <!-- HOME -->
+
+            <button
+                class="nav-link"
+                data-href="../index.html"
+                type="button"
+            >
+
+                <span>
+                    01
+                </span>
+
+                الرئيسية
+
+            </button>
+
+
+            <!-- CHAPTERS -->
+
+            <button
+                class="nav-link"
+                data-href="../chapters/index.html"
+                type="button"
+            >
+
+                <span>
+                    02
+                </span>
+
+                الفصول
+
+            </button>
+
+
+            <!-- WORLD -->
+
+            <button
+                class="nav-link"
+                data-href="../index.html#world"
+                type="button"
+            >
+
+                <span>
+                    03
+                </span>
+
+                عالم الرواية
+
+            </button>
+
+
+            <!-- SETTINGS -->
+
+            <button
+                class="nav-link"
+                data-href="../settings/index.html"
+                type="button"
+            >
+
+                <span>
+                    04
+                </span>
+
+                إعدادات الموقع
+
+            </button>
+
+
+        </nav>
+
+
+        <!-- FOOTER -->
+
+        <div class="sidebar-footer">
+
+            <span></span>
+
+            SON OF THE VOID
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         READER TOP BAR
     ====================================================== -->
 
     <header
         class="reader-topbar"
         id="readerTopbar"
     >
+
+
+        <!-- BRAND -->
 
         <a
             href="../index.html"
@@ -1582,6 +205,7 @@
                 S
             </span>
 
+
             <span>
                 SON OF THE VOID
             </span>
@@ -1589,33 +213,47 @@
         </a>
 
 
+        <!-- ACTIONS -->
+
         <div class="reader-actions">
 
+
+            <!-- CHAPTER LIST -->
 
             <button
                 class="reader-action"
                 id="chapterListButton"
                 type="button"
             >
+
                 الفصول
+
             </button>
 
+
+            <!-- SETTINGS -->
 
             <button
                 class="reader-action"
                 id="settingsButton"
                 type="button"
             >
+
                 الإعدادات
+
             </button>
 
+
+            <!-- FULLSCREEN -->
 
             <button
                 class="reader-action"
                 id="fullscreenButton"
                 type="button"
             >
+
                 ملء الشاشة
+
             </button>
 
 
@@ -1631,6 +269,7 @@
 
     <main class="reader-page">
 
+
         <article class="reader-container">
 
 
@@ -1640,12 +279,13 @@
 
             <header class="chapter-header">
 
+
                 <p class="chapter-overline">
                     PATH OF THE VOID
                 </p>
 
 
-                <p class="chapter-number">
+                <p class="chapter-number-top">
                     CHAPTER 01
                 </p>
 
@@ -1668,6 +308,7 @@
 
                 </div>
 
+
             </header>
 
 
@@ -1680,6 +321,7 @@
                 class="chapter-content"
                 id="chapterContent"
             >
+
 
                 <p>
                     لم يكن الصباح مختلفًا عن أي صباح آخر، أو هكذا بدا الأمر في البداية.
@@ -1713,13 +355,19 @@
                 </p>
 
 
+
+                <!-- SCENE BREAK -->
+
                 <div class="scene-break">
 
                     <span></span>
+
                     <span></span>
+
                     <span></span>
 
                 </div>
+
 
 
                 <p>
@@ -1770,9 +418,14 @@
                 </p>
 
 
+
+                <!-- HIGHLIGHT -->
+
                 <div class="highlight">
+
                     لم يكن الصوت مخيفًا بحد ذاته، لكن الطفل شعر بشيء لم يشعر به من قبل.
                     كأن المكان كله يعرف صاحب تلك الخطوات، بينما هو الوحيد الذي لم يعرفه.
+
                 </div>
 
 
@@ -1830,10 +483,15 @@
                 </p>
 
 
+
+                <!-- SCENE BREAK -->
+
                 <div class="scene-break">
 
                     <span></span>
+
                     <span></span>
+
                     <span></span>
 
                 </div>
@@ -1905,10 +563,15 @@
                 </p>
 
 
+
+                <!-- HIGHLIGHT -->
+
                 <div class="highlight">
+
                     لم يكن أحد في القصر يعرف أن تلك اللحظة الصغيرة ستصبح لاحقًا
                     بداية لسلسلة من الأحداث التي ستغيّر أسماء الطوائف، وتسقط مدنًا،
                     وتفتح أبوابًا كان العالم قد نسي وجودها.
+
                 </div>
 
 
@@ -1927,10 +590,15 @@
                 </p>
 
 
+
+                <!-- SCENE BREAK -->
+
                 <div class="scene-break">
 
                     <span></span>
+
                     <span></span>
+
                     <span></span>
 
                 </div>
@@ -1992,12 +660,13 @@
                     كان بداية.
                 </p>
 
+
             </section>
 
 
 
             <!-- =================================================
-                 END
+                 CHAPTER END
             ================================================== -->
 
             <div class="chapter-end">
@@ -2013,11 +682,13 @@
 
 
             <!-- =================================================
-                 NAVIGATION
+                 CHAPTER NAVIGATION
             ================================================== -->
 
             <nav class="chapter-navigation">
 
+
+                <!-- PREVIOUS -->
 
                 <a
                     href="#"
@@ -2037,6 +708,8 @@
 
 
 
+                <!-- CHAPTER LIST -->
+
                 <div class="chapter-nav-center">
 
                     <a
@@ -2049,6 +722,8 @@
                 </div>
 
 
+
+                <!-- NEXT -->
 
                 <a
                     href="#"
@@ -2077,7 +752,7 @@
 
 
     <!-- =====================================================
-         SETTINGS
+         READER SETTINGS
     ====================================================== -->
 
     <div
@@ -2085,8 +760,11 @@
         id="settingsOverlay"
     >
 
+
         <div class="reader-settings">
 
+
+            <!-- TITLE -->
 
             <div class="settings-title">
 
@@ -2107,39 +785,46 @@
 
 
 
-            <!-- FONT SIZE -->
+            <!-- =================================================
+                 FONT SIZE
+            ================================================== -->
 
-            <div class="setting-group">
+            <div class="reader-setting-group">
 
                 <label>
                     حجم النص
                 </label>
 
 
-                <div class="setting-options">
+                <div class="reader-setting-options">
+
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-size="18"
+                        type="button"
                     >
                         صغير
                     </button>
 
 
                     <button
-                        class="setting-option active"
+                        class="reader-setting-option active"
                         data-size="20"
+                        type="button"
                     >
                         متوسط
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-size="22"
+                        type="button"
                     >
                         كبير
                     </button>
+
 
                 </div>
 
@@ -2147,31 +832,37 @@
 
 
 
-            <!-- FONT -->
+            <!-- =================================================
+                 FONT
+            ================================================== -->
 
-            <div class="setting-group">
+            <div class="reader-setting-group">
 
                 <label>
                     نوع الخط
                 </label>
 
 
-                <div class="setting-options">
+                <div class="reader-setting-options">
+
 
                     <button
-                        class="setting-option active"
+                        class="reader-setting-option active"
                         data-font="default"
+                        type="button"
                     >
                         الافتراضي
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-font="amiri"
+                        type="button"
                     >
                         أميري
                     </button>
+
 
                 </div>
 
@@ -2179,39 +870,46 @@
 
 
 
-            <!-- WIDTH -->
+            <!-- =================================================
+                 TEXT WIDTH
+            ================================================== -->
 
-            <div class="setting-group">
+            <div class="reader-setting-group">
 
                 <label>
                     عرض النص
                 </label>
 
 
-                <div class="setting-options">
+                <div class="reader-setting-options">
+
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-width="700"
+                        type="button"
                     >
                         ضيق
                     </button>
 
 
                     <button
-                        class="setting-option active"
+                        class="reader-setting-option active"
                         data-width="780"
+                        type="button"
                     >
                         متوسط
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-width="860"
+                        type="button"
                     >
                         واسع
                     </button>
+
 
                 </div>
 
@@ -2219,39 +917,46 @@
 
 
 
-            <!-- LINE HEIGHT -->
+            <!-- =================================================
+                 LINE HEIGHT
+            ================================================== -->
 
-            <div class="setting-group">
+            <div class="reader-setting-group">
 
                 <label>
                     تباعد الأسطر
                 </label>
 
 
-                <div class="setting-options">
+                <div class="reader-setting-options">
+
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-line="1.85"
+                        type="button"
                     >
                         ضيق
                     </button>
 
 
                     <button
-                        class="setting-option active"
+                        class="reader-setting-option active"
                         data-line="2.15"
+                        type="button"
                     >
                         متوسط
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-line="2.45"
+                        type="button"
                     >
                         واسع
                     </button>
+
 
                 </div>
 
@@ -2259,39 +964,46 @@
 
 
 
-            <!-- PARAGRAPH -->
+            <!-- =================================================
+                 PARAGRAPH SPACING
+            ================================================== -->
 
-            <div class="setting-group">
+            <div class="reader-setting-group">
 
                 <label>
                     تباعد الفقرات
                 </label>
 
 
-                <div class="setting-options">
+                <div class="reader-setting-options">
+
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-paragraph="20"
+                        type="button"
                     >
                         قليل
                     </button>
 
 
                     <button
-                        class="setting-option active"
+                        class="reader-setting-option active"
                         data-paragraph="28"
+                        type="button"
                     >
                         متوسط
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-paragraph="36"
+                        type="button"
                     >
                         واسع
                     </button>
+
 
                 </div>
 
@@ -2299,39 +1011,46 @@
 
 
 
-            <!-- MODE -->
+            <!-- =================================================
+                 MODE
+            ================================================== -->
 
-            <div class="setting-group">
+            <div class="reader-setting-group">
 
                 <label>
                     المظهر
                 </label>
 
 
-                <div class="setting-options">
+                <div class="reader-setting-options">
+
 
                     <button
-                        class="setting-option active"
+                        class="reader-setting-option active"
                         data-mode="dark"
+                        type="button"
                     >
                         مظلم
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-mode="oled"
+                        type="button"
                     >
                         OLED
                     </button>
 
 
                     <button
-                        class="setting-option"
+                        class="reader-setting-option"
                         data-mode="sepia"
+                        type="button"
                     >
                         Sepia
                     </button>
+
 
                 </div>
 
@@ -2348,1050 +1067,7 @@
          JAVASCRIPT
     ====================================================== -->
 
-    <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            () => {
-
-
-                /* =================================================
-                   ELEMENTS
-                ================================================= */
-
-                const root =
-                    document.documentElement;
-
-
-                const body =
-                    document.body;
-
-
-                const progressBar =
-                    document.getElementById(
-                        "readingProgressBar"
-                    );
-
-
-                const settingsButton =
-                    document.getElementById(
-                        "settingsButton"
-                    );
-
-
-                const closeSettings =
-                    document.getElementById(
-                        "closeSettings"
-                    );
-
-
-                const settingsOverlay =
-                    document.getElementById(
-                        "settingsOverlay"
-                    );
-
-
-                const fullscreenButton =
-                    document.getElementById(
-                        "fullscreenButton"
-                    );
-
-
-                const chapterListButton =
-                    document.getElementById(
-                        "chapterListButton"
-                    );
-
-
-                /* =================================================
-                   GLOBAL SETTINGS
-                   
-                   هذه المفاتيح مشتركة بين جميع الفصول.
-                ================================================== */
-
-                const SETTINGS = {
-
-                    size:
-                        "sov_reader_size",
-
-                    font:
-                        "sov_reader_font",
-
-                    width:
-                        "sov_reader_width",
-
-                    line:
-                        "sov_reader_line",
-
-                    paragraph:
-                        "sov_reader_paragraph",
-
-                    mode:
-                        "sov_reader_mode"
-
-                };
-
-
-                /* =================================================
-                   CHAPTER-SPECIFIC STORAGE
-                   
-                   هذا الموقع خاص بالفصل الأول.
-                ================================================== */
-
-                const CHAPTER = {
-
-                    position:
-                        "sov_chapter_01_position"
-
-                };
-
-
-                /* =================================================
-                   MIGRATE OLD SETTINGS
-                   
-                   لو كانت نسخة سابقة خزنت الإعدادات بطريقة قديمة،
-                   ننقلها للمفاتيح العامة مرة واحدة.
-                ================================================== */
-
-                const oldSettings = {
-
-                    size:
-                        "sov_reader_size",
-
-                    font:
-                        "sov_reader_font",
-
-                    width:
-                        "sov_reader_width",
-
-                    line:
-                        "sov_reader_line",
-
-                    paragraph:
-                        "sov_reader_paragraph",
-
-                    mode:
-                        "sov_reader_mode"
-
-                };
-
-
-                Object.keys(oldSettings).forEach(key => {
-
-                    const value =
-                        localStorage.getItem(
-                            oldSettings[key]
-                        );
-
-
-                    if (
-                        value !== null &&
-                        !localStorage.getItem(
-                            SETTINGS[key]
-                        )
-                    ) {
-
-                        localStorage.setItem(
-                            SETTINGS[key],
-                            value
-                        );
-
-                    }
-
-                });
-
-
-
-                /* =================================================
-                   READING PROGRESS + AUTO SAVE
-                ================================================== */
-
-                function updateProgress() {
-
-                    const maxScroll =
-                        document.documentElement
-                            .scrollHeight -
-                        window.innerHeight;
-
-
-                    if (maxScroll <= 0) {
-
-                        progressBar.style.width =
-                            "0%";
-
-                        return;
-
-                    }
-
-
-                    const progress =
-                        Math.min(
-                            100,
-                            Math.max(
-                                0,
-                                (
-                                    window.scrollY /
-                                    maxScroll
-                                ) * 100
-                            )
-                        );
-
-
-                    progressBar.style.width =
-                        progress + "%";
-
-
-                    /*
-                       حفظ موضع القراءة تلقائيًا.
-                       لا يوجد زر للحفظ.
-                    */
-
-                    localStorage.setItem(
-                        CHAPTER.position,
-                        String(
-                            window.scrollY
-                        )
-                    );
-
-                }
-
-
-                window.addEventListener(
-                    "scroll",
-                    updateProgress,
-                    { passive: true }
-                );
-
-
-
-                /* =================================================
-                   RESTORE CHAPTER POSITION
-                ================================================== */
-
-                const savedPosition =
-                    parseFloat(
-                        localStorage.getItem(
-                            CHAPTER.position
-                        )
-                    );
-
-
-                if (
-                    Number.isFinite(
-                        savedPosition
-                    ) &&
-                    savedPosition > 20
-                ) {
-
-                    setTimeout(() => {
-
-                        window.scrollTo(
-                            0,
-                            savedPosition
-                        );
-
-                        updateProgress();
-
-                    }, 150);
-
-                } else {
-
-                    updateProgress();
-
-                }
-
-
-
-                /* =================================================
-                   SETTINGS OPEN / CLOSE
-                ================================================= */
-
-                if (settingsButton) {
-
-                    settingsButton.addEventListener(
-                        "click",
-                        () => {
-
-                            settingsOverlay.classList.add(
-                                "open"
-                            );
-
-                            body.classList.remove(
-                                "reader-ui-hidden"
-                            );
-
-                        }
-                    );
-
-                }
-
-
-                function closeSettingsPanel() {
-
-                    if (settingsOverlay) {
-
-                        settingsOverlay.classList.remove(
-                            "open"
-                        );
-
-                    }
-
-                }
-
-
-                if (closeSettings) {
-
-                    closeSettings.addEventListener(
-                        "click",
-                        closeSettingsPanel
-                    );
-
-                }
-
-
-                if (settingsOverlay) {
-
-                    settingsOverlay.addEventListener(
-                        "click",
-                        event => {
-
-                            if (
-                                event.target ===
-                                settingsOverlay
-                            ) {
-
-                                closeSettingsPanel();
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-
-                /* =================================================
-                   FONT SIZE
-                   
-                   GLOBAL — كل الفصول
-                ================================================== */
-
-                const sizeOptions =
-                    document.querySelectorAll(
-                        "[data-size]"
-                    );
-
-
-                sizeOptions.forEach(option => {
-
-                    option.addEventListener(
-                        "click",
-                        () => {
-
-                            const size =
-                                option.dataset.size;
-
-
-                            root.style.setProperty(
-                                "--reader-size",
-                                size + "px"
-                            );
-
-
-                            sizeOptions.forEach(item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            });
-
-
-                            option.classList.add(
-                                "active"
-                            );
-
-
-                            localStorage.setItem(
-                                SETTINGS.size,
-                                size
-                            );
-
-
-                            updateProgress();
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   FONT
-                   
-                   GLOBAL — كل الفصول
-                ================================================== */
-
-                const fontOptions =
-                    document.querySelectorAll(
-                        "[data-font]"
-                    );
-
-
-                fontOptions.forEach(option => {
-
-                    option.addEventListener(
-                        "click",
-                        () => {
-
-                            const font =
-                                option.dataset.font;
-
-
-                            body.classList.remove(
-                                "amiri-mode"
-                            );
-
-
-                            if (
-                                font === "amiri"
-                            ) {
-
-                                body.classList.add(
-                                    "amiri-mode"
-                                );
-
-                            }
-
-
-                            fontOptions.forEach(item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            });
-
-
-                            option.classList.add(
-                                "active"
-                            );
-
-
-                            localStorage.setItem(
-                                SETTINGS.font,
-                                font
-                            );
-
-
-                            updateProgress();
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   WIDTH
-                   
-                   GLOBAL — كل الفصول
-                ================================================== */
-
-                const widthOptions =
-                    document.querySelectorAll(
-                        "[data-width]"
-                    );
-
-
-                widthOptions.forEach(option => {
-
-                    option.addEventListener(
-                        "click",
-                        () => {
-
-                            const width =
-                                option.dataset.width;
-
-
-                            root.style.setProperty(
-                                "--reader-width",
-                                width + "px"
-                            );
-
-
-                            widthOptions.forEach(item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            });
-
-
-                            option.classList.add(
-                                "active"
-                            );
-
-
-                            localStorage.setItem(
-                                SETTINGS.width,
-                                width
-                            );
-
-
-                            updateProgress();
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   LINE HEIGHT
-                   
-                   GLOBAL — كل الفصول
-                ================================================== */
-
-                const lineOptions =
-                    document.querySelectorAll(
-                        "[data-line]"
-                    );
-
-
-                lineOptions.forEach(option => {
-
-                    option.addEventListener(
-                        "click",
-                        () => {
-
-                            const line =
-                                option.dataset.line;
-
-
-                            root.style.setProperty(
-                                "--reader-line-height",
-                                line
-                            );
-
-
-                            lineOptions.forEach(item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            });
-
-
-                            option.classList.add(
-                                "active"
-                            );
-
-
-                            localStorage.setItem(
-                                SETTINGS.line,
-                                line
-                            );
-
-
-                            updateProgress();
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   PARAGRAPH SPACING
-                   
-                   GLOBAL — كل الفصول
-                ================================================== */
-
-                const paragraphOptions =
-                    document.querySelectorAll(
-                        "[data-paragraph]"
-                    );
-
-
-                paragraphOptions.forEach(option => {
-
-                    option.addEventListener(
-                        "click",
-                        () => {
-
-                            const paragraph =
-                                option.dataset.paragraph;
-
-
-                            root.style.setProperty(
-                                "--reader-paragraph-space",
-                                paragraph + "px"
-                            );
-
-
-                            paragraphOptions.forEach(item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            });
-
-
-                            option.classList.add(
-                                "active"
-                            );
-
-
-                            localStorage.setItem(
-                                SETTINGS.paragraph,
-                                paragraph
-                            );
-
-
-                            updateProgress();
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   READING MODE
-                   
-                   GLOBAL — كل الفصول
-                ================================================== */
-
-                const modeOptions =
-                    document.querySelectorAll(
-                        "[data-mode]"
-                    );
-
-
-                modeOptions.forEach(option => {
-
-                    option.addEventListener(
-                        "click",
-                        () => {
-
-                            const mode =
-                                option.dataset.mode;
-
-
-                            body.classList.remove(
-                                "oled-mode",
-                                "sepia-mode"
-                            );
-
-
-                            if (
-                                mode === "oled"
-                            ) {
-
-                                body.classList.add(
-                                    "oled-mode"
-                                );
-
-                            }
-
-
-                            if (
-                                mode === "sepia"
-                            ) {
-
-                                body.classList.add(
-                                    "sepia-mode"
-                                );
-
-                            }
-
-
-                            modeOptions.forEach(item => {
-
-                                item.classList.remove(
-                                    "active"
-                                );
-
-                            });
-
-
-                            option.classList.add(
-                                "active"
-                            );
-
-
-                            localStorage.setItem(
-                                SETTINGS.mode,
-                                mode
-                            );
-
-                        }
-                    );
-
-                });
-
-
-
-                /* =================================================
-                   LOAD GLOBAL SETTINGS
-                ================================================== */
-
-                const savedSize =
-                    localStorage.getItem(
-                        SETTINGS.size
-                    );
-
-
-                const savedFont =
-                    localStorage.getItem(
-                        SETTINGS.font
-                    );
-
-
-                const savedWidth =
-                    localStorage.getItem(
-                        SETTINGS.width
-                    );
-
-
-                const savedLine =
-                    localStorage.getItem(
-                        SETTINGS.line
-                    );
-
-
-                const savedParagraph =
-                    localStorage.getItem(
-                        SETTINGS.paragraph
-                    );
-
-
-                const savedMode =
-                    localStorage.getItem(
-                        SETTINGS.mode
-                    );
-
-
-                if (savedSize) {
-
-                    root.style.setProperty(
-                        "--reader-size",
-                        savedSize + "px"
-                    );
-
-
-                    sizeOptions.forEach(option => {
-
-                        option.classList.toggle(
-                            "active",
-                            option.dataset.size ===
-                            savedSize
-                        );
-
-                    });
-
-                }
-
-
-                if (savedFont) {
-
-                    body.classList.remove(
-                        "amiri-mode"
-                    );
-
-
-                    if (
-                        savedFont === "amiri"
-                    ) {
-
-                        body.classList.add(
-                            "amiri-mode"
-                        );
-
-                    }
-
-
-                    fontOptions.forEach(option => {
-
-                        option.classList.toggle(
-                            "active",
-                            option.dataset.font ===
-                            savedFont
-                        );
-
-                    });
-
-                }
-
-
-                if (savedWidth) {
-
-                    root.style.setProperty(
-                        "--reader-width",
-                        savedWidth + "px"
-                    );
-
-
-                    widthOptions.forEach(option => {
-
-                        option.classList.toggle(
-                            "active",
-                            option.dataset.width ===
-                            savedWidth
-                        );
-
-                    });
-
-                }
-
-
-                if (savedLine) {
-
-                    root.style.setProperty(
-                        "--reader-line-height",
-                        savedLine
-                    );
-
-
-                    lineOptions.forEach(option => {
-
-                        option.classList.toggle(
-                            "active",
-                            option.dataset.line ===
-                            savedLine
-                        );
-
-                    });
-
-                }
-
-
-                if (savedParagraph) {
-
-                    root.style.setProperty(
-                        "--reader-paragraph-space",
-                        savedParagraph + "px"
-                    );
-
-
-                    paragraphOptions.forEach(option => {
-
-                        option.classList.toggle(
-                            "active",
-                            option.dataset.paragraph ===
-                            savedParagraph
-                        );
-
-                    });
-
-                }
-
-
-                if (savedMode) {
-
-                    body.classList.remove(
-                        "oled-mode",
-                        "sepia-mode"
-                    );
-
-
-                    if (
-                        savedMode === "oled"
-                    ) {
-
-                        body.classList.add(
-                            "oled-mode"
-                        );
-
-                    }
-
-
-                    if (
-                        savedMode === "sepia"
-                    ) {
-
-                        body.classList.add(
-                            "sepia-mode"
-                        );
-
-                    }
-
-
-                    modeOptions.forEach(option => {
-
-                        option.classList.toggle(
-                            "active",
-                            option.dataset.mode ===
-                            savedMode
-                        );
-
-                    });
-
-                }
-
-
-
-                /* =================================================
-                   CHAPTER LIST
-                   
-                   يفتح صفحة الفصول المستقلة مباشرة.
-                ================================================== */
-
-                if (chapterListButton) {
-
-                    chapterListButton.addEventListener(
-                        "click",
-                        () => {
-
-                            window.location.href =
-                                "../chapters/index.html";
-
-                        }
-                    );
-
-                }
-
-
-
-                /* =================================================
-                   FULLSCREEN
-                ================================================== */
-
-                if (fullscreenButton) {
-
-                    fullscreenButton.addEventListener(
-                        "click",
-                        async () => {
-
-                            try {
-
-                                if (
-                                    !document.fullscreenElement
-                                ) {
-
-                                    await document.documentElement
-                                        .requestFullscreen();
-
-                                } else {
-
-                                    await document.exitFullscreen();
-
-                                }
-
-                            } catch (error) {
-
-                                body.classList.toggle(
-                                    "reader-ui-hidden"
-                                );
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                document.addEventListener(
-                    "fullscreenchange",
-                    () => {
-
-                        fullscreenButton.textContent =
-                            document.fullscreenElement
-                                ? "خروج"
-                                : "ملء الشاشة";
-
-                    }
-                );
-
-
-
-                /* =================================================
-                   HIDE UI WHILE READING
-                ================================================== */
-
-                let uiTimer =
-                    null;
-
-
-                function showReaderUI() {
-
-                    body.classList.remove(
-                        "reader-ui-hidden"
-                    );
-
-
-                    clearTimeout(
-                        uiTimer
-                    );
-
-
-                    uiTimer =
-                        setTimeout(
-                            () => {
-
-                                if (
-                                    !settingsOverlay.classList.contains(
-                                        "open"
-                                    )
-                                ) {
-
-                                    body.classList.add(
-                                        "reader-ui-hidden"
-                                    );
-
-                                }
-
-                            },
-                            2600
-                        );
-
-                }
-
-
-                document.addEventListener(
-                    "mousemove",
-                    showReaderUI,
-                    { passive: true }
-                );
-
-
-                document.addEventListener(
-                    "touchstart",
-                    showReaderUI,
-                    { passive: true }
-                );
-
-
-                document.addEventListener(
-                    "click",
-                    showReaderUI
-                );
-
-
-                document.addEventListener(
-                    "keydown",
-                    showReaderUI
-                );
-
-
-                showReaderUI();
-
-            }
-
-        );
-
-    </script>
+    <script src="../script.js"></script>
 
 </body>
 
