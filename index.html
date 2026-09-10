@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -17,32 +16,17 @@
 
     <title>SON OF THE VOID</title>
 
-
-    <!-- =====================================================
-         SESSION INTRO CHECK
-         يمنع ظهور جزء من الانترو عند تحديث الصفحة
-    ====================================================== -->
-
     <script>
         (function () {
-
             if (
                 sessionStorage.getItem("sov_intro_seen") === "true"
             ) {
-
                 document.documentElement.classList.add(
                     "intro-seen"
                 );
-
             }
-
         })();
     </script>
-
-
-    <!-- =========================
-         FAVICON
-    ========================== -->
 
     <link
         rel="icon"
@@ -50,25 +34,16 @@
         href="assets/favicon/favicon.svg"
     >
 
-
-    <!-- =========================
-         CSS
-    ========================== -->
-
     <link
         rel="stylesheet"
         href="style.css"
     >
-
 </head>
 
 
-<body>
+<body data-page="home">
 
-
-    <!-- =========================
-         INTRO
-    ========================== -->
+    <!-- INTRO -->
 
     <div id="intro">
 
@@ -99,17 +74,11 @@
     </div>
 
 
-
-    <!-- =========================
-         SITE
-    ========================== -->
+    <!-- SITE -->
 
     <div id="site">
 
-
-        <!-- =========================
-             SIDEBAR
-        ========================== -->
+        <!-- SIDEBAR -->
 
         <aside class="sidebar">
 
@@ -121,121 +90,68 @@
                 SON OF THE VOID
             </div>
 
-
             <nav>
-
-
-                <!-- الرئيسية -->
 
                 <button
                     class="nav-link active"
                     data-section="home"
                     type="button"
                 >
-
-                    <span>
-                        01
-                    </span>
-
+                    <span>01</span>
                     الرئيسية
-
                 </button>
-
-
-
-                <!-- الفصول -->
 
                 <button
                     class="nav-link"
+                    data-href="chapters/index.html"
                     type="button"
-                    onclick="window.location.href='chapters/index.html'"
                 >
-
-                    <span>
-                        02
-                    </span>
-
+                    <span>02</span>
                     الفصول
-
                 </button>
-
-
-
-                <!-- عالم الرواية -->
 
                 <button
                     class="nav-link"
                     data-section="world"
                     type="button"
                 >
-
-                    <span>
-                        03
-                    </span>
-
+                    <span>03</span>
                     عالم الرواية
-
                 </button>
-
-
-
-                <!-- إعدادات الموقع -->
 
                 <button
                     class="nav-link"
+                    data-href="settings/index.html"
                     type="button"
-                    onclick="window.location.href='settings/index.html'"
                 >
-
-                    <span>
-                        04
-                    </span>
-
+                    <span>04</span>
                     إعدادات الموقع
-
                 </button>
-
 
             </nav>
 
-
             <div class="sidebar-footer">
-
                 <span></span>
-
                 SON OF THE VOID
-
             </div>
 
         </aside>
 
 
-
-        <!-- =========================
-             MAIN CONTENT
-        ========================== -->
+        <!-- MAIN -->
 
         <main class="main-content">
 
-
-            <!-- =========================
-                 HOME
-            ========================== -->
+            <!-- HOME -->
 
             <section
                 id="home"
                 class="page-section active-section"
             >
 
-
-                <!-- HERO -->
-
                 <div class="hero">
 
                     <div class="hero-content">
-
-
-                        <!-- COVER -->
 
                         <div class="cover-area">
 
@@ -251,44 +167,27 @@
                         </div>
 
 
-
-                        <!-- HERO INFO -->
-
                         <div class="hero-info">
 
                             <p class="eyebrow">
                                 THE STORY BEGINS
                             </p>
 
-
                             <h2>
                                 SON OF THE
-
-                                <span>
-                                    VOID
-                                </span>
+                                <span>VOID</span>
                             </h2>
-
 
                             <div class="hero-divider"></div>
 
-
                             <p class="hero-intro">
-
                                 حكاية عن عالمٍ لا تكشف الحقيقة
                                 فيه عن نفسها بسهولة، وعن بداية
                                 قد تكون مختلفة عمّا ظنه الجميع.
-
                             </p>
 
 
-
-                            <!-- NOVEL INFORMATION -->
-
                             <div class="novel-information">
-
-
-                                <!-- GENRES -->
 
                                 <div class="information-block">
 
@@ -304,31 +203,18 @@
 
                                     </div>
 
-
                                     <div class="information-content">
 
                                         <h3>
                                             النوع
                                         </h3>
 
-
                                         <div class="genre-list">
 
-                                            <span>
-                                                أكشن
-                                            </span>
-
-                                            <span>
-                                                فانتازيا
-                                            </span>
-
-                                            <span>
-                                                دراما
-                                            </span>
-
-                                            <span>
-                                                موريوم
-                                            </span>
+                                            <span>أكشن</span>
+                                            <span>فانتازيا</span>
+                                            <span>دراما</span>
+                                            <span>موريوم</span>
 
                                         </div>
 
@@ -336,9 +222,6 @@
 
                                 </div>
 
-
-
-                                <!-- CHAPTER COUNT -->
 
                                 <div class="information-block">
 
@@ -354,15 +237,16 @@
 
                                     </div>
 
-
                                     <div class="information-content">
 
                                         <h3>
                                             عدد الفصول
                                         </h3>
 
-
-                                        <strong class="chapter-count">
+                                        <strong
+                                            class="chapter-count"
+                                            id="chapterCount"
+                                        >
                                             01
                                         </strong>
 
@@ -370,37 +254,26 @@
 
                                 </div>
 
-
                             </div>
 
 
-
-                            <!-- BUTTONS -->
-
                             <div class="hero-buttons">
-
 
                                 <button
                                     class="primary-button"
                                     id="startReading"
                                     type="button"
                                 >
-
                                     ابدأ القراءة
-
                                 </button>
-
 
                                 <button
                                     class="secondary-button"
                                     id="continueReading"
                                     type="button"
                                 >
-
                                     تابع القراءة
-
                                 </button>
-
 
                             </div>
 
@@ -411,21 +284,13 @@
                 </div>
 
 
-
-                <!-- =========================
-                     ABOUT NOVEL
-                ========================== -->
-
                 <div class="about-novel">
 
-
                     <div class="about-top-line">
-
 
                         <span class="about-number">
                             03
                         </span>
-
 
                         <div class="about-title">
 
@@ -439,22 +304,16 @@
 
                         </div>
 
-
                     </div>
 
 
-
                     <div class="about-main">
-
-
-                        <!-- QUOTE -->
 
                         <div class="about-quote">
 
                             <span class="quote-mark">
                                 “
                             </span>
-
 
                             <p>
                                 ليس كل ما يحدث في هذا العالم يُرى،
@@ -464,11 +323,7 @@
                         </div>
 
 
-
-                        <!-- TEXT -->
-
                         <div class="about-text">
-
 
                             <p>
                                 في عالمٍ تتقاطع فيه طرق الطوائف والعشائر،
@@ -477,13 +332,11 @@
                                 لا يفهمها بعد.
                             </p>
 
-
                             <p>
                                 وجوهٌ تخفي أكثر مما تُظهر، لقاءاتٌ تبدو
                                 عابرة، وأحداثٌ صغيرة لا يدرك أحدٌ قيمتها
                                 في لحظتها.
                             </p>
-
 
                             <p>
                                 لا يعرف الطفل إلى أين ستقوده خطواته،
@@ -491,47 +344,35 @@
                                 فيها، يصبح الرجوع منها مستحيلًا.
                             </p>
 
-
                             <p>
                                 ومع كل يومٍ يمر، تتسع دائرة الأشياء
                                 التي لا يفهمها...
                             </p>
 
-
                             <p class="about-final">
-
                                 حتى يصبح السؤال الحقيقي ليس عمّا سيحدث،
                                 بل:
 
                                 <strong>
                                     ماذا لو كانت البداية مختلفة عمّا ظن الجميع؟
                                 </strong>
-
                             </p>
-
 
                         </div>
 
-
                     </div>
 
-
                 </div>
-
 
             </section>
 
 
-
-            <!-- =========================
-                 WORLD
-            ========================== -->
+            <!-- WORLD -->
 
             <section
                 id="world"
                 class="page-section"
             >
-
 
                 <div class="section-header">
 
@@ -539,11 +380,9 @@
                         THE WORLD
                     </p>
 
-
                     <h2>
                         عالم الرواية
                     </h2>
-
 
                     <p>
                         المعلومات الخاصة بعالم SON OF THE VOID.
@@ -551,10 +390,7 @@
 
                 </div>
 
-
-
                 <div class="world-box">
-
 
                     <div>
 
@@ -562,33 +398,25 @@
                             01
                         </span>
 
-
                         <h3>
                             العالم
                         </h3>
 
                     </div>
 
-
                     <p>
-
                         هنا سنبني لاحقًا تاريخ العالم،
                         المناطق، القوى، الجماعات،
                         الشخصيات والأحداث المهمة.
-
                     </p>
-
 
                 </div>
 
-
             </section>
-
 
         </main>
 
     </div>
-
 
 
     <script src="script.js"></script>
