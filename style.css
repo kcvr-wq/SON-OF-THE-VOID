@@ -1288,15 +1288,20 @@ html.intro-seen #site {
 
 .chapter-progress-track {
     width: 115px;
-    height: 4px;
+    height: 3px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.045);
 }
 
 .chapter-progress-bar {
+    display: block;
     width: 0;
     height: 100%;
-    background: linear-gradient(90deg, #4a0000, #8b0000);
+    background: linear-gradient(
+        90deg,
+        #4a0000,
+        #8b0000
+    );
     transition: width 0.35s ease;
 }
 
