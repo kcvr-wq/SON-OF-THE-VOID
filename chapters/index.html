@@ -492,30 +492,46 @@
                     );
 
 
-                function chapterProgress(number) {
+               function chapterProgress(number) {
 
-                    const progress =
-                        parseFloat(
-                            localStorage.getItem(
-                                `sov_chapter_${number}_progress`
-                            )
-                        );
+    const completed =
+        localStorage.getItem(
+            `sov_chapter_${number}_completed`
+        );
 
-                    if (Number.isFinite(progress)) {
-                        return Math.min(100, Math.max(0, progress));
-                    }
+    /*
+     * إذا تم إنهاء الفصل، نضمن أن الشريط
+     * يظهر 100% مهما كانت القيمة القديمة.
+     */
+    if (completed === "true") {
+        return 100;
+    }
 
-                    const legacy =
-                        parseFloat(
-                            localStorage.getItem(
-                                `sov_chapter_${number}_position`
-                            )
-                        );
 
-                    return Number.isFinite(legacy)
-                        ? 0
-                        : 0;
-                }
+    const progress =
+        parseFloat(
+            localStorage.getItem(
+                `sov_chapter_${number}_progress`
+            )
+        );
+
+
+    if (Number.isFinite(progress)) {
+
+        return Math.min(
+            100,
+            Math.max(
+                0,
+                progress
+            )
+        );
+
+    }
+
+
+    return 0;
+
+}
 
 
                 function chapterTitle(number) {
